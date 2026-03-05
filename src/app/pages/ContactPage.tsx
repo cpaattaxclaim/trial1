@@ -59,7 +59,7 @@ export function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID || 'YOUR_ID_HERE'}`, {
+      const response = await fetch(`https://formspree.io/f/mbdanaza'}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
