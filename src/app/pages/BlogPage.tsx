@@ -12,12 +12,22 @@ export function BlogPage() {
   const articles = [
     {
       category: 'Tax Planning',
-      title: '2025 Tax Season Checklist: Get Ready to File Your Personal Tax Return',
+      title: '2026 Tax Season Checklist: Get Ready to File Your Personal Tax Return',
       excerpt: 'When filing the Individual Tax Returns for Tax Year 2025, this will be your Ultimate guide to the Checklist to simplify the filing process.',
       date: 'March 03, 2026',
       readTime: '4 min read',
       icon: FileText,
       url: 'https://medium.com/@cpa_96374/2025-tax-season-checklist-get-ready-to-file-your-personal-tax-return-d928c70b8866'
+    },
+      {
+      category: 'Tax Planning',
+      title: '2025 Business Tax Checklist: Partnership & S-Corp Readiness',
+      excerpt: 'Filing for a Partnership or S-Corp is a team hurdle. Since these are pass-through entities, the business return has to be finalized first so the Schedules K-1 can flow to the partners. If the business return is late, everyone’s personal return is stuck.
+',
+      date: 'March 06, 2026',
+      readTime: '3 min read',
+      icon: FileText,
+      url: 'https://medium.com/@cpa_96374/2025-business-tax-checklist-partnership-s-corp-readiness-e57965363c9c'
     }
   ];
 
