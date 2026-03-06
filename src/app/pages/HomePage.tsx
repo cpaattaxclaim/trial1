@@ -3,62 +3,31 @@ import { Helmet } from 'react-helmet-async';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
-import { 
-  ShieldCheck, 
-  Zap, 
-  Globe2, 
-  ChevronRight, 
-  Star,
-  ArrowRight
-} from 'lucide-react';
+import { ShieldCheck, Zap, Globe2, Star, ArrowRight } from 'lucide-react';
 
 export function HomePage() {
-  
-  // --- ADVANCED SEO: US-Centric Professional Service Schema ---
   const homeSchema = {
     "@context": "https://schema.org",
     "@type": "TaxService",
     "name": "TaxClaim",
-    "description": "Licensed Washington State CPA providing remote tax preparation, bookkeeping, and business advisory services across all 50 US states.",
+    "description": "Licensed Washington State CPA providing nationwide tax preparation for US small businesses and individuals.",
     "url": "https://www.taxclaim.co",
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "WA",
-      "addressCountry": "US"
-    },
-    "areaServed": {
-      "@type": "Country",
-      "name": "United States"
-    },
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "TaxClaim",
-      "image": "https://www.taxclaim.co/logo.png"
-    }
+    "address": { "@type": "PostalAddress", "addressRegion": "WA", "addressCountry": "US" },
+    "areaServed": { "@type": "Country", "name": "United States" }
   };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* --- SEO METADATA --- */}
       <Helmet>
-        <title>TaxClaim | US Licensed CPA | Small Business Tax & Accounting</title>
-        <meta name="description" content="Professional US tax filing and CPA services. Specialized in S-Corp, Partnership, and Individual tax returns across all 50 states. Reliable, remote-first compliance." />
-        <meta name="keywords" content="US CPA, tax preparation services, Form 1120-S filing, partnership tax return, 1040 tax prep, remote bookkeeping US" />
+        <title>TaxClaim | Licensed US CPA | Small Business Tax & Accounting</title>
+        <meta name="description" content="Professional US tax filing and CPA services. Specialized in S-Corp (1120-S), Partnership (1065), and Individual tax returns across all 50 states." />
+        <meta name="keywords" content="US licensed CPA, tax preparation services, Form 1120-S filing, partnership tax return, 1040 tax prep, remote bookkeeping US" />
         <link rel="canonical" href="https://www.taxclaim.co" />
-        
-        <meta property="og:title" content="TaxClaim | Professional US Tax Compliance" />
-        <meta property="og:description" content="CPA-grade tax preparation and business advisory for US entrepreneurs." />
-        <meta property="og:type" content="website" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify(homeSchema)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(homeSchema)}</script>
       </Helmet>
 
       <Header />
-
       <main>
-        {/* Page Hero */}
         <section className="relative pt-20 pb-32 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
@@ -74,20 +43,10 @@ export function HomePage() {
                   Expert tax preparation and business compliance for small businesses and individuals across all 50 states. No stress, just CPA-grade accuracy.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/services">
-                    <Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-7 text-lg group">
-                      Explore Services 
-                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                  <Link to="/contact">
-                    <Button size="lg" variant="outline" className="px-8 py-7 text-lg border-slate-200">
-                      Free Consultation
-                    </Button>
-                  </Link>
+                  <Link to="/services"><Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-7 text-lg group">Explore Services <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" /></Button></Link>
+                  <Link to="/contact"><Button size="lg" variant="outline" className="px-8 py-7 text-lg border-slate-200">Free Consultation</Button></Link>
                 </div>
               </div>
-              
               <div className="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6 relative">
                 <div className="bg-slate-50 border border-slate-200 p-8 rounded-3xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
                    <div className="flex items-center justify-between mb-8">
@@ -97,17 +56,13 @@ export function HomePage() {
                    <div className="space-y-4">
                       <div className="h-4 w-full bg-slate-200 rounded"></div>
                       <div className="h-4 w-3/4 bg-slate-200 rounded"></div>
-                      <div className="h-20 w-full bg-teal-50 border-2 border-dashed border-teal-200 rounded-xl flex items-center justify-center text-teal-700 font-bold text-sm">
-                        Optimized for 2025/2026
-                      </div>
+                      <div className="h-20 w-full bg-teal-50 border-2 border-dashed border-teal-200 rounded-xl flex items-center justify-center text-teal-700 font-bold text-sm">Optimized for 2025/2026</div>
                    </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
-        {/* Feature Section */}
         <section className="py-24 bg-slate-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
              <div className="grid md:grid-cols-3 gap-12 text-center">
@@ -130,7 +85,6 @@ export function HomePage() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
