@@ -22,8 +22,7 @@ export function BlogPage() {
       {
       category: 'Tax Planning',
       title: '2025 Business Tax Checklist: Partnership & S-Corp Readiness',
-      excerpt: 'Filing for a Partnership or S-Corp is a team hurdle. Since these are pass-through entities, the business return has to be finalized first so the Schedules K-1 can flow to the partners. If the business return is late, everyone’s personal return is stuck.
-',
+      excerpt: 'Filing for a Partnership or S-Corp is a team hurdle. Since these are pass-through entities, the business return has to be finalized first so the Schedules K-1 can flow to the partners. If the business return is late, everyone’s personal return is stuck.',
       date: 'March 06, 2026',
       readTime: '3 min read',
       icon: FileText,
