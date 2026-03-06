@@ -1,70 +1,153 @@
-import { Link } from 'react-router';
-import { Helmet } from 'react-helmet-async';
+import { useState, useMemo } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Calendar, Clock, ArrowRight, FileText, Search, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router';
 
 export function BlogPage() {
-  const posts = [
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortOrder, setSortOrder] = useState('newest');
+
+  const categories = ['All', 'Individual Taxes', 'Business Taxes', 'Tax Planning'];
+
+  const articles = [
     {
-      title: "2025 Business Tax Checklist: Partnership & S-Corp Readiness",
-      excerpt: "The business return must be finalized first for Schedules K-1 to flow to partners. Here is your roadmap for the March 16th deadline.",
-      date: "March 2026",
-      readTime: "6 min read",
-      category: "Tax Compliance",
-      slug: "2025-business-tax-checklist"
-    }
+      title: '2026 Tax Season Checklist: Get Ready to File Your Personal Tax Return',
+      excerpt: 'Don’t leave your refund to chance. This comprehensive checklist covers everything you need for your 2025 personal tax filing, from W-2s to the new SALT deduction limits.',
+      date: '2026-02-12',
+      displayDate: 'Feb 12, 2026',
+      readTime: '6 min read',
+      category: 'Individual Taxes',
+      slug: 'personal-tax-checklist-2026',
+    },
+    {
+      title: '2025 Business Tax Checklist: Partnership & S-Corp Readiness',
+      excerpt: 'Filing for a Partnership or S-Corp is a team hurdle. Since these are pass-through entities, the business return has to be finalized first so the Schedules K-1 can flow to the partners.',
+      date: '2026-03-01',
+      displayDate: 'Mar 1, 2026',
+      readTime: '8 min read',
+      category: 'Business Taxes',
+      slug: 'business-tax-checklist-2025',
+    },
   ];
 
-  const blogSchema = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "TaxClaim Insights",
-    "publisher": { "@type": "Organization", "name": "TaxClaim" },
-    "blogPost": posts.map(post => ({
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": "2026-03-01",
-      "author": { "@type": "Person", "name": "TaxClaim CPA" }
-    }))
-  };
+  const filteredAndSortedArticles = useMemo(() => {
+    let result = articles.filter((article) => {
+      const matchesCategory = activeCategory === 'All' || article.category === activeCategory;
+      const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+
+    return result.sort((a, b) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
+    });
+  }, [activeCategory, searchQuery, sortOrder]);
 
   return (
     <div className="min-h-screen bg-white">
-      <Helmet>
-        <title>US Business Tax Insights | 2025 Tax Checklists | TaxClaim</title>
-        <meta name="description" content="Stay compliant with the latest US tax laws. Expert guides on 2025/2026 tax deadlines and S-Corp requirements from a licensed CPA." />
-        <meta name="keywords" content="US tax blog, S-Corp tax tips, 2025 tax checklist, IRS deadline 2026, small business CPA blog" />
-        <link rel="canonical" href="https://www.taxclaim.co/resources" />
-        <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
-      </Helmet>
-
       <Header />
-      <section className="bg-slate-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl font-bold text-slate-900 mb-6">Resources & Insights</h1>
-          <p className="text-xl text-slate-600 leading-relaxed">Expert guides on Federal compliance, S-Corps, and strategic bookkeeping.</p>
-        </div>
-      </section>
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
-          {posts.map((post, idx) => (
-            <article key={idx} className="flex flex-col space-y-4 border-b pb-12">
-              <div className="flex items-center space-x-4 text-sm text-slate-500">
-                <span className="text-teal-600 font-bold uppercase">{post.category}</span>
-                <div className="flex items-center"><Calendar className="w-4 h-4 mr-1" />{post.date}</div>
-                <div className="flex items-center"><Clock className="w-4 h-4 mr-1" />{post.readTime}</div>
+
+      <main>
+        {/* Hero Section */}
+        <section className="bg-slate-900 text-white py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <h1 className="text-5xl font-bold mb-6 italic">Resources & Insights.</h1>
+              <p className="text-xl text-slate-400 leading-relaxed">
+                Expert guidance on navigating the 2025-2026 tax season. Stay compliant, save time, and maximize your returns.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Controls Bar */}
+        <section className="sticky top-[72px] z-30 bg-white border-b border-slate-200 py-4 shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <nav className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                    activeCategory === category
+                      ? 'bg-teal-600 text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </nav>
+            
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <div className="relative w-full sm:w-auto">
+                <select
+                  value={sortOrder}
+                  onChange={(e) => setSortOrder(e.target.value)}
+                  className="appearance-none w-full sm:w-44 pl-4 pr-10 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all cursor-pointer"
+                >
+                  <option value="newest">Newest First</option>
+                  <option value="oldest">Oldest First</option>
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
               </div>
-              <h2 className="text-3xl font-bold text-slate-900 hover:text-teal-600 transition-colors">
-                <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-              </h2>
-              <p className="text-lg text-slate-600">{post.excerpt}</p>
-              <Link to={`/blog/${post.slug}`} className="inline-flex items-center text-teal-600 font-bold">Read Full Story <ArrowRight className="ml-2 w-5 h-5" /></Link>
-            </article>
-          ))}
-        </div>
-      </section>
+
+              <div className="relative w-full sm:w-64">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Articles Grid */}
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {filteredAndSortedArticles.length > 0 ? (
+              <div className="grid md:grid-cols-2 gap-12">
+                {filteredAndSortedArticles.map((article, idx) => (
+                  <article key={idx} className="group flex flex-col h-full border border-slate-100 p-8 rounded-2xl hover:shadow-xl transition-all duration-300">
+                    <div className="flex items-center space-x-4 text-sm text-slate-500 mb-4">
+                      <span className="text-teal-600 font-bold uppercase tracking-wider">{article.category}</span>
+                      <div className="flex items-center"><Calendar className="w-4 h-4 mr-1" />{article.displayDate}</div>
+                      <div className="flex items-center"><Clock className="w-4 h-4 mr-1" />{article.readTime}</div>
+                    </div>
+                    <Link to={`/blog/${article.slug}`} className="flex-grow">
+                      <h2 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-teal-600 transition-colors leading-tight">
+                        {article.title}
+                      </h2>
+                      <p className="text-slate-600 leading-relaxed mb-6">
+                        {article.excerpt}
+                      </p>
+                    </Link>
+                    <Link to={`/blog/${article.slug}`} className="inline-flex items-center text-teal-600 font-bold group-hover:gap-3 transition-all">
+                      Read Full Checklist <ArrowRight className="ml-2 w-5 h-5" />
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-20">
+                <FileText className="w-16 h-16 text-slate-200 mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-slate-900">No articles found</h3>
+                <p className="text-slate-500">Try adjusting your filters, sorting, or search terms.</p>
+              </div>
+            )}
+          </div>
+        </section>
+      </main>
+
       <Footer />
     </div>
   );
