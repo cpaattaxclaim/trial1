@@ -12,7 +12,7 @@ export function BlogPage() {
       category: 'Tax Planning',
       title: '2026 Tax Season Checklist: Get Ready to File Your Personal Tax Return',
       excerpt: 'When filing the Individual Tax Returns for Tax Year 2025, this will be your Ultimate guide to the Checklist to simplify the filing process.',
-      date: 'March 03, 2026',
+      date: 'March 05, 2026',
       readTime: '4 min read',
       icon: FileText,
       url: 'https://medium.com/@cpa_96374/2025-tax-season-checklist-get-ready-to-file-your-personal-tax-return-d928c70b8866'
