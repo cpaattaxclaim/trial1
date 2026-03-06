@@ -80,7 +80,7 @@ export function BlogPage() {
         {/* STICKY CATEGORY NAVIGATION - OFFSET BY 80PX */}
         <nav 
           aria-label="Blog categories" 
-          className="sticky top-[80px] z-40 w-full bg-white/98 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm"
+          className="sticky top-[90px] z-40 w-full bg-white/98 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -122,7 +122,7 @@ export function BlogPage() {
         </nav>
 
         {/* Articles Grid - scroll-mt ensures headings aren't hidden when navigating */}
-        <section className="py-16 bg-white relative z-10 scroll-mt-[180px]">
+        <section className="py-16 bg-white relative z-10 scroll-mt-[190px]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Results Header */}
