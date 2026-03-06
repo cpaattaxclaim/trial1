@@ -1,217 +1,162 @@
 import { Link } from 'react-router'; 
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async'; 
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { 
   FileText, Building2, Calculator, ShieldCheck, 
-  BookOpen, TrendingUp, CheckCircle2, ChevronRight, 
-  ArrowRight, Sparkles, Shield
+  BookOpen, TrendingUp, CheckCircle2
 } from 'lucide-react';
 
 export function ServicesPage() {
-  const scrollToService = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 110;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const services = [
     {
-      id: 'tax-filing',
+      id: 'individual-tax',
       icon: FileText,
       title: 'Individual US Tax Filing',
       price: 'Starting from $200',
-      description: 'CPA-grade Federal and State tax preparation for US expats and residents. We specialize in optimizing 2025 deductions to minimize your liability.',
-      included: ['Federal + 1 State Return', 'W-2 & 1099 Income Reporting', 'Foreign Earned Income Exclusion', 'Secure IRS E-filing']
+      description: 'Professional Federal and State tax preparation for individuals and expats. We maximize deductions for 2025 and 2026 tax years.',
+      included: ['Federal + 1 State Return', 'W-2 & 1099 Income Reporting', 'Deduction Optimization', 'Secure E-filing Confirmation']
     },
     {
       id: 'business-tax',
       icon: Building2,
       title: 'Business Tax Preparation',
       price: 'Starting from $750',
-      description: 'Comprehensive compliance for Partnerships (1065) and S-Corps (1120-S). We ensure clean Schedule K-1s and timely flow-through reporting.',
-      included: ['Form 1065/1120-S Preparation', 'Partner/Shareholder K-1s', 'State Entity Filings', 'Year-end Trial Balance Review']
+      description: 'Specialized tax compliance for Partnerships (Form 1065) and S-Corps (Form 1120-S). Includes Schedule K-1 preparation.',
+      included: ['Form 1065 or 1120-S', 'Schedule K-1 for Owners', 'State Entity Tax Returns', 'Basis Record Updates']
     },
     {
       id: 'sales-tax',
       icon: BookOpen,
       title: 'Sales & Use Tax',
       price: 'Starting from $300/month',
-      description: 'End-to-end sales tax management. We monitor nexus thresholds across all US states and handle the complex monthly filings for you.',
-      included: ['Economic Nexus Monitoring', 'Monthly Filing & Remittance', 'State Registration Support', 'Taxability Analysis']
+      description: 'Comprehensive sales tax management across all US states. We handle nexus monitoring and monthly filing.',
+      included: ['Nexus Threshold Monitoring', 'Monthly State Filings', 'Taxability Analysis', 'Remittance Management']
     },
     {
       id: 'formation',
       icon: Building2,
-      title: 'US Company Formation',
+      title: 'Company Formation',
       price: 'Starting from $300',
-      description: 'Start your US business with a solid foundation. We handle the paperwork so you can focus on building your brand.',
-      included: ['Articles of Organization', 'Federal EIN Acquisition', 'Operating Agreement', 'Post-Formation Tax Checklist']
+      description: 'Register your US LLC or C-Corp correctly. We handle the Articles of Organization and Federal EIN acquisition.',
+      included: ['Entity Selection Advisory', 'IRS EIN Application', 'Operating Agreement', 'Post-Formation Support']
     },
     {
-      id: 'resolution',
+      id: 'irs-resolution',
       icon: ShieldCheck,
       title: 'IRS Notice Resolution',
       price: 'Custom Pricing',
-      description: 'Received a CP2000 or CP148A? We step in to handle all correspondence, audit defense, and penalty abatement requests.',
-      included: ['Notice Audit & Analysis', 'IRS/State Representation', 'Penalty Abatement Requests', 'Installment Agreement Setup']
+      description: 'Expert response to IRS and State notices like CP2000 or CP148A. We handle audits and penalty abatements.',
+      included: ['Notice Audit & Analysis', 'IRS Correspondence', 'Penalty Abatement Requests', 'Payment Plan Setup']
     },
     {
       id: 'bookkeeping',
       icon: Calculator,
-      title: 'Monthly Bookkeeping',
+      title: 'Bookkeeping Services',
       price: 'Starting from $300/month',
-      description: 'Clean books are the heart of a healthy business. We provide reconciled, audit-ready financials every single month.',
-      included: ['Bank & Card Reconciliation', 'Transaction Categorization', 'P&L & Balance Sheet Reporting', 'QuickBooks Ecosystem Management']
+      description: 'Audit-ready monthly financials. We keep your books reconciled and your P&L accurate using QuickBooks.',
+      included: ['Bank Reconciliation', 'Transaction Coding', 'Monthly Financial Reports', 'QuickBooks Support']
     },
     {
       id: 'consulting',
       icon: TrendingUp,
-      title: 'Business Strategy',
+      title: 'Business Consulting',
       price: '$100/hour',
-      description: 'High-level advisory on entity structure, tax optimization strategies, and US-India cross-border financial planning.',
-      included: ['Tax Optimization Review', 'Entity Structure Analysis', 'Cash Flow Management', 'Cross-border Strategy']
+      description: 'Advisory on US-India cross-border tax strategy, entity structure, and financial growth planning.',
+      included: ['Tax Strategy Review', 'Entity Structure Analysis', 'Cash Flow Management', 'Strategic Planning']
     }
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "US Tax Preparation and Business Services",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "TaxClaim"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Tax & Compliance Catalog",
+      "itemListElement": services.map((s, index) => ({
+        "@type": "Offer",
+        "position": index + 1,
+        "itemOffered": {
+          "@type": "Service",
+          "name": s.title,
+          "description": s.description
+        }
+      }))
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Professional US Tax & Business Services | TaxClaim</title>
-        <meta name="description" content="Expert US Individual & Business Tax Filing starting at $200. LLC Formation, Bookkeeping, and IRS Resolution." />
+        <title>US Tax Filing & Business Services | Starting $200 | TaxClaim</title>
+        <meta name="description" content="Expert US Tax Preparation for Individuals ($200) and Businesses ($750). LLC Formation, Sales Tax, and IRS Notice Resolution." />
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
       </Helmet>
 
       <Header />
 
       <main>
-        {/* --- PREMIUM HERO SECTION --- */}
-        <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white py-24 lg:py-32 overflow-hidden">
-          {/* Subtle Background Elements */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-[120px] -mr-64 -mt-64"></div>
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] -ml-48 -mb-48"></div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold tracking-widest uppercase mb-6">
-                <Sparkles className="w-3 h-3" /> CPA-Grade Solutions
-              </div>
-              <h1 className="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tight">
-                Tax Services <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
-                  Built for Growth.
-                </span>
-              </h1>
-              <p className="text-xl text-slate-400 leading-relaxed font-medium">
-                Transparent, fixed-price US tax compliance and business infrastructure for global entrepreneurs.
-              </p>
-            </div>
+        {/* Hero Section */}
+        <section className="bg-slate-900 text-white py-20 text-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="text-5xl font-bold mb-6 italic">Our Services</h1>
+            <p className="text-xl text-gray-400">Professional US tax compliance and business infrastructure solutions.</p>
           </div>
         </section>
 
-        {/* --- MAIN LAYOUT --- */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="flex flex-col lg:flex-row gap-16">
-            
-            {/* FIXED VERTICAL DIRECTORY (SIDEBAR) */}
-            <aside className="lg:w-[300px] flex-shrink-0">
-              <div className="sticky top-[110px] space-y-6">
-                <div className="bg-white border border-slate-200 p-6 rounded-[2rem] shadow-sm">
-                  <h2 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 px-2">
-                    Service Catalog
-                  </h2>
-                  <nav className="space-y-1">
-                    {services.map((service) => (
-                      <button
-                        key={service.id}
-                        onClick={() => scrollToService(service.id)}
-                        className="group w-full flex items-center justify-between p-3.5 rounded-xl transition-all duration-300 hover:bg-slate-50 border border-transparent hover:border-slate-100"
-                      >
-                        <span className="text-sm font-bold text-slate-600 group-hover:text-teal-600 transition-colors">
-                          {service.title}
-                        </span>
-                        <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-teal-500 group-hover:translate-x-1 transition-all" />
-                      </button>
-                    ))}
-                  </nav>
-                </div>
-
-                {/* Trust Badge Card */}
-                <div className="bg-teal-600 p-8 rounded-[2rem] text-white shadow-xl shadow-teal-900/20 overflow-hidden relative group">
-                    <Shield className="absolute -right-4 -bottom-4 w-32 h-32 text-white/10 group-hover:rotate-12 transition-transform duration-700" />
-                    <h3 className="text-xl font-bold mb-3 relative z-10">Audit Ready.</h3>
-                    <p className="text-teal-100 text-sm leading-relaxed mb-6 relative z-10">We stand behind every filing. Accuracy is our absolute baseline.</p>
-                    <Link to="/contact">
-                        <Button className="w-full bg-white text-teal-700 hover:bg-teal-50 font-bold border-none shadow-lg">Get in Touch</Button>
-                    </Link>
-                </div>
-              </div>
-            </aside>
-
-            {/* SERVICE CARDS CONTENT */}
-            <div className="flex-1 space-y-24">
-              {services.map((service) => (
-                <section
-                  key={service.id}
+        {/* Services Grid */}
+        <section className="py-20" aria-label="Tax and Business Service Details">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="space-y-12">
+              {services.map((service, idx) => (
+                <article
+                  key={idx}
                   id={service.id}
-                  className="scroll-mt-[130px] relative group"
+                  className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow"
                 >
-                  <div className="bg-white border border-slate-200 rounded-[2.5rem] p-8 md:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/50 hover:border-teal-500/20">
-                    <div className="flex flex-col xl:flex-row justify-between gap-12">
-                      <div className="flex-1">
-                        <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-50 text-teal-600 rounded-2xl mb-8 group-hover:bg-teal-600 group-hover:text-white transition-all duration-500 shadow-inner">
-                          <service.icon className="w-8 h-8" />
+                  <div className="grid md:grid-cols-3">
+                    {/* Left Column: Price & CTA */}
+                    <div className="md:col-span-1 bg-slate-50 p-8 border-r border-gray-100 flex flex-col justify-between">
+                      <div>
+                        <div className="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
+                          <service.icon className="w-8 h-8 text-teal-600" aria-hidden="true" />
                         </div>
-                        
-                        <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4 tracking-tight">
-                          {service.title}
-                        </h2>
-                        
-                        <div className="inline-flex px-4 py-2 bg-teal-50 text-teal-700 text-sm font-black uppercase tracking-widest rounded-lg mb-8">
-                          {service.price}
-                        </div>
-                        
-                        <p className="text-slate-500 text-lg leading-relaxed mb-10 max-w-2xl">
-                          {service.description}
-                        </p>
-
-                        <div className="grid sm:grid-cols-2 gap-y-4 gap-x-8 border-t border-slate-100 pt-10">
-                          {service.included.map((item, i) => (
-                            <div key={i} className="flex items-center gap-3">
-                              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-50 flex items-center justify-center">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-teal-600" />
-                              </div>
-                              <span className="text-slate-700 text-sm font-bold tracking-tight">{item}</span>
-                            </div>
-                          ))}
-                        </div>
+                        <h2 className="text-2xl font-bold mb-2 text-slate-900">{service.title}</h2>
+                        <div className="text-3xl font-bold text-slate-900 mb-4">{service.price}</div>
+                        <p className="text-gray-700 mb-6 text-sm leading-relaxed">{service.description}</p>
                       </div>
+                      <Link to="/contact">
+                        <Button className="w-full bg-teal-600 hover:bg-teal-700 py-6">Get Started</Button>
+                      </Link>
+                    </div>
 
-                      <div className="xl:w-[240px] flex flex-col justify-start">
-                        <Link to="/contact">
-                          <Button className="w-full bg-slate-900 hover:bg-teal-600 text-white font-black py-8 rounded-2xl text-md shadow-xl transition-all duration-300 group/btn">
-                            Book Service <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                          </Button>
-                        </Link>
-                        <p className="mt-4 text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">No hidden fees</p>
+                    {/* Right Column: Inclusions */}
+                    <div className="md:col-span-2 p-8 lg:p-12 flex flex-col justify-center">
+                      <h3 className="text-lg font-bold mb-6 text-slate-900 uppercase tracking-wide">What's Included</h3>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {service.included.map((item, i) => (
+                          <div key={i} className="flex items-start gap-3">
+                            <CheckCircle2 className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" />
+                            <span className="text-gray-700 text-sm font-medium">{item}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
-                </section>
+                </article>
               ))}
             </div>
-
           </div>
-        </div>
+        </section>
       </main>
 
       <Footer />
