@@ -1,199 +1,70 @@
-import { useState, useMemo } from 'react';
+import { Link } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { Button } from '../components/ui/button';
-import { Calendar, Clock, ArrowRight, FileText, Search, LayoutGrid } from 'lucide-react';
+import { Calendar, Clock, ArrowRight } from 'lucide-react';
 
 export function BlogPage() {
-  const [activeCategory, setActiveCategory] = useState('All Articles');
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const articles = [
+  const posts = [
     {
-      category: 'Tax Filing',
-      title: '2026 Tax Season Checklist: Get Ready to File Your Personal Tax Return',
-      excerpt: 'When filing the Individual Tax Returns for Tax Year 2025, this will be your Ultimate guide to the Checklist to simplify the filing process.',
-      date: 'March 05, 2026',
-      isoDate: '2026-03-05',
-      readTime: '4 min read',
-      icon: FileText,
-      url: 'https://medium.com/@cpa_96374/2025-tax-season-checklist-get-ready-to-file-your-personal-tax-return-d928c70b8866'
-    },
-    {
-      category: 'Tax Filing',
-      title: '2025 Business Tax Checklist: Partnership & S-Corp Readiness',
-      excerpt: 'Filing for a Partnership or S-Corp is a team hurdle. Since these are pass-through entities, the business return has to be finalized first.',
-      date: 'March 06, 2026',
-      isoDate: '2026-03-06',
-      readTime: '3 min read',
-      icon: FileText,
-      url: 'https://medium.com/@cpa_96374/2025-business-tax-checklist-partnership-s-corp-readiness-e57965363c9c'
+      title: "2025 Business Tax Checklist: Partnership & S-Corp Readiness",
+      excerpt: "The business return must be finalized first for Schedules K-1 to flow to partners. Here is your roadmap for the March 16th deadline.",
+      date: "March 2026",
+      readTime: "6 min read",
+      category: "Tax Compliance",
+      slug: "2025-business-tax-checklist"
     }
   ];
 
-  const categories = [
-    'All Articles', 'Tax Planning', 'Business Formation', 'Compliance', 
-    'Tax Filing', 'IRS', 'Business Growth', 'Startup', 'Bookkeeping'
-  ];
-
-  const filteredArticles = useMemo(() => {
-    let result = [...articles].sort((a, b) => 
-      new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
-
-    if (activeCategory !== 'All Articles') {
-      result = result.filter(article => article.category === activeCategory);
-    }
-
-    if (searchQuery) {
-      result = result.filter(article => 
-        article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        article.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-
-    return result;
-  }, [activeCategory, searchQuery]);
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "TaxClaim Insights",
+    "publisher": { "@type": "Organization", "name": "TaxClaim" },
+    "blogPost": posts.map(post => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": "2026-03-01",
+      "author": { "@type": "Person", "name": "TaxClaim CPA" }
+    }))
+  };
 
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Tax & Business Blog | Expert CPA Tax Guides 2026 | TaxClaim</title>
+        <title>US Business Tax Insights | 2025 Tax Checklists | TaxClaim</title>
+        <meta name="description" content="Stay compliant with the latest US tax laws. Expert guides on 2025/2026 tax deadlines and S-Corp requirements from a licensed CPA." />
+        <meta name="keywords" content="US tax blog, S-Corp tax tips, 2025 tax checklist, IRS deadline 2026, small business CPA blog" />
+        <link rel="canonical" href="https://www.taxclaim.co/resources" />
+        <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
       </Helmet>
 
       <Header />
-
-      <main>
-        {/* Hero Section */}
-        <header className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <h1 className="text-5xl font-bold mb-6">Tax & Business Blog</h1>
-              <p className="text-xl text-gray-300">
-                Actionable tax strategies and compliance guides to protect your business.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        {/* STICKY CATEGORY NAVIGATION - OFFSET BY 80PX */}
-        <nav 
-          aria-label="Blog categories" 
-          className="sticky top-[90px] z-40 w-full bg-white/98 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-              
-              {/* Category Buttons */}
-              <div className="flex flex-wrap gap-2 items-center">
-                <div className="flex items-center gap-2 mr-2 text-slate-400">
-                  <LayoutGrid className="w-4 h-4" />
-                  <span className="text-[10px] uppercase font-bold tracking-widest">Filter:</span>
-                </div>
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setActiveCategory(category)}
-                    className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
-                      activeCategory === category
-                        ? 'bg-teal-600 text-white shadow-md scale-105'
-                        : 'bg-slate-50 text-slate-600 hover:bg-teal-50 border border-slate-100'
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
+      <section className="bg-slate-50 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-5xl font-bold text-slate-900 mb-6">Resources & Insights</h1>
+          <p className="text-xl text-slate-600 leading-relaxed">Expert guides on Federal compliance, S-Corps, and strategic bookkeeping.</p>
+        </div>
+      </section>
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
+          {posts.map((post, idx) => (
+            <article key={idx} className="flex flex-col space-y-4 border-b pb-12">
+              <div className="flex items-center space-x-4 text-sm text-slate-500">
+                <span className="text-teal-600 font-bold uppercase">{post.category}</span>
+                <div className="flex items-center"><Calendar className="w-4 h-4 mr-1" />{post.date}</div>
+                <div className="flex items-center"><Clock className="w-4 h-4 mr-1" />{post.readTime}</div>
               </div>
-
-              {/* Search Box */}
-              <div className="relative w-full lg:max-w-xs">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input 
-                  type="text"
-                  placeholder="Find a tax guide..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all outline-none"
-                />
-              </div>
-            </div>
-          </div>
-        </nav>
-
-        {/* Articles Grid - scroll-mt ensures headings aren't hidden when navigating */}
-        <section className="py-16 bg-white relative z-10 scroll-mt-[190px]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            {/* Results Header */}
-            <div className="mb-10 flex items-center justify-between">
-              <h2 className="text-sm font-bold text-slate-400 uppercase tracking-widest">
-                Showing {filteredArticles.length} {filteredArticles.length === 1 ? 'Article' : 'Articles'}
+              <h2 className="text-3xl font-bold text-slate-900 hover:text-teal-600 transition-colors">
+                <Link to={`/blog/${post.slug}`}>{post.title}</Link>
               </h2>
-            </div>
-
-            {filteredArticles.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredArticles.map((article) => (
-                  <article
-                    key={article.url}
-                    className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col"
-                  >
-                    <div className="p-8 flex-1">
-                      <div className="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors">
-                        <article.icon className="w-6 h-6 text-teal-600 group-hover:text-white transition-colors" />
-                      </div>
-                      <span className="inline-block px-3 py-1 bg-teal-50 text-teal-700 rounded-lg text-[10px] mb-4 font-black uppercase tracking-widest">
-                        {article.category}
-                      </span>
-                      <h3 className="text-xl font-bold mb-3 text-slate-900 leading-tight group-hover:text-teal-600 transition-colors">
-                        <a href={article.url} target="_blank" rel="noopener noreferrer">
-                          {article.title}
-                        </a>
-                      </h3>
-                      <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">
-                        {article.excerpt}
-                      </p>
-                    </div>
-                    
-                    <div className="px-8 pb-8 mt-auto">
-                      <div className="flex items-center gap-4 text-[11px] font-bold text-slate-400 mb-6 border-t border-slate-50 pt-6">
-                        <time dateTime={article.isoDate} className="flex items-center gap-1.5 uppercase tracking-tighter">
-                          <Calendar className="w-3.5 h-3.5 text-teal-600"/> {article.date}
-                        </time>
-                        <span className="flex items-center gap-1.5 uppercase tracking-tighter">
-                          <Clock className="w-3.5 h-3.5 text-teal-600"/> {article.readTime}
-                        </span>
-                      </div>
-                      <a 
-                        href={article.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between w-full px-4 py-2 bg-slate-50 text-teal-700 font-bold text-xs rounded-lg group-hover:bg-teal-600 group-hover:text-white transition-all"
-                      >
-                        READ FULL GUIDE <ArrowRight className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-32 bg-slate-50 rounded-3xl border border-dashed border-slate-200">
-                <Search className="w-16 h-16 text-slate-200 mx-auto mb-6" />
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">No matching tax guides</h3>
-                <p className="text-slate-500 mb-8">We couldn't find anything for "{searchQuery}" in {activeCategory}.</p>
-                <Button 
-                  onClick={() => {setActiveCategory('All Articles'); setSearchQuery('');}}
-                  className="bg-teal-600 hover:bg-teal-700 text-white px-8"
-                >
-                  Clear all filters
-                </Button>
-              </div>
-            )}
-          </div>
-        </section>
-      </main>
-
+              <p className="text-lg text-slate-600">{post.excerpt}</p>
+              <Link to={`/blog/${post.slug}`} className="inline-flex items-center text-teal-600 font-bold">Read Full Story <ArrowRight className="ml-2 w-5 h-5" /></Link>
+            </article>
+          ))}
+        </div>
+      </section>
       <Footer />
     </div>
   );
