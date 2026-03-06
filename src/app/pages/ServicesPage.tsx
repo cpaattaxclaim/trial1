@@ -1,4 +1,4 @@
-import { Link } from 'react-router'; // HIGHLIGHT: Fixed back to react-router
+import { Link } from 'react-router'; 
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Header } from '../components/Header';
@@ -22,70 +22,82 @@ export function ServicesPage() {
     {
       id: 'tax-filing',
       icon: FileText,
-      title: 'Individual US Tax Filing',
+      title: 'Individual Tax Filing',
       price: 'Starting from $200',
-      description: 'Professional Federal and State tax preparation for US expats and residents. We maximize your 2025 deductions and ensure 100% IRS compliance.',
-      included: ['Federal + 1 state tax return', 'W-2, 1099, and investment income', 'Deduction & Credit optimization', 'Secure E-filing'],
-      notIncluded: ['Advanced tax planning', 'Audit defense representation', 'International FBAR reporting']
+      description: 'Professional tax preparation and filing services for individuals, ensuring accuracy and maximum deductions.',
+      included: ['Federal + 1 state tax return', 'W-2, 1099, and income forms', 'Deduction optimization', 'E-filing with confirmation'],
+      notIncluded: ['Tax planning', 'Audit defence', 'International income']
     },
     {
       id: 'business-tax',
       icon: Building2,
-      title: 'Business Tax Preparation',
+      title: 'Business Tax Filing',
       price: 'Starting from $750',
-      subtitle: 'Partnerships (1065) & S-Corps (1120-S)',
-      description: 'Expert tax compliance for pass-through entities. We handle the complex business returns so your Schedules K-1 are ready on time.',
-      included: ['Form 1065 or 1120-S preparation', 'Shareholder/Partner K-1 generation', 'State-level business filings'],
-      notIncluded: ['Year-round advisory', 'Quarterly estimated tax math', 'Multi-state nexus filing']
+      subtitle: 'Partnerships, S-Corps, C-Corps',
+      description: 'Comprehensive business tax preparation for partnerships, S-Corporations, and C-Corporations.',
+      included: ['Form 1065, 1120-S, or 1120', 'Schedule K-1 preparation', 'State business tax returns'],
+      notIncluded: ['Year-round support', 'Quarterly estimates', 'Audit defence']
     },
     {
       id: 'sales-tax',
       icon: BookOpen,
-      title: 'Sales & Use Tax Compliance',
+      title: 'Sales & Use Tax',
       price: 'Starting from $300/month',
-      description: 'Monthly sales tax calculation and nexus monitoring to keep your e-commerce or retail business compliant across US states.',
-      included: ['Monthly calculations', 'Multi-state support', 'Nexus analysis'],
-      notIncluded: ['Audit representation']
+      description: 'Monthly sales tax compliance, calculation, and filing services to keep your business compliant.',
+      included: ['Monthly calculations', 'Multi-state filing support', 'Nexus analysis', 'Rate monitoring'],
+      notIncluded: ['Audit defence assistance']
     },
     {
       id: 'formation',
       icon: Building2,
-      title: 'US Company Formation',
+      title: 'Company Formation',
       price: 'Starting from $300',
-      subtitle: 'LLC / C-Corp Registration',
-      description: 'Start your US business with confidence. We handle the Articles of Organization, EIN application, and Operating Agreements.',
-      included: ['Entity selection', 'Articles of Incorporation', 'EIN Application', 'Operating Agreement'],
+      subtitle: 'LLC / C-Corp',
+      description: 'Complete business formation services to get your company set up correctly from day one.',
+      included: ['Entity selection', 'Articles of organization', 'EIN application', 'Operating agreement'],
       notIncluded: ['State filing fees']
+    },
+    {
+      id: 'resolution',
+      icon: ShieldCheck,
+      title: 'IRS & State Notice Resolution',
+      price: 'Custom Pricing',
+      description: 'Expert handling of IRS and state tax notices, audits, and disputes to protect your interests.',
+      included: ['Notice review', 'IRS/state communication', 'Penalty abatement', 'Payment plans'],
+      notIncluded: []
     },
     {
       id: 'bookkeeping',
       icon: Calculator,
-      title: 'Professional Bookkeeping',
+      title: 'Bookkeeping Services',
       price: 'Starting from $300/month',
-      description: 'Accurate financial records and monthly reconciliations to keep your business audit-ready and tax-prepared.',
-      included: ['Transaction coding', 'Bank reconciliation', 'QuickBooks support'],
-      notIncluded: ['Historical clean-up']
+      description: 'Monthly bookkeeping to keep your financial records accurate, organized, and audit-ready.',
+      included: ['Transaction coding', 'Bank reconciliation', 'Monthly statements', 'QuickBooks support'],
+      notIncluded: ['Catch-up bookkeeping']
+    },
+    {
+      id: 'consulting',
+      icon: TrendingUp,
+      title: 'Business Consulting',
+      price: '$100/hour',
+      description: 'Strategic business advisory services to help you make informed financial decisions and grow.',
+      included: ['Financial planning', 'Tax optimization', 'Cash flow management', 'Entity structure'],
+      notIncluded: []
     }
   ];
 
+  // SEO Schema Generation
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "US Tax Preparation and Business Consulting",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "TaxClaim"
-    },
+    "serviceType": "US Tax and Business Compliance Services",
+    "provider": { "@type": "LocalBusiness", "name": "TaxClaim" },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Tax & Compliance Services",
       "itemListElement": services.map(s => ({
         "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": s.title,
-          "description": s.description
-        }
+        "itemOffered": { "@type": "Service", "name": s.title, "description": s.description }
       }))
     }
   };
@@ -94,7 +106,7 @@ export function ServicesPage() {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Professional US Tax Filing & Business Services | TaxClaim</title>
-        <meta name="description" content="Expert US Individual & Business Tax Filing starting at $200." />
+        <meta name="description" content="Expert US Individual & Business Tax Filing starting at $200. LLC Formation, Bookkeeping, and IRS Resolution." />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
@@ -102,17 +114,17 @@ export function ServicesPage() {
 
       <main>
         <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-5xl font-bold mb-6">Expert US Tax Filing & Business Advisory</h1>
-            <p className="text-xl text-gray-300">Transparent, competitive pricing for all your Federal and State tax needs.</p>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <h1 className="text-5xl font-bold mb-6">Expert US Tax & Business Solutions</h1>
+            <p className="text-xl text-gray-300 max-w-2xl">Transparent pricing and professional compliance for individuals and businesses.</p>
           </div>
         </section>
 
-        {/* --- STICKY NAVIGATION --- */}
+        {/* STICKY NAV AT 90PX */}
         <nav className="sticky top-[90px] z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-1 md:pb-0">
-              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 whitespace-nowrap mr-2">Quick Access:</span>
+            <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-1">
+              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 whitespace-nowrap mr-2">Jump To:</span>
               {services.map((service) => (
                 <button
                   key={service.id}
@@ -126,7 +138,7 @@ export function ServicesPage() {
           </div>
         </nav>
 
-        <section className="py-20" aria-label="Our Service Offerings">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-16">
               {services.map((service, idx) => (
@@ -137,14 +149,14 @@ export function ServicesPage() {
                 >
                   <div className="grid md:grid-cols-3">
                     <div className="md:col-span-1 bg-slate-50 p-8 border-r border-gray-100">
-                      <div className="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
-                        <service.icon className="w-8 h-8 text-teal-600" />
+                      <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
+                        <service.icon className="w-7 h-7 text-teal-600" />
                       </div>
                       <h2 className="text-2xl font-bold mb-2 text-slate-900">{service.title}</h2>
-                      <div className="text-3xl font-bold text-slate-900 mb-4">{service.price}</div>
-                      <p className="text-gray-700 mb-6 text-sm leading-relaxed">{service.description}</p>
+                      <div className="text-2xl font-bold text-teal-600 mb-4">{service.price}</div>
+                      <p className="text-gray-600 mb-8 text-sm leading-relaxed">{service.description}</p>
                       <Link to="/contact">
-                        <Button className="w-full bg-teal-600 hover:bg-teal-700 py-6 font-bold">Get Started</Button>
+                        <Button className="w-full bg-teal-600 hover:bg-teal-700">Get Started</Button>
                       </Link>
                     </div>
 
