@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
@@ -13,6 +14,7 @@ export function BlogPage() {
       title: '2026 Tax Season Checklist: Get Ready to File Your Personal Tax Return',
       excerpt: 'When filing the Individual Tax Returns for Tax Year 2025, this will be your Ultimate guide to the Checklist to simplify the filing process.',
       date: 'March 05, 2026',
+      isoDate: '2026-03-05', // Better for SEO time tags
       readTime: '4 min read',
       icon: FileText,
       url: 'https://medium.com/@cpa_96374/2025-tax-season-checklist-get-ready-to-file-your-personal-tax-return-d928c70b8866'
@@ -22,6 +24,7 @@ export function BlogPage() {
       title: '2025 Business Tax Checklist: Partnership & S-Corp Readiness',
       excerpt: 'Filing for a Partnership or S-Corp is a team hurdle. Since these are pass-through entities, the business return has to be finalized first.',
       date: 'March 06, 2026',
+      isoDate: '2026-03-06',
       readTime: '3 min read',
       icon: FileText,
       url: 'https://medium.com/@cpa_96374/2025-business-tax-checklist-partnership-s-corp-readiness-e57965363c9c'
@@ -33,115 +36,152 @@ export function BlogPage() {
     'Tax Filing', 'IRS', 'Business Growth', 'Startup', 'Bookkeeping'
   ];
 
-  // Logic: First Sort by Date, then Filter by Category
   const filteredArticles = useMemo(() => {
-    // 1. Sort by Date (Descending - Newest First)
     const newestFirst = [...articles].sort((a, b) => 
       new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
-    // 2. Filter the sorted list based on category
     return activeCategory === 'All Articles'
       ? newestFirst
       : newestFirst.filter(article => article.category === activeCategory);
   }, [activeCategory]);
 
+  // --- ADVANCED SEO SCHEMA ---
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://taxclaim.co" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://taxclaim.co/blog" }
+    ]
+  };
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Tax & Business Articles",
+    "description": "Expert tax checklists and business growth guides.",
+    "itemListElement": filteredArticles.map((article, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": article.url,
+      "name": article.title
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Tax & Business Blog | Expert CPA Tax Guides 2026 | TaxClaim</title>
+        <meta name="description" content="Stay ahead of the 2026 tax season. Expert insights on individual tax checklists, S-Corp readiness, and business compliance from a licensed CPA." />
+        <meta name="keywords" content="CPA Blog, Tax Season Checklist 2026, S-Corp Tax Filing, Partnership Tax Readiness, IRS compliance" />
+        <link rel="canonical" href="https://taxclaim.co/blog" />
+        
+        {/* Structured Data Scripts */}
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(itemListSchema)}</script>
+      </Helmet>
+
       <Header />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold mb-6">Tax & Business Blog</h1>
-            <p className="text-xl text-gray-300">
-              Expert insights and guides to help you navigate taxes and business growth.
-            </p>
+      <main>
+        {/* Hero Section */}
+        <header className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <h1 className="text-5xl font-bold mb-6">Tax & Business Blog</h1>
+              <p className="text-xl text-gray-300">
+                Actionable tax strategies and compliance guides to protect your business.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </header>
 
-      {/* Category Filter */}
-      <section className="py-6 bg-white border-b border-gray-200 sticky top-0 z-20 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  activeCategory === category
-                    ? 'bg-teal-600 text-white shadow-md'
-                    : 'bg-slate-50 text-slate-600 hover:bg-teal-50 hover:text-teal-600 border border-transparent hover:border-teal-200'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Articles Grid */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {filteredArticles.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredArticles.map((article) => (
-                <a
-                  key={article.url}
-                  href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all group flex flex-col"
+        {/* Category Navigation - SEO friendly <nav> */}
+        <nav aria-label="Blog categories" className="py-6 bg-white border-b border-gray-200 sticky top-0 z-20 shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    activeCategory === category
+                      ? 'bg-teal-600 text-white shadow-md'
+                      : 'bg-slate-50 text-slate-600 hover:bg-teal-50 hover:text-teal-600 border border-transparent hover:border-teal-200'
+                  }`}
                 >
-                  <div className="p-8 flex-1">
-                    <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-teal-600 transition-colors">
-                      <article.icon className="w-6 h-6 text-teal-600 group-hover:text-white transition-colors" />
-                    </div>
-                    <div className="inline-block px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs mb-3">
-                      {article.category}
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-teal-600 transition-colors">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm line-clamp-3">
-                      {article.excerpt}
-                    </p>
-                  </div>
-                  <div className="px-8 pb-8">
-                    <div className="flex items-center gap-4 text-xs text-gray-400 mb-4">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3"/> {article.date}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3"/> {article.readTime}
-                      </span>
-                    </div>
-                    <div className="flex items-center text-teal-600 font-semibold text-sm">
-                      Read Article <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
-                </a>
+                  {category}
+                </button>
               ))}
             </div>
-          ) : (
-            <div className="text-center py-20 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
-              <Search className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-              <h3 className="text-xl font-medium text-slate-900">No articles found</h3>
-              <p className="text-slate-500 mt-2">Nothing here in "{activeCategory}" yet.</p>
-              <Button 
-                variant="link" 
-                className="mt-4 text-teal-600"
-                onClick={() => setActiveCategory('All Articles')}
-              >
-                View all articles
-              </Button>
-            </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </nav>
+
+        {/* Articles Grid - Using <article> tags for SEO */}
+        <section className="py-16" aria-labelledby="blog-heading">
+          <h2 id="blog-heading" className="sr-only">Latest Articles</h2>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {filteredArticles.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredArticles.map((article) => (
+                  <article
+                    key={article.url}
+                    className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all group flex flex-col"
+                  >
+                    <div className="p-8 flex-1">
+                      <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-teal-600 transition-colors">
+                        <article.icon className="w-6 h-6 text-teal-600 group-hover:text-white transition-colors" />
+                      </div>
+                      <span className="inline-block px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs mb-3 font-semibold">
+                        {article.category}
+                      </span>
+                      <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-teal-600 transition-colors">
+                        <a href={article.url} target="_blank" rel="noopener noreferrer">
+                          {article.title}
+                        </a>
+                      </h3>
+                      <p className="text-gray-600 text-sm line-clamp-3">
+                        {article.excerpt}
+                      </p>
+                    </div>
+                    <div className="px-8 pb-8">
+                      <div className="flex items-center gap-4 text-xs text-gray-400 mb-4">
+                        <time dateTime={article.isoDate} className="flex items-center gap-1">
+                          <Calendar className="w-3 h-3"/> {article.date}
+                        </time>
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3 h-3"/> {article.readTime}
+                        </span>
+                      </div>
+                      <a 
+                        href={article.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-teal-600 font-semibold text-sm group-hover:underline"
+                      >
+                        Read Article <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-20 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
+                <Search className="w-12 h-12 text-slate-300 mx-auto mb-4" aria-hidden="true" />
+                <p className="text-xl font-medium text-slate-900">No articles found in "{activeCategory}"</p>
+                <Button 
+                  variant="link" 
+                  className="mt-4 text-teal-600"
+                  onClick={() => setActiveCategory('All Articles')}
+                >
+                  View all articles
+                </Button>
+              </div>
+            )}
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>
