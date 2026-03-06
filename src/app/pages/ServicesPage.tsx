@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router'; // HIGHLIGHT: Fixed back to react-router
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Header } from '../components/Header';
@@ -7,7 +7,7 @@ import { Button } from '../components/ui/button';
 import { 
   FileText, Building2, Calculator, ShieldCheck, 
   BookOpen, TrendingUp, CheckCircle2, Phone, 
-  MessageCircle, FileCheck, CheckSquare, ChevronRight
+  MessageCircle, FileCheck, CheckSquare
 } from 'lucide-react';
 
 export function ServicesPage() {
@@ -108,6 +108,7 @@ export function ServicesPage() {
           </div>
         </section>
 
+        {/* --- STICKY NAVIGATION --- */}
         <nav className="sticky top-[90px] z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-1 md:pb-0">
