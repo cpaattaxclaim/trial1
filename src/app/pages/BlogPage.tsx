@@ -46,36 +46,11 @@ export function BlogPage() {
       : newestFirst.filter(article => article.category === activeCategory);
   }, [activeCategory]);
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://taxclaim.co" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://taxclaim.co/blog" }
-    ]
-  };
-
-  const itemListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Tax & Business Articles",
-    "description": "Expert tax checklists and business growth guides.",
-    "itemListElement": filteredArticles.map((article, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "url": article.url,
-      "name": article.title
-    }))
-  };
-
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Tax & Business Blog | Expert CPA Tax Guides 2026 | TaxClaim</title>
-        <meta name="description" content="Stay ahead of the 2026 tax season with expert insights from a licensed CPA." />
-        <link rel="canonical" href="https://taxclaim.co/blog" />
-        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(itemListSchema)}</script>
+        <meta name="description" content="Expert insights on individual tax checklists and business compliance." />
       </Helmet>
 
       <Header />
@@ -93,22 +68,22 @@ export function BlogPage() {
           </div>
         </header>
 
-        {/* PROPERLY GLUED CATEGORY NAVIGATION */}
-        {/* We use 'relative' and 'block' behavior so it moves with the scroll */}
+        {/* PERMANENTLY STICKY CATEGORY NAVIGATION */}
+        {/* Change top-[72px] to top-0 if your Header is NOT sticky */}
         <nav 
           aria-label="Blog categories" 
-          className="relative block w-full bg-white border-b border-gray-200 py-8"
+          className="sticky top-[72px] z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     activeCategory === category
-                      ? 'bg-teal-600 text-white shadow-sm scale-105'
-                      : 'bg-slate-50 text-slate-600 hover:bg-teal-50 hover:text-teal-600 border border-slate-100'
+                      ? 'bg-teal-600 text-white shadow-md'
+                      : 'bg-slate-50 text-slate-600 hover:bg-teal-50 hover:text-teal-600 border border-transparent'
                   }`}
                 >
                   {category}
@@ -119,66 +94,51 @@ export function BlogPage() {
         </nav>
 
         {/* Articles Grid */}
-        <section className="py-16 bg-white" aria-labelledby="blog-heading">
-          <h2 id="blog-heading" className="sr-only">Latest Articles</h2>
+        <section className="py-16 bg-white relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {filteredArticles.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredArticles.map((article) => (
-                  <article
-                    key={article.url}
-                    className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all group flex flex-col"
-                  >
-                    <div className="p-8 flex-1">
-                      <div className="w-12 h-12 bg-teal-50 rounded-lg flex items-center justify-center mb-5 group-hover:bg-teal-600 transition-colors">
-                        <article.icon className="w-6 h-6 text-teal-600 group-hover:text-white transition-colors" />
-                      </div>
-                      <span className="inline-block px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-xs mb-3 font-bold tracking-tight">
-                        {article.category.toUpperCase()}
-                      </span>
-                      <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-teal-600 transition-colors">
-                        <a href={article.url} target="_blank" rel="noopener noreferrer">
-                          {article.title}
-                        </a>
-                      </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
-                        {article.excerpt}
-                      </p>
-                    </div>
-                    <div className="px-8 pb-8">
-                      <div className="flex items-center gap-4 text-[11px] font-medium text-gray-400 mb-5 border-t border-gray-50 pt-5">
-                        <time dateTime={article.isoDate} className="flex items-center gap-1.5">
-                          <Calendar className="w-3.5 h-3.5"/> {article.date}
-                        </time>
-                        <span className="flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5"/> {article.readTime}
-                        </span>
-                      </div>
-                      <a 
-                        href={article.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-teal-600 font-bold text-sm hover:gap-3 transition-all"
-                      >
-                        Read Article <ArrowRight className="ml-2 w-4 h-4" />
-                      </a>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-24 bg-slate-50 rounded-3xl border border-slate-200">
-                <Search className="w-14 h-14 text-slate-300 mx-auto mb-6" aria-hidden="true" />
-                <p className="text-2xl font-bold text-slate-900">No guides found for "{activeCategory}"</p>
-                <p className="text-slate-500 mt-2 mb-8">Try selecting a different category or view all articles.</p>
-                <Button 
-                  onClick={() => setActiveCategory('All Articles')}
-                  className="bg-teal-600 hover:bg-teal-700"
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredArticles.map((article) => (
+                <article
+                  key={article.url}
+                  className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all group flex flex-col"
                 >
-                  Show All Articles
-                </Button>
-              </div>
-            )}
+                  <div className="p-8 flex-1">
+                    <div className="w-12 h-12 bg-teal-50 rounded-lg flex items-center justify-center mb-5 group-hover:bg-teal-600 transition-colors">
+                      <article.icon className="w-6 h-6 text-teal-600 group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="inline-block px-3 py-1 bg-slate-100 text-slate-700 rounded-md text-xs mb-3 font-bold uppercase">
+                      {article.category}
+                    </span>
+                    <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-teal-600 transition-colors">
+                      <a href={article.url} target="_blank" rel="noopener noreferrer">
+                        {article.title}
+                      </a>
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                      {article.excerpt}
+                    </p>
+                  </div>
+                  <div className="px-8 pb-8">
+                    <div className="flex items-center gap-4 text-[11px] font-medium text-gray-400 mb-5 border-t border-gray-50 pt-5">
+                      <time dateTime={article.isoDate} className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5"/> {article.date}
+                      </time>
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5"/> {article.readTime}
+                      </span>
+                    </div>
+                    <a 
+                      href={article.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-teal-600 font-bold text-sm"
+                    >
+                      Read Article <ArrowRight className="ml-2 w-4 h-4" />
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </main>
