@@ -60,6 +60,17 @@ export function BlogPage() {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Tax & Business Blog | Expert CPA Tax Guides 2026 | TaxClaim</title>
+        <meta name="description" content="Stay updated with the latest tax strategies, IRS compliance guides, and business formation tips. Expert CPA insights for small businesses, startups, and personal tax filing in 2026." />
+        <meta name="keywords" content="CPA blog, tax filing 2026, business tax checklist, IRS compliance, startup bookkeeping, tax planning strategies, S-Corp taxes, partnership tax returns" />
+        
+        {/* Open Graph / Social Media SEO */}
+        <meta property="og:title" content="Tax & Business Blog | Expert CPA Tax Guides" />
+        <meta property="og:description" content="Actionable tax strategies and compliance guides to protect your business." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        
+        {/* Canonical Link to prevent duplicate content issues */}
+        <link rel="canonical" href="https://yourdomain.com/blog" />
       </Helmet>
 
       <Header />
@@ -77,7 +88,6 @@ export function BlogPage() {
           </div>
         </header>
 
-        {/* 1. HIGHLIGHT: STICKY OFFSET SET TO 90PX */}
         <nav 
           aria-label="Blog categories" 
           className="sticky top-[90px] z-40 w-full bg-white/98 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm"
@@ -120,7 +130,6 @@ export function BlogPage() {
           </div>
         </nav>
 
-        {/* 2. HIGHLIGHT: SCROLL MARGIN TOP (Header height + Nav height + Buffer) */}
         <section className="py-16 bg-white relative z-10 scroll-mt-[190px]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
