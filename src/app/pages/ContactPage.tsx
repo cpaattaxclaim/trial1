@@ -125,4 +125,95 @@ export function ContactPage() {
               <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
                 {submitted ? (
                   <div className="py-16 text-center animate-in fade-in zoom-in">
-                    <CheckCircle2 className="w-16 h-16 text-
+                    <CheckCircle2 className="w-16 h-16 text-teal-600 mx-auto mb-4" />
+                    <h2 className="text-3xl font-bold text-slate-900">Message Sent!</h2>
+                    <p className="text-slate-600 mt-2">We'll respond to your inquiry within 24 hours.</p>
+                  </div>
+                ) : (
+                  <form 
+                    onSubmit={handleSubmit} 
+                    className="space-y-6"
+                    name="contact"
+                    data-netlify="true"
+                  >
+                    <h2 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h2>
+
+                    <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" onChange={(e) => handleChange('_gotcha', e.target.value)} />
+
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="name">Full Name *</Label>
+                        <Input id="name" required name="name" value={formData.name} onChange={(e) => handleChange('name', e.target.value)} placeholder="John Doe" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email Address *</Label>
+                        <Input id="email" required name="email" type="email" value={formData.email} onChange={(e) => handleChange('email', e.target.value)} placeholder="john@example.com" />
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={(e) => handleChange('phone', e.target.value)} placeholder="+1 (555) 000-0000" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Business Type</Label>
+                        <Select onValueChange={(v) => handleChange('businessType', v)}>
+                          <SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger>
+                          <SelectContent>
+                            {BUSINESS_TYPES.map(type => <SelectItem key={type} value={type}>{type}</SelectItem>)}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>Service Interested In *</Label>
+                      <Select required onValueChange={(v) => handleChange('service', v)}>
+                        <SelectTrigger><SelectValue placeholder="Select a service" /></SelectTrigger>
+                        <SelectContent>
+                          {SERVICES.map(service => <SelectItem key={service} value={service}>{service}</SelectItem>)}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Message *</Label>
+                      <Textarea id="message" name="message" required rows={5} value={formData.message} onChange={(e) => handleChange('message', e.target.value)} placeholder="How can we help you?" />
+                    </div>
+
+                    <Button type="submit" disabled={isSubmitting} className="w-full bg-teal-600 hover:bg-teal-700 h-12 text-lg">
+                      {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...</> : 'Send Message'}
+                    </Button>
+
+                    <p className="text-sm text-gray-500 text-center">
+                      * We typically respond within 24 hours during business days
+                    </p>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
+
+function ContactItem({ icon, title, value, href, isExternal = false }: any) {
+  return (
+    <div className="flex items-start gap-4">
+      <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center shrink-0">
+        {icon}
+      </div>
+      <div>
+        <h3 className="font-semibold text-slate-900">{title}</h3>
+        <a href={href} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined} className="text-slate-600 hover:text-teal-600 transition-colors">
+          {value}
+        </a>
+      </div>
+    </div>
+  );
+}
