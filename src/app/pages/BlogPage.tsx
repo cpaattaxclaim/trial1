@@ -41,7 +41,7 @@ export function BlogPage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section - FONT WEIGHT FIXED */}
+      {/* Hero Section - Clean Weight */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -94,7 +94,8 @@ export function BlogPage() {
                     <div className="inline-block px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs mb-3">
                       {article.category}
                     </div>
-                    <h3 className="text-xl mb-3 text-slate-900 group-hover:text-teal-600 transition-colors font-bold">
+                    {/* Article Title - Removed font-bold */}
+                    <h3 className="text-xl mb-3 text-slate-900 group-hover:text-teal-600 transition-colors">
                       {article.title}
                     </h3>
                     <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">
@@ -114,7 +115,7 @@ export function BlogPage() {
             </div>
           ) : (
             <div className="text-center py-20">
-              <p className="text-gray-500 text-lg font-light">No articles found in this category yet. Check back soon!</p>
+              <p className="text-gray-500 text-lg">No articles found in this category yet. Check back soon!</p>
               <button 
                 onClick={() => setActiveCategory('All Articles')}
                 className="text-teal-600 mt-2 hover:underline"
@@ -126,13 +127,13 @@ export function BlogPage() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
+      {/* Newsletter Section - Clean Weight */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-12 text-center">
             <h2 className="text-3xl mb-4">Stay Updated with Tax Tips & Insights</h2>
-            <p className="text-lg text-gray-300 mb-8 font-light">
-              Subscribe to our newsletter for the latest updates.
+            <p className="text-lg text-gray-300 mb-8">
+              Subscribe to our newsletter for the latest tax tips and regulatory updates.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
@@ -140,8 +141,23 @@ export function BlogPage() {
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-2 rounded-lg text-slate-900 h-10 border border-gray-200"
               />
-              <Button className="bg-teal-600 hover:bg-teal-700 h-10 px-6 font-normal">Subscribe</Button>
+              <Button className="bg-teal-600 hover:bg-teal-700 h-10 px-6">Subscribe</Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - Clean Weight */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl mb-6 text-slate-900">Need Professional Tax Help?</h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-3">
+              Schedule Consultation
+            </Button>
+            <Button size="lg" variant="outline" className="px-8 py-3">
+              View Our Services
+            </Button>
           </div>
         </div>
       </section>
