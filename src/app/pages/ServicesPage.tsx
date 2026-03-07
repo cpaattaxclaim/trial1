@@ -19,21 +19,18 @@ import {
 
 export function ServicesPage() {
   // Handle scrolling to hash on page load
-useEffect(() => {
-  const hash = window.location.hash;
-  if (hash) {
-    // FIX: Get only the part after the last '#'
-    const id = hash.split('#').pop(); 
-    
-    setTimeout(() => {
-      // Use getElementById — it's much safer than querySelector for this!
-      const element = document.getElementById(id); 
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 100);
-  }
-}, []);
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Wait for the page to render
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
 
   const services = [
     {
