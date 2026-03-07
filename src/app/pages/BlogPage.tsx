@@ -172,3 +172,14 @@ export function BlogPage() {
             </Link>
             <Link to="/services">
               <Button size="lg" variant="outline">
+                View Our Services
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
