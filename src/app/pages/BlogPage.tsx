@@ -32,27 +32,6 @@ export function BlogPage() {
     }
   ];
 
-  // Schema.org Structured Data for a CollectionPage
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "headline": "Tax & Business Blog | Expert CPA Guides",
-    "description": "Expert tax filing checklists and business compliance guides for 2026.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "TaxClaim"
-    },
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": articles.map((article, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "url": article.url,
-        "name": article.title
-      }))
-    }
-  };
-
   const categories = [
     'All Articles', 'Tax Planning', 'Business Formation', 'Compliance', 
     'Tax Filing', 'IRS', 'Business Growth', 'Startup', 'Bookkeeping'
@@ -81,17 +60,6 @@ export function BlogPage() {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Tax & Business Blog | Expert CPA Tax Guides 2026 | TaxClaim</title>
-        <meta name="description" content="Read the latest CPA-verified tax guides and business strategies. Expert insights on 2026 tax filing, IRS compliance, and small business growth." />
-        <meta name="keywords" content="CPA tax blog, Medium tax articles, 2026 tax filing guide, business compliance, tax checklists, IRS updates" />
-        
-        {/* Structured Data Script */}
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
-        </script>
-
-        {/* Medium-Specific SEO: No-Index (Optional) 
-            If you want Medium to be the ONLY place Google finds these, use 'noindex'.
-            Otherwise, leave it out so your site also ranks. */}
       </Helmet>
 
       <Header />
@@ -109,6 +77,7 @@ export function BlogPage() {
           </div>
         </header>
 
+        {/* 1. HIGHLIGHT: STICKY OFFSET SET TO 90PX */}
         <nav 
           aria-label="Blog categories" 
           className="sticky top-[90px] z-40 w-full bg-white/98 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm"
@@ -151,6 +120,7 @@ export function BlogPage() {
           </div>
         </nav>
 
+        {/* 2. HIGHLIGHT: SCROLL MARGIN TOP (Header height + Nav height + Buffer) */}
         <section className="py-16 bg-white relative z-10 scroll-mt-[190px]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
