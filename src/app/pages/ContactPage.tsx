@@ -30,7 +30,6 @@ const SERVICES = [
   "Business Tax Filing",
   "Sales & Use Tax",
   "Company Formation",
-  "Company Dissolution",
   "IRS/State Resolution",
   "Bookkeeping",
   "Business Consulting",
