@@ -1,8 +1,14 @@
 import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { useSEO } from '../../hooks/useSEO';
 
 export function TermsOfServicePage() {
+  useSEO({
+    title: 'Terms of Service | TaxClaim CPA',
+    description: 'Read TaxClaim\'s terms of service governing use of our website and professional tax and advisory services.',
+    canonical: 'https://taxclaim.co/terms-of-service',
+  });
   return (
     <div className="min-h-screen bg-white">
       <Header />
