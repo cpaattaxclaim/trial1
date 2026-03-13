@@ -84,7 +84,7 @@ export function ContactPage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Page Hero - MATCHED TO CODE 2 BLOG UI */}
+      {/* Page Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -159,9 +159,9 @@ export function ContactPage() {
                       <div className="space-y-2">
                         <Label>Business Type</Label>
                         <Select onValueChange={(v) => handleChange('businessType', v)}>
-                          <SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger>
+                          <SelectTrigger className="cursor-pointer"><SelectValue placeholder="Select type" /></SelectTrigger>
                           <SelectContent>
-                            {BUSINESS_TYPES.map(type => <SelectItem key={type} value={type}>{type}</SelectItem>)}
+                            {BUSINESS_TYPES.map(type => <SelectItem className="cursor-pointer" key={type} value={type}>{type}</SelectItem>)}
                           </SelectContent>
                         </Select>
                       </div>
@@ -170,9 +170,9 @@ export function ContactPage() {
                     <div className="space-y-2">
                       <Label>Service Interested In *</Label>
                       <Select required onValueChange={(v) => handleChange('service', v)}>
-                        <SelectTrigger><SelectValue placeholder="Select a service" /></SelectTrigger>
+                        <SelectTrigger className="cursor-pointer"><SelectValue placeholder="Select a service" /></SelectTrigger>
                         <SelectContent>
-                          {SERVICES.map(service => <SelectItem key={service} value={service}>{service}</SelectItem>)}
+                          {SERVICES.map(service => <SelectItem className="cursor-pointer" key={service} value={service}>{service}</SelectItem>)}
                         </SelectContent>
                       </Select>
                     </div>
@@ -182,7 +182,7 @@ export function ContactPage() {
                       <Textarea id="message" name="message" required rows={5} value={formData.message} onChange={(e) => handleChange('message', e.target.value)} placeholder="How can we help you?" />
                     </div>
 
-                    <Button type="submit" disabled={isSubmitting} className="w-full bg-teal-600 hover:bg-teal-700 h-12 text-lg">
+                    <Button type="submit" disabled={isSubmitting} className="w-full bg-teal-600 hover:bg-teal-700 h-12 text-lg cursor-pointer">
                       {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...</> : 'Send Message'}
                     </Button>
 
@@ -210,7 +210,12 @@ function ContactItem({ icon, title, value, href, isExternal = false }: any) {
       </div>
       <div>
         <h3 className="font-semibold text-slate-900">{title}</h3>
-        <a href={href} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined} className="text-slate-600 hover:text-teal-600 transition-colors">
+        <a
+          href={href}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+          className="text-slate-600 hover:text-teal-600 transition-colors cursor-pointer"
+        >
           {value}
         </a>
       </div>
