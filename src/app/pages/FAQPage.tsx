@@ -170,7 +170,7 @@ export function FAQPage() {
                     value={`${idx}-${faqIdx}`}
                     className="bg-white border border-gray-200 rounded-lg px-6 data-[state=open]:shadow-md transition-shadow [&:last-child]:border-b"
                   >
-                    <AccordionTrigger className="text-left hover:no-underline">
+                    <AccordionTrigger className="text-left hover:no-underline cursor-pointer">
                       <span className="text-slate-900">{faq.question}</span>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 pt-2 pb-4">
@@ -198,8 +198,8 @@ export function FAQPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700">
+              <Link to="/contact" className="cursor-pointer">
+                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 cursor-pointer">
                   Contact Us
                 </Button>
               </Link>
@@ -207,8 +207,9 @@ export function FAQPage() {
                 href="https://wa.me/14153047262"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="cursor-pointer"
               >
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="cursor-pointer">
                   Chat on WhatsApp
                 </Button>
               </a>
@@ -228,7 +229,7 @@ export function FAQPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <Link
               to="/services"
-              className="bg-white border border-gray-200 rounded-xl p-8 text-center hover:shadow-lg hover:border-teal-200 transition-all group"
+              className="bg-white border border-gray-200 rounded-xl p-8 text-center hover:shadow-lg hover:border-teal-200 transition-all group cursor-pointer"
             >
               <h3 className="text-xl mb-2 text-slate-900 group-hover:text-teal-600 transition-colors">
                 View All Services
@@ -240,7 +241,7 @@ export function FAQPage() {
 
             <Link
               to="/about"
-              className="bg-white border border-gray-200 rounded-xl p-8 text-center hover:shadow-lg hover:border-teal-200 transition-all group"
+              className="bg-white border border-gray-200 rounded-xl p-8 text-center hover:shadow-lg hover:border-teal-200 transition-all group cursor-pointer"
             >
               <h3 className="text-xl mb-2 text-slate-900 group-hover:text-teal-600 transition-colors">
                 About Us
@@ -252,7 +253,7 @@ export function FAQPage() {
 
             <Link
               to="/resources"
-              className="bg-white border border-gray-200 rounded-xl p-8 text-center hover:shadow-lg hover:border-teal-200 transition-all group"
+              className="bg-white border border-gray-200 rounded-xl p-8 text-center hover:shadow-lg hover:border-teal-200 transition-all group cursor-pointer"
             >
               <h3 className="text-xl mb-2 text-slate-900 group-hover:text-teal-600 transition-colors">
                 Blog
