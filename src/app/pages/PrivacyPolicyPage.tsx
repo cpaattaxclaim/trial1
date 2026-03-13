@@ -69,7 +69,6 @@ export function PrivacyPolicyPage() {
             <ul className="list-disc pl-6 text-gray-600 mb-6 space-y-2">
               <li><strong>Service Providers:</strong> We may share information with trusted third-party service providers who assist us in operating our website, conducting our business, or servicing you (e.g., secure document storage, payment processors).</li>
               <li><strong>Legal Requirements:</strong> We may disclose your information when required by law, regulation, legal process, or governmental request.</li>
-              <li><strong>Business Transfers:</strong> If we are involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</li>
               <li><strong>With Your Consent:</strong> We may share information when you have given us explicit consent to do so.</li>
             </ul>
 
@@ -82,7 +81,7 @@ export function PrivacyPolicyPage() {
               <li>Secure document portals for file sharing</li>
               <li>Access controls and authentication measures</li>
               <li>Regular security assessments</li>
-              <li>Employee training on data protection</li>
+              <li>Strict personal data handling practices</li>
             </ul>
             <p className="text-gray-600 mb-6">
               However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.
@@ -105,7 +104,7 @@ export function PrivacyPolicyPage() {
 
             <h2 className="text-2xl mt-12 mb-4 text-slate-900">Cookies and Tracking Technologies</h2>
             <p className="text-gray-600 mb-6">
-              We use cookies and similar tracking technologies to enhance your experience on our website. You can control cookies through your browser settings. For more information, please see our <Link to="/cookie-policy" className="text-teal-600 hover:text-teal-700">Cookie Policy</Link>.
+              We use cookies and similar tracking technologies to enhance your experience on our website. You can control cookies through your browser settings. For more information, please see our <Link to="/cookie-policy" className="text-teal-600 hover:text-teal-700 cursor-pointer">Cookie Policy</Link>.
             </p>
 
             <h2 className="text-2xl mt-12 mb-4 text-slate-900">Third-Party Links</h2>
@@ -134,8 +133,8 @@ export function PrivacyPolicyPage() {
             </p>
             <div className="bg-slate-50 rounded-xl p-6 mb-8">
               <p className="text-gray-700 mb-2"><strong>TaxClaim</strong></p>
-              <p className="text-gray-600 mb-1">Email: <a href="mailto:cpa@taxclaim.co" className="text-teal-600 hover:text-teal-700">cpa@taxclaim.co</a></p>
-              <p className="text-gray-600 mb-1">Phone: <a href="tel:+14153047262" className="text-teal-600 hover:text-teal-700">+1 (415) 304-7262</a></p>
+              <p className="text-gray-600 mb-1">Email: <a href="mailto:cpa@taxclaim.co" className="text-teal-600 hover:text-teal-700 cursor-pointer">cpa@taxclaim.co</a></p>
+              <p className="text-gray-600 mb-1">Phone: <a href="tel:+14153047262" className="text-teal-600 hover:text-teal-700 cursor-pointer">+1 (415) 304-7262</a></p>
               <p className="text-gray-600">Location: San Jose, California</p>
             </div>
           </div>
