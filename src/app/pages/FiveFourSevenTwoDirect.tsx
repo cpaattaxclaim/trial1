@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
@@ -18,8 +19,7 @@ import {
   MessageSquare, 
   CheckCircle2, 
   Loader2, 
-  Building2, 
-  ArrowRight 
+  Building2,
 } from 'lucide-react';
 
 const BUSINESS_TYPES = [
@@ -108,10 +108,34 @@ export function FiveFourSevenTwoDirect() {
     }
   };
 
+  // Business Tax Filing service data — from Code 1
+  const businessTaxService = {
+    id: 'business-tax',
+    icon: Building2,
+    title: 'Business Tax Filing',
+    price: 'Starting from $750',
+    subtitle: 'Partnerships, S-Corps, C-Corps',
+    description: 'Comprehensive business tax preparation for partnerships, S-Corporations, and C-Corporations.',
+    included: [
+      'Form 1065, 1120-S, or 1120 preparation',
+      'Schedule K-1 preparation for owners',
+      'State business tax returns',
+    ],
+    notIncluded: [
+      'Year-round support',
+      'Quarterly estimated tax calculations',
+      'Tax strategy consultation',
+      'Multi-state filings',
+      'Complex corporate structures',
+      'Audit defence assistance'
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
 
+      {/* Page Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <div className="max-w-3xl">
@@ -123,51 +147,68 @@ export function FiveFourSevenTwoDirect() {
         </div>
       </section>
 
-      {/* Business Tax Filing Section */}
+      {/* Business Tax Filing Section — UI from Code 1 */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow">
-            <div className="grid md:grid-cols-3 text-left">
+          <div
+            id={businessTaxService.id}
+            className="scroll-mt-24 bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow"
+          >
+            <div className="grid md:grid-cols-3">
+              {/* Left: Service Info */}
               <div className="md:col-span-1 bg-slate-50 p-8">
-                <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
-                  <Building2 className="w-6 h-6 text-teal-600" />
+                <div className="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
+                  <businessTaxService.icon className="w-8 h-8 text-teal-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Business Tax Filing</h3>
-                <p className="text-sm text-slate-500 mb-4 font-medium">Partnerships, S-Corps, C-Corps</p>
-                <div className="text-3xl font-bold text-teal-600 mb-4">Starting from $750</div>
-                <p className="text-slate-600 mb-6 font-light">Comprehensive business tax preparation for partnerships, S-Corporations, and C-Corporations.</p>
-                <Button 
-                  className="w-full bg-teal-600 hover:bg-teal-700" 
-                  onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Get Started
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
+
+                <h3 className="text-2xl mb-2 text-slate-900">{businessTaxService.title}</h3>
+                <p className="text-sm text-gray-600 mb-4">{businessTaxService.subtitle}</p>
+
+                <div className="text-3xl text-teal-600 mb-4">{businessTaxService.price}</div>
+
+                <p className="text-gray-700 mb-6">{businessTaxService.description}</p>
+
+                <Link to="/contact">
+                  <Button className="w-full bg-teal-600 hover:bg-teal-700">
+                    Get Started
+                  </Button>
+                </Link>
               </div>
-              <div className="md:col-span-2 p-8 border-l border-slate-100">
-                <h4 className="font-bold text-slate-900 mb-4">What's Included</h4>
-                <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                  {[
-                    'Form 1065, 1120-S, or 1120 preparation',
-                    'Schedule K-1 preparation for owners',
-                    'State business tax returns',
-                    'Balance Sheet Reconciliation',
-                    'Strategic tax planning guidance',
-                    'Direct CPA review and filing'
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 text-slate-600 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-teal-600 flex-shrink-0" />
-                      {item}
+
+              {/* Right: What's Included */}
+              <div className="md:col-span-2 p-8">
+                <h4 className="text-lg mb-4 text-slate-900">What's Included</h4>
+                <div className="grid sm:grid-cols-2 gap-3 mb-6">
+                  {businessTaxService.included.map((item, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
+
+                {businessTaxService.notIncluded.length > 0 && (
+                  <>
+                    <h4 className="text-lg mb-4 text-slate-900">Additional Services Available</h4>
+                    <div className="space-y-2">
+                      {businessTaxService.notIncluded.map((item, i) => (
+                        <div key={i} className="flex items-start gap-2">
+                          <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                          </div>
+                          <span className="text-gray-600 text-sm">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section - Updated Labels */}
+      {/* Why Choose Us Section */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center text-left">
