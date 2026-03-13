@@ -8,6 +8,7 @@ import { FAQPage } from "./pages/FAQPage";
 import { BlogPage } from "./pages/BlogPage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
+import { PartnerSpecial } from './pages/PartnerSpecial';
 import { CookiePolicyPage } from "./pages/CookiePolicyPage";
 
 function ScrollToTop() {
@@ -52,6 +53,7 @@ export const router = createBrowserRouter([
       { path: "/resources", Component: BlogPage },
       { path: "/privacy-policy", Component: PrivacyPolicyPage },
       { path: "/terms-of-service", Component: TermsOfServicePage },
+      { path: "/priority-partner", Component: PartnerSpecial },
       { path: "/cookie-policy", Component: CookiePolicyPage },
     ],
   },
