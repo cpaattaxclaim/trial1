@@ -3,11 +3,11 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useSEO } from '../../hooks/useSEO';
 
-export function PrivacyPolicyPage() {
+export function CookiePolicyPage() {
   useSEO({
-    title: 'Privacy Policy | TaxClaim CPA',
-    description: 'Learn how TaxClaim collects, uses, and protects your personal information. We are committed to safeguarding your data in accordance with professional CPA standards.',
-    canonical: 'https://taxclaim.co/privacy-policy',
+    title: 'Cookie Policy | TaxClaim CPA',
+    description: 'TaxClaim\'s cookie policy explains what cookies we use, why we use them, and how you can control them when visiting our website.',
+    canonical: 'https://taxclaim.co/cookie-policy',
   });
   return (
     <div className="min-h-screen bg-white">
@@ -17,7 +17,7 @@ export function PrivacyPolicyPage() {
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-5xl mb-6">Privacy Policy</h1>
+            <h1 className="text-5xl mb-6">Cookie Policy</h1>
             <p className="text-xl text-gray-300">
               Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
@@ -30,118 +30,190 @@ export function PrivacyPolicyPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-slate max-w-none">
             <p className="text-lg text-gray-600 mb-8">
-              TaxClaim ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+              This Cookie Policy explains how TaxClaim uses cookies and similar technologies on our website. By continuing to use our website, you consent to our use of cookies as described in this policy.
             </p>
 
-            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Information We Collect</h2>
+            <h2 className="text-2xl mt-12 mb-4 text-slate-900">What Are Cookies?</h2>
+            <p className="text-gray-600 mb-6">
+              Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide a better user experience. Cookies allow websites to recognize your device and remember information about your visit.
+            </p>
+
+            <h2 className="text-2xl mt-12 mb-4 text-slate-900">How We Use Cookies</h2>
+            <p className="text-gray-600 mb-4">
+              We use cookies for several purposes:
+            </p>
+            <ul className="list-disc pl-6 text-gray-600 mb-6 space-y-2">
+              <li><strong>Essential functionality:</strong> To enable basic features of our website</li>
+              <li><strong>Performance and analytics:</strong> To understand how visitors use our website and improve its performance</li>
+              <li><strong>User preferences:</strong> To remember your settings and preferences</li>
+              <li><strong>Security:</strong> To protect against fraud and enhance website security</li>
+            </ul>
+
+            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Types of Cookies We Use</h2>
             
-            <h3 className="text-xl mt-8 mb-3 text-slate-900">Personal Information</h3>
+            <h3 className="text-xl mt-8 mb-3 text-slate-900">1. Strictly Necessary Cookies</h3>
+            <p className="text-gray-600 mb-3">
+              These cookies are essential for the website to function properly. They enable core functionality such as security, network management, and accessibility.
+            </p>
+            <div className="bg-slate-50 rounded-xl p-6 mb-6">
+              <p className="text-sm text-gray-700 mb-2"><strong>Examples:</strong></p>
+              <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
+                <li>Session cookies for form submissions</li>
+                <li>Security cookies for fraud prevention</li>
+                <li>Load balancing cookies</li>
+              </ul>
+              <p className="text-sm text-gray-600 mt-3"><strong>Duration:</strong> Session or up to 1 year</p>
+              <p className="text-sm text-gray-600"><strong>Can be disabled:</strong> No (essential for website operation)</p>
+            </div>
+
+            <h3 className="text-xl mt-8 mb-3 text-slate-900">2. Performance and Analytics Cookies</h3>
+            <p className="text-gray-600 mb-3">
+              These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This helps us improve website functionality and user experience.
+            </p>
+            <div className="bg-slate-50 rounded-xl p-6 mb-6">
+              <p className="text-sm text-gray-700 mb-2"><strong>Examples:</strong></p>
+              <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
+                <li>Google Analytics (visitor statistics)</li>
+                <li>Page view tracking</li>
+                <li>Bounce rate analysis</li>
+                <li>Traffic source identification</li>
+              </ul>
+              <p className="text-sm text-gray-600 mt-3"><strong>Duration:</strong> Up to 2 years</p>
+              <p className="text-sm text-gray-600"><strong>Can be disabled:</strong> Yes (via browser settings)</p>
+            </div>
+
+            <h3 className="text-xl mt-8 mb-3 text-slate-900">3. Functional Cookies</h3>
+            <p className="text-gray-600 mb-3">
+              These cookies allow the website to remember choices you make (such as your language preference or region) and provide enhanced, personalized features.
+            </p>
+            <div className="bg-slate-50 rounded-xl p-6 mb-6">
+              <p className="text-sm text-gray-700 mb-2"><strong>Examples:</strong></p>
+              <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
+                <li>Language preferences</li>
+                <li>Form autofill data</li>
+                <li>User interface preferences</li>
+              </ul>
+              <p className="text-sm text-gray-600 mt-3"><strong>Duration:</strong> Up to 1 year</p>
+              <p className="text-sm text-gray-600"><strong>Can be disabled:</strong> Yes (may affect functionality)</p>
+            </div>
+
+            <h3 className="text-xl mt-8 mb-3 text-slate-900">4. Targeting/Advertising Cookies</h3>
+            <p className="text-gray-600 mb-3">
+              These cookies may be set through our site by advertising partners to build a profile of your interests and show you relevant ads on other sites.
+            </p>
+            <div className="bg-slate-50 rounded-xl p-6 mb-6">
+              <p className="text-sm text-gray-700 mb-2"><strong>Examples:</strong></p>
+              <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
+                <li>Retargeting pixels</li>
+                <li>Social media advertising cookies</li>
+                <li>Third-party advertising networks</li>
+              </ul>
+              <p className="text-sm text-gray-600 mt-3"><strong>Duration:</strong> Up to 1 year</p>
+              <p className="text-sm text-gray-600"><strong>Can be disabled:</strong> Yes (via browser settings)</p>
+            </div>
+
+            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Third-Party Cookies</h2>
             <p className="text-gray-600 mb-4">
-              We may collect personal information that you voluntarily provide to us when you:
+              Some cookies on our website are placed by third-party services. We use the following third-party services:
             </p>
             <ul className="list-disc pl-6 text-gray-600 mb-6 space-y-2">
-              <li>Fill out our contact form or request a consultation</li>
-              <li>Engage our professional services</li>
-              <li>Subscribe to our newsletter or resources</li>
-              <li>Communicate with us via email, phone, or WhatsApp</li>
+              <li><strong>Google Analytics:</strong> To analyze website traffic and user behavior</li>
+              <li><strong>Social Media Platforms:</strong> For social sharing functionality</li>
+              <li><strong>Communication Tools:</strong> For WhatsApp web integration and chat features</li>
             </ul>
             <p className="text-gray-600 mb-6">
-              This information may include: name, email address, phone number, business information, tax identification numbers, financial data, and other information necessary to provide our services.
+              These third parties may use cookies to track your activity across different websites. We do not control these cookies. Please review the privacy policies of these third-party services for more information.
             </p>
 
-            <h3 className="text-xl mt-8 mb-3 text-slate-900">Automatically Collected Information</h3>
-            <p className="text-gray-600 mb-6">
-              When you visit our website, we may automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the cookies installed on your device. We may also collect information about your browsing actions and patterns.
-            </p>
-
-            <h2 className="text-2xl mt-12 mb-4 text-slate-900">How We Use Your Information</h2>
+            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Managing Cookies</h2>
+            
+            <h3 className="text-xl mt-8 mb-3 text-slate-900">Browser Settings</h3>
             <p className="text-gray-600 mb-4">
-              We use the information we collect to:
+              Most web browsers allow you to control cookies through their settings. You can:
             </p>
             <ul className="list-disc pl-6 text-gray-600 mb-6 space-y-2">
-              <li>Provide, maintain, and improve our tax and business advisory services</li>
-              <li>Process your transactions and manage your account</li>
-              <li>Respond to your inquiries and provide customer support</li>
-              <li>Send you updates, newsletters, and marketing communications (with your consent)</li>
-              <li>Comply with legal obligations and professional standards</li>
-              <li>Protect against fraud and unauthorized access</li>
-              <li>Improve our website and user experience</li>
+              <li>View what cookies are stored on your device</li>
+              <li>Delete individual cookies or all cookies</li>
+              <li>Block third-party cookies</li>
+              <li>Block cookies from specific websites</li>
+              <li>Block all cookies</li>
             </ul>
 
-            <h2 className="text-2xl mt-12 mb-4 text-slate-900">How We Share Your Information</h2>
-            <p className="text-gray-600 mb-6">
-              We do not sell, trade, or otherwise transfer your personal information to outside parties except in the following circumstances:
-            </p>
-            <ul className="list-disc pl-6 text-gray-600 mb-6 space-y-2">
-              <li><strong>Service Providers:</strong> We may share information with trusted third-party service providers who assist us in operating our website, conducting our business, or servicing you (e.g., secure document storage, payment processors).</li>
-              <li><strong>Legal Requirements:</strong> We may disclose your information when required by law, regulation, legal process, or governmental request.</li>
-              <li><strong>With Your Consent:</strong> We may share information when you have given us explicit consent to do so.</li>
-            </ul>
+            <h3 className="text-xl mt-8 mb-3 text-slate-900">Browser-Specific Instructions</h3>
+            <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6">
+              <ul className="space-y-3 text-gray-600">
+                <li>
+                  <strong>Google Chrome:</strong> Settings → Privacy and security → Cookies and other site data
+                </li>
+                <li>
+                  <strong>Mozilla Firefox:</strong> Options → Privacy & Security → Cookies and Site Data
+                </li>
+                <li>
+                  <strong>Safari:</strong> Preferences → Privacy → Manage Website Data
+                </li>
+                <li>
+                  <strong>Microsoft Edge:</strong> Settings → Cookies and site permissions
+                </li>
+              </ul>
+            </div>
 
-            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Data Security</h2>
-            <p className="text-gray-600 mb-6">
-              We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. This includes:
-            </p>
-            <ul className="list-disc pl-6 text-gray-600 mb-6 space-y-2">
-              <li>Encrypted data transmission (SSL/TLS)</li>
-              <li>Secure document portals for file sharing</li>
-              <li>Access controls and authentication measures</li>
-              <li>Regular security assessments</li>
-              <li>Strict personal data handling practices</li>
-            </ul>
-            <p className="text-gray-600 mb-6">
-              However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.
-            </p>
-
-            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Your Rights and Choices</h2>
+            <h3 className="text-xl mt-8 mb-3 text-slate-900">Opt-Out Tools</h3>
             <p className="text-gray-600 mb-4">
-              You have certain rights regarding your personal information:
+              You can also use these industry tools to manage advertising cookies:
             </p>
             <ul className="list-disc pl-6 text-gray-600 mb-6 space-y-2">
-              <li><strong>Access:</strong> You can request a copy of the personal information we hold about you.</li>
-              <li><strong>Correction:</strong> You can request that we correct inaccurate or incomplete information.</li>
-              <li><strong>Deletion:</strong> You can request that we delete your personal information, subject to legal and professional retention requirements.</li>
-              <li><strong>Opt-Out:</strong> You can opt out of marketing communications at any time by clicking the unsubscribe link in our emails or contacting us directly.</li>
-              <li><strong>Data Portability:</strong> You can request a copy of your data in a portable format.</li>
+              <li><strong>Network Advertising Initiative:</strong> <a href="https://optout.networkadvertising.org" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700 cursor-pointer">optout.networkadvertising.org</a></li>
+              <li><strong>Digital Advertising Alliance:</strong> <a href="https://optout.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700 cursor-pointer">optout.aboutads.info</a></li>
+              <li><strong>Google Analytics Opt-out:</strong> <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700 cursor-pointer">tools.google.com/dlpage/gaoptout</a></li>
             </ul>
+
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-6">
+              <p className="text-amber-900 mb-2">
+                <strong>⚠️ Important Notice:</strong>
+              </p>
+              <p className="text-amber-800 text-sm">
+                Blocking or deleting cookies may impact your experience on our website. Some features may not function properly if cookies are disabled. Strictly necessary cookies cannot be disabled as they are essential for website operation.
+              </p>
+            </div>
+
+            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Do Not Track Signals</h2>
             <p className="text-gray-600 mb-6">
-              To exercise these rights, please contact us using the information provided at the end of this policy.
+              Some browsers have a "Do Not Track" feature that lets you tell websites you do not want your online activities tracked. Currently, there is no industry standard for recognizing Do Not Track signals, so our website does not respond to these signals at this time.
             </p>
 
-            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Cookies and Tracking Technologies</h2>
+            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Mobile Devices</h2>
             <p className="text-gray-600 mb-6">
-              We use cookies and similar tracking technologies to enhance your experience on our website. You can control cookies through your browser settings. For more information, please see our <Link to="/cookie-policy" className="text-teal-600 hover:text-teal-700 cursor-pointer">Cookie Policy</Link>.
+              Mobile devices have settings that allow you to control tracking and advertising. Please check your device settings for more information about managing cookies and tracking on mobile devices.
             </p>
 
-            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Third-Party Links</h2>
+            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Changes to This Cookie Policy</h2>
             <p className="text-gray-600 mb-6">
-              Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these external sites. We encourage you to review the privacy policies of any third-party sites you visit.
+              We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our business practices. We will notify you of any material changes by posting the updated policy on this page with a new "Last updated" date.
             </p>
 
-            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Children's Privacy</h2>
+            <h2 className="text-2xl mt-12 mb-4 text-slate-900">More Information</h2>
             <p className="text-gray-600 mb-6">
-              Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately.
-            </p>
-
-            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Professional Standards</h2>
-            <p className="text-gray-600 mb-6">
-              As a licensed CPA, we adhere to the confidentiality requirements and professional standards set forth by the American Institute of Certified Public Accountants (AICPA) and state regulatory boards. Client information is protected under professional privilege and confidentiality rules.
-            </p>
-
-            <h2 className="text-2xl mt-12 mb-4 text-slate-900">Changes to This Privacy Policy</h2>
-            <p className="text-gray-600 mb-6">
-              We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last updated" date. We encourage you to review this policy periodically.
+              For more information about how we protect your privacy, please see our <Link to="/privacy-policy" className="text-teal-600 hover:text-teal-700 cursor-pointer">Privacy Policy</Link>.
             </p>
 
             <h2 className="text-2xl mt-12 mb-4 text-slate-900">Contact Us</h2>
             <p className="text-gray-600 mb-4">
-              If you have questions or concerns about this Privacy Policy or our privacy practices, please contact us:
+              If you have questions about our use of cookies, please contact us:
             </p>
             <div className="bg-slate-50 rounded-xl p-6 mb-8">
               <p className="text-gray-700 mb-2"><strong>TaxClaim</strong></p>
               <p className="text-gray-600 mb-1">Email: <a href="mailto:cpa@taxclaim.co" className="text-teal-600 hover:text-teal-700 cursor-pointer">cpa@taxclaim.co</a></p>
               <p className="text-gray-600 mb-1">Phone: <a href="tel:+14153047262" className="text-teal-600 hover:text-teal-700 cursor-pointer">+1 (415) 304-7262</a></p>
               <p className="text-gray-600">Location: San Jose, California</p>
+            </div>
+
+            <div className="bg-teal-50 border border-teal-200 rounded-xl p-6 mt-8">
+              <p className="text-teal-900 mb-2">
+                <strong>Your Consent</strong>
+              </p>
+              <p className="text-teal-800 text-sm">
+                By continuing to use our website, you consent to our use of cookies as described in this policy. You can withdraw your consent at any time by adjusting your browser settings as described above.
+              </p>
             </div>
           </div>
         </div>
