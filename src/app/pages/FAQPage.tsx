@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
+import { useSEO } from '../hooks/useSEO';
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +12,12 @@ import {
 import { MessageSquare } from 'lucide-react';
 
 export function FAQPage() {
+  useSEO({
+    title: 'FAQ | TaxClaim CPA — Common Tax & Accounting Questions',
+    description: 'Got questions about tax filing, bookkeeping, IRS notices, or company formation? Browse TaxClaim\'s frequently asked questions or contact us for a free consultation.',
+    canonical: 'https://taxclaim.co/faq',
+  });
+
   const faqCategories = [
     {
       category: 'General Questions',
