@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
+import { useSEO } from '../hooks/useSEO';
 import { 
   FileText, 
   Building2, 
@@ -18,6 +19,12 @@ import {
 } from 'lucide-react';
 
 export function ServicesPage() {
+  useSEO({
+    title: 'Services & Pricing | TaxClaim CPA — San Jose, CA',
+    description: 'Transparent pricing for individual & business tax filing, bookkeeping, sales tax, company formation, IRS resolution, and advisory. Starting from $200. No hidden fees.',
+    canonical: 'https://taxclaim.co/services',
+  });
+
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
