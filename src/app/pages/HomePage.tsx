@@ -66,7 +66,7 @@ export function HomePage() {
     { icon: Users, label: 'Clients Served', value: '150+' },
     { icon: Award, label: 'Years Experience', value: '7+' },
     { icon: Clock, label: 'Average Response', value: '24hrs' },
-    { icon: CheckCircle2, label: 'Success Rate', value: '99%' }
+    { icon: CheckCircle2, label: 'on-Time Filing', value: '100%' }
   ];
 
   const benefits = [
@@ -264,11 +264,11 @@ export function HomePage() {
               </div>
               <div className="bg-white rounded-xl p-6 border border-gray-200">
                 <div className="text-3xl mb-2 text-teal-600">150+</div>
-                <div className="text-sm text-gray-600">Happy Clients</div>
+                <div className="text-sm text-gray-600">Clients Served</div>
               </div>
               <div className="bg-white rounded-xl p-6 border border-gray-200">
-                <div className="text-3xl mb-2 text-teal-600">99%</div>
-                <div className="text-sm text-gray-600">Client Satisfaction</div>
+                <div className="text-3xl mb-2 text-teal-600">100%</div>
+                <div className="text-sm text-gray-600">On-Time Filing</div>
               </div>
               <div className="bg-white rounded-xl p-6 border border-gray-200">
                 <div className="text-3xl mb-2 text-teal-600">24hr</div>
