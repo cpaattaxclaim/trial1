@@ -4,6 +4,7 @@ import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
+import { useSEO } from '../../hooks/useSEO';
 import { Textarea } from '../components/ui/textarea';
 import { 
   Select, 
@@ -36,6 +37,12 @@ const SERVICES = [
 ];
 
 export function ContactPage() {
+  useSEO({
+    title: 'Contact TaxClaim | Free CPA Consultation — San Jose, CA',
+    description: 'Schedule a free consultation with TaxClaim. Reach us by email, phone, or WhatsApp. We serve individuals and businesses across the US with expert tax and advisory services.',
+    canonical: 'https://taxclaim.co/contact',
+  });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
