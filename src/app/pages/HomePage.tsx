@@ -66,7 +66,7 @@ export function HomePage() {
     { icon: Users, label: 'Clients Served', value: '150+' },
     { icon: Award, label: 'Years Experience', value: '7+' },
     { icon: Clock, label: 'Average Response', value: '24hrs' },
-    { icon: CheckCircle2, label: 'on-Time Filing', value: '100%' }
+    { icon: CheckCircle2, label: 'On-Time Filing', value: '100%' }
   ];
 
   const benefits = [
