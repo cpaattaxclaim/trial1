@@ -6,191 +6,261 @@ import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Textarea } from '../components/ui/textarea';
 import { 
+  Select, 
+  SelectContent, 
+  SelectItem, 
+  SelectTrigger, 
+  SelectValue 
+} from '../components/ui/select';
+import { 
   CheckCircle2, 
   ArrowRight, 
-  Mail,
-  MessageSquare,
-  Check,
-  Phone,
-  Clock
+  Mail, 
+  MessageSquare, 
+  Loader2, 
+  Building2
 } from 'lucide-react';
 
-export function PartnerSpecial() {
+const BUSINESS_TYPES = [
+  "LLC",
+  "Partnership",
+  "S-Corporation",
+  "C-Corporation"
+];
+
+export function FiveFourSevenTwoDirect() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    service: 'business-tax',
-    message: ''
+    businessType: '',
+    service: 'Business Tax Filing',
+    message: '',
+    referralAgreement: false,
+    _gotcha: ''
   });
 
   useEffect(() => {
+    // Hidden page protection
     const meta = document.createElement('meta');
     meta.name = "robots";
     meta.content = "noindex, nofollow";
     document.getElementsByTagName('head')[0].appendChild(meta);
+    document.title = "5472Direct | TaxClaim Partner Portal";
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', service: 'business-tax', message: '' });
-    }, 5000);
+  const handleChange = (field: string, value: any) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(`https://formspree.io/f/mbdanaza`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ 
+          name: '', email: '', phone: '', businessType: '', 
+          service: 'Business Tax Filing', message: '', referralAgreement: false, _gotcha: '' 
+        });
+        setTimeout(() => setSubmitted(false), 5000);
+      }
+    } catch (error) {
+      alert("Submission error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section - Left Aligned matching Home Page */}
+      {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDE2YzAgMi4yMTEtMS43ODkgNC00IDRzLTQtMS43ODkgNC00IDEuNzg5LTQgNC00IDQgMS43ODkgNCA0em0tNiAyNGMwIDIuMjExLTEuNzg5IDQtNCA0cy00LTEuNzg5LTQtNCAxLjc4OS00IDQtNCA0IDEuNzg5IDQgNHptMTggMGMwIDIuMjExLTEuNzg5IDQtNCA0cy00LTEuNzg5LTQtNCAxLjc4OS00IDQtNCA0IDEuNzg5IDQgNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-50"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl mb-6 font-bold">Business Tax & Advisory</h1>
+            <h1 className="text-5xl md:text-6xl mb-6 font-bold">5472Direct</h1>
             <p className="text-xl text-gray-300 mb-8 font-light">
-              Expert tax guidance and compliance for business entities. Experience direct CPA access and professional processing for all your corporate filing needs.
+              Accelerated business tax compliance and reporting for corporate entities. Professional grade CPA filing services.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8 rounded-full" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                Schedule Free Consultation
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Card - Services UI */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-lg mx-auto bg-white rounded-3xl p-8 shadow-sm border border-gray-100 relative overflow-hidden">
-            <div className="absolute top-0 right-0 bg-teal-600 text-white px-6 py-2 rounded-bl-2xl text-sm font-medium">
-              Professional
-            </div>
-            <div className="mb-8 text-left">
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">Business Tax Filing</h3>
-              <p className="text-gray-600">For Corporations & Multi-Member LLCs</p>
-            </div>
-            <div className="mb-8 text-left">
-              <span className="text-5xl font-bold text-slate-900">$750</span>
-              <span className="text-gray-500 ml-2 text-lg">Starting at</span>
-            </div>
-            <ul className="space-y-4 mb-10 text-left">
-              {[
-                'Federal & State Tax Returns',
-                'K-1 Issuance for Partners',
-                'Balance Sheet Reconciliation',
-                'Year-round Tax Strategy',
-                'IRS Audit Protection'
-              ].map((feature, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <div className="bg-teal-50 p-1 rounded-full">
-                    <Check className="w-4 h-4 text-teal-600" />
-                  </div>
-                  <span className="text-gray-700">{feature}</span>
-                </li>
-              ))}
-            </ul>
-            <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white py-6 rounded-xl text-lg" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+            <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8" onClick={() => document.getElementById('form-anchor')?.scrollIntoView({ behavior: 'smooth' })}>
               Get Started
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Contact Section - Replicated from Contact Us Page */}
-      <section id="contact" className="py-24 bg-white">
+      {/* Business Tax Filing Section (Exact Service Page Replica) */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="text-left">
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">Let's Connect</h2>
-              <p className="text-xl text-gray-600 mb-12 font-light">
-                Ready to optimize your business taxes? Contact us for a consultation.
+          <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="grid md:grid-cols-3 text-left">
+              <div className="md:col-span-1 bg-slate-50 p-8">
+                <div className="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
+                  <Building2 className="w-8 h-8 text-teal-600" />
+                </div>
+                <h3 className="text-2xl mb-2 text-slate-900">Business Tax Filing</h3>
+                <p className="text-sm text-gray-600 mb-4">Partnerships, S-Corps, C-Corps</p>
+                <div className="text-3xl text-teal-600 mb-4 font-bold">Starting from $750</div>
+                <p className="text-gray-700 mb-6 font-light">Comprehensive business tax preparation for partnerships, S-Corporations, and C-Corporations.</p>
+              </div>
+              <div className="md:col-span-2 p-8">
+                <h4 className="text-lg mb-4 text-slate-900 font-bold">What's Included</h4>
+                <div className="grid sm:grid-cols-2 gap-3 mb-6">
+                  {[
+                    'Form 1065, 1120-S, or 1120 preparation',
+                    'Schedule K-1 preparation for owners',
+                    'State business tax returns',
+                    'Strategic tax planning guidance'
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose TaxClaim Section (Home Page Replica) */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl mb-6 text-slate-900 font-bold">Why Choose TaxClaim?</h2>
+              <p className="text-lg text-gray-600 mb-8 font-light">
+                We're not just tax preparers. We're your strategic partners in business success.
               </p>
+              <div className="space-y-4">
+                {[
+                  { title: 'Licensed & Certified', desc: 'CPA licensed in Washington State with expertise across all 50 states' },
+                  { title: 'Transparent Pricing', desc: 'No hidden fees. Clear, upfront pricing for all services' },
+                  { title: 'Dedicated Support', desc: 'Direct access to your advisor via email, phone, or WhatsApp' }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <CheckCircle2 className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+                    <div>
+                      <div className="text-slate-900 font-medium">{item.title}</div>
+                      <div className="text-gray-600 text-sm font-light">{item.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-white rounded-xl p-6 border border-gray-200">
+                <div className="text-3xl mb-2 text-teal-600 font-bold">7+</div>
+                <div className="text-sm text-gray-600">Years Experience</div>
+              </div>
+              <div className="bg-white rounded-xl p-6 border border-gray-200">
+                <div className="text-3xl mb-2 text-teal-600 font-bold">99%</div>
+                <div className="text-sm text-gray-600">Success Rate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="bg-teal-50 p-3 rounded-xl">
-                    <Mail className="w-6 h-6 text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900">Email Us</h3>
-                    <p className="text-gray-600 font-light">cpa@taxclaim.co</p>
-                  </div>
+      {/* Contact Form Section */}
+      <section id="form-anchor" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-3 gap-12 text-left">
+            <div className="lg:col-span-1 space-y-8">
+              <h2 className="text-2xl font-bold text-slate-900">Direct Inquiries</h2>
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <Mail className="text-teal-600" />
+                  <span className="text-slate-600">cpa@taxclaim.co</span>
                 </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-teal-50 p-3 rounded-xl">
-                    <MessageSquare className="w-6 h-6 text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900">WhatsApp</h3>
-                    <p className="text-gray-600 italic font-light text-sm">Priority consultation messaging enabled.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-teal-50 p-3 rounded-xl">
-                    <Clock className="w-6 h-6 text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900">Working Hours</h3>
-                    <p className="text-gray-600 font-light">Mon - Fri: 9:00 AM - 6:00 PM PST</p>
-                  </div>
+                <div className="flex items-center gap-4">
+                  <MessageSquare className="text-teal-600" />
+                  <span className="text-slate-600">WhatsApp Priority Support</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl shadow-slate-200/50 border border-slate-100 text-left">
-              {submitted ? (
-                <div className="text-center py-12">
-                  <div className="bg-teal-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle2 className="w-10 h-10 text-teal-600" />
+            <div className="lg:col-span-2">
+              <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+                {submitted ? (
+                  <div className="py-16 text-center">
+                    <CheckCircle2 className="w-16 h-16 text-teal-600 mx-auto mb-4" />
+                    <h2 className="text-3xl font-bold text-slate-900">Request Sent</h2>
+                    <p className="text-slate-600 mt-2">We will be in touch shortly.</p>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Message Sent</h3>
-                  <p className="text-gray-600">We will get back to you within 24 hours.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} onChange={(e) => handleChange('_gotcha', e.target.value)} />
+                    
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label>Full Name *</Label>
+                        <Input required value={formData.name} onChange={(e) => handleChange('name', e.target.value)} />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Email Address *</Label>
+                        <Input required type="email" value={formData.email} onChange={(e) => handleChange('email', e.target.value)} />
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label>Phone Number</Label>
+                        <Input type="tel" value={formData.phone} onChange={(e) => handleChange('phone', e.target.value)} />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Business Type *</Label>
+                        <Select required onValueChange={(v) => handleChange('businessType', v)}>
+                          <SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger>
+                          <SelectContent>
+                            {BUSINESS_TYPES.map(type => <SelectItem key={type} value={type}>{type}</SelectItem>)}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-slate-900 font-medium">Full Name</Label>
-                      <Input id="name" required placeholder="John Doe" className="bg-slate-50 border-none h-12 focus:ring-2 focus:ring-teal-600" value={formData.name} onChange={(e) => handleChange('name', e.target.value)} />
+                      <Label>Message *</Label>
+                      <Textarea required rows={5} value={formData.message} onChange={(e) => handleChange('message', e.target.value)} placeholder="Project details..." />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-slate-900 font-medium">Email Address</Label>
-                      <Input id="email" type="email" required placeholder="john@example.com" className="bg-slate-50 border-none h-12 focus:ring-2 focus:ring-teal-600" value={formData.email} onChange={(e) => handleChange('email', e.target.value)} />
+
+                    <div className="flex items-start space-x-3 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                      <input 
+                        type="checkbox" 
+                        id="referral-check" 
+                        className="w-5 h-5 accent-teal-600 mt-1 cursor-pointer"
+                        checked={formData.referralAgreement}
+                        onChange={(e) => handleChange('referralAgreement', e.target.checked)}
+                        required
+                      />
+                      <Label htmlFor="referral-check" className="text-sm text-slate-700 cursor-pointer">
+                        I am interested in the referral partnership program (up to 20% commission).
+                      </Label>
                     </div>
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-slate-900 font-medium">Message</Label>
-                    <Textarea id="message" required placeholder="Tell us about your business tax needs..." rows={5} className="bg-slate-50 border-none focus:ring-2 focus:ring-teal-600 p-4" value={formData.message} onChange={(e) => handleChange('message', e.target.value)} />
-                  </div>
-
-                  {/* Referral Fee Disclosure */}
-                  <div className="flex items-center gap-3 p-4 bg-teal-50/50 rounded-xl border border-teal-100">
-                    <div className="bg-teal-600 rounded-full p-1 flex-shrink-0">
-                      <Check className="w-3 h-3 text-white" />
-                    </div>
-                    <p className="text-sm text-slate-700 font-medium">
-                      We offer referral commissions on our services referred by a partner. It can go up to 20% of the fees charged.
-                    </p>
-                  </div>
-
-                  <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white h-14 rounded-xl text-lg font-bold transition-all shadow-lg shadow-teal-600/20">
-                    Send Message
-                  </Button>
-                </form>
-              )}
+                    <Button type="submit" disabled={isSubmitting} className="w-full bg-teal-600 hover:bg-teal-700 h-12">
+                      {isSubmitting ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : 'Submit 5472Direct Request'}
+                    </Button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
         </div>
