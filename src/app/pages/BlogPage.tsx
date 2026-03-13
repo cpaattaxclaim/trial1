@@ -3,9 +3,16 @@ import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
+import { useSEO } from '../../hooks/useSEO';
 import { Calendar, Clock, ArrowRight, FileText, TrendingUp, Loader2, CheckCircle2 } from 'lucide-react';
 
 export function BlogPage() {
+  useSEO({
+    title: 'Tax & Business Resources | TaxClaim CPA Blog',
+    description: 'Read TaxClaim\'s expert articles on tax planning, IRS updates, business formation, bookkeeping tips, and financial strategy for individuals and small businesses.',
+    canonical: 'https://taxclaim.co/resources',
+  });
+
   const [activeCategory, setActiveCategory] = useState('All Articles');
   const [email, setEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);
@@ -190,9 +197,10 @@ export function BlogPage() {
             </p>
             
             {subscribed ? (
-              <div className="flex items-center justify-center gap-2 text-teal-300">
-                <CheckCircle2 className="w-5 h-5" />
-                <span>You're subscribed! Thanks for joining.</span>
+              <div className="py-4 text-center animate-in fade-in zoom-in">
+                <CheckCircle2 className="w-12 h-12 text-teal-400 mx-auto mb-3" />
+                <h3 className="text-xl font-bold text-white">You're subscribed!</h3>
+                <p className="text-gray-300 mt-1 text-sm">Thanks for joining. We'll keep you updated.</p>
               </div>
             ) : (
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
