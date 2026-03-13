@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
+import { useSEO } from '../hooks/useSEO';
 import { 
   FileText, 
   Building2, 
@@ -17,6 +18,12 @@ import {
 } from 'lucide-react';
 
 export function HomePage() {
+  useSEO({
+    title: 'TaxClaim | CPA & Business Advisory — San Jose, CA',
+    description: 'TaxClaim is a licensed CPA firm in San Jose offering individual & business tax filing, bookkeeping, company formation, IRS resolution, and advisory services. Get a free consultation today.',
+    canonical: 'https://taxclaim.co/',
+  });
+
   const services = [
     {
       icon: FileText,
