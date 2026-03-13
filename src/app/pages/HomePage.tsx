@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
-import { useSEO } from '../hooks/useSEO';
+import { useSEO } from '../../hooks/useSEO';
 import { 
   FileText, 
   Building2, 
