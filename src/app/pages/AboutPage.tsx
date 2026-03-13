@@ -107,8 +107,8 @@ export function AboutPage() {
                 Whether you're a solopreneur, a growing startup, or an established mid-sized business, we provide the same level of expertise and personalized attention. We're not just number crunchers – we're strategic partners invested in your long-term success.
               </p>
 
-              <Link to="/contact">
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700">
+              <Link to="/contact" className="cursor-pointer">
+                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 cursor-pointer">
                   Work With Us
                 </Button>
               </Link>
@@ -287,13 +287,13 @@ export function AboutPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8">
+            <Link to="/contact" className="cursor-pointer">
+              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8 cursor-pointer">
                 Schedule Consultation
               </Button>
             </Link>
-            <Link to="/services">
-              <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent border-white text-white hover:bg-white/10">
+            <Link to="/services" className="cursor-pointer">
+              <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent border-white text-white hover:!bg-white/10 hover:!text-white hover:!border-white cursor-pointer">
                 View Services
               </Button>
             </Link>
