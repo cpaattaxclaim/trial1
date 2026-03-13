@@ -115,7 +115,7 @@ export function FiveFourSevenTwoDirect() {
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <div className="max-w-3xl">
-            <h1 className="text-5xl mb-6">Business Advisory & Services</h1>
+            <h1 className="text-5xl mb-6 font-normal">Business Advisory & Services</h1>
             <p className="text-xl text-gray-300 font-light leading-relaxed">
               Professional tax strategy and business formation services. Reach out today for a consultation.
             </p>
@@ -167,11 +167,11 @@ export function FiveFourSevenTwoDirect() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
+      {/* Why Choose Us Section - Updated Labels */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-left">
+          <div className="grid md:grid-cols-2 gap-12 items-center text-left">
+            <div>
               <h2 className="text-4xl mb-6 text-slate-900">
                 Why Choose TaxClaim?
               </h2>
@@ -201,8 +201,8 @@ export function FiveFourSevenTwoDirect() {
                   <div key={idx} className="flex gap-4">
                     <CheckCircle2 className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
                     <div>
-                      <div className="text-slate-900 mb-1">{item.title}</div>
-                      <div className="text-gray-600 text-sm">{item.desc}</div>
+                      <div className="text-slate-900 mb-1 font-normal">{item.title}</div>
+                      <div className="text-gray-600 text-sm font-light">{item.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -210,21 +210,21 @@ export function FiveFourSevenTwoDirect() {
             </div>
 
             <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
                 <div className="text-3xl mb-2 text-teal-600 font-normal">7+</div>
-                <div className="text-sm text-gray-600">Years of Experience</div>
+                <div className="text-sm text-gray-600 font-light">Years of Experience</div>
               </div>
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
                 <div className="text-3xl mb-2 text-teal-600 font-normal">150+</div>
-                <div className="text-sm text-gray-600">Clients Served</div>
+                <div className="text-sm text-gray-600 font-light">Clients Served</div>
               </div>
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
                 <div className="text-3xl mb-2 text-teal-600 font-normal">100%</div>
-                <div className="text-sm text-gray-600">On-Time Filing</div>
+                <div className="text-sm text-gray-600 font-light">On-Time Filing</div>
               </div>
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
                 <div className="text-3xl mb-2 text-teal-600 font-normal">24hr</div>
-                <div className="text-sm text-gray-600">Response Time</div>
+                <div className="text-sm text-gray-600 font-light">Response Time</div>
               </div>
             </div>
           </div>
@@ -232,7 +232,7 @@ export function FiveFourSevenTwoDirect() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact-form" className="py-20">
+      <section id="contact-form" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12 text-left">
             <div className="lg:col-span-1 space-y-8">
@@ -260,7 +260,6 @@ export function FiveFourSevenTwoDirect() {
                     data-netlify="true"
                   >
                     <h2 className="text-2xl font-bold text-slate-900 mb-6 font-normal">Send us a Message</h2>
-
                     <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" onChange={(e) => handleChange('_gotcha', e.target.value)} />
 
                     <div className="grid sm:grid-cols-2 gap-6">
@@ -282,4 +281,63 @@ export function FiveFourSevenTwoDirect() {
                       <div className="space-y-2">
                         <Label>Business Type</Label>
                         <Select onValueChange={(v) => handleChange('businessType', v)}>
-                          <SelectTrigger><SelectValue
+                          <SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger>
+                          <SelectContent>
+                            {BUSINESS_TYPES.map(type => (
+                              <SelectItem key={type} value={type}>{type}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>Service Interested In *</Label>
+                      <Select required onValueChange={(v) => handleChange('service', v)}>
+                        <SelectTrigger><SelectValue placeholder="Select a service" /></SelectTrigger>
+                        <SelectContent>
+                          {SERVICES.map(service => (
+                            <SelectItem key={service} value={service}>{service}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Message *</Label>
+                      <Textarea id="message" name="message" required rows={5} value={formData.message} onChange={(e) => handleChange('message', e.target.value)} placeholder="How can we help you?" />
+                    </div>
+
+                    <div className="flex items-center space-x-3 p-4 bg-slate-50 rounded-xl border border-slate-200">
+                      <input 
+                        type="checkbox" 
+                        id="referral" 
+                        className="w-5 h-5 accent-teal-600 cursor-pointer" 
+                        checked={formData.referralAgreement}
+                        onChange={(e) => handleChange('referralAgreement', e.target.checked)}
+                        required
+                      />
+                      <Label htmlFor="referral" className="text-sm text-slate-700 cursor-pointer font-light">
+                        We are subject to referral fees. (It may go upto 20%) Please check the box if you agree.
+                      </Label>
+                    </div>
+
+                    <Button type="submit" disabled={isSubmitting} className="w-full bg-teal-600 hover:bg-teal-700 h-12 text-lg">
+                      {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...</> : 'Send Message'}
+                    </Button>
+
+                    <p className="text-sm text-gray-500 text-center font-light">
+                      * We typically respond within 24 hours during business days
+                    </p>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
