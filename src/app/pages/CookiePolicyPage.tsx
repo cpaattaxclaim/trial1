@@ -156,9 +156,9 @@ export function CookiePolicyPage() {
               You can also use these industry tools to manage advertising cookies:
             </p>
             <ul className="list-disc pl-6 text-gray-600 mb-6 space-y-2">
-              <li><strong>Network Advertising Initiative:</strong> <a href="https://optout.networkadvertising.org" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700">optout.networkadvertising.org</a></li>
-              <li><strong>Digital Advertising Alliance:</strong> <a href="https://optout.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700">optout.aboutads.info</a></li>
-              <li><strong>Google Analytics Opt-out:</strong> <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700">tools.google.com/dlpage/gaoptout</a></li>
+              <li><strong>Network Advertising Initiative:</strong> <a href="https://optout.networkadvertising.org" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700 cursor-pointer">optout.networkadvertising.org</a></li>
+              <li><strong>Digital Advertising Alliance:</strong> <a href="https://optout.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700 cursor-pointer">optout.aboutads.info</a></li>
+              <li><strong>Google Analytics Opt-out:</strong> <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700 cursor-pointer">tools.google.com/dlpage/gaoptout</a></li>
             </ul>
 
             <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-6">
@@ -187,7 +187,7 @@ export function CookiePolicyPage() {
 
             <h2 className="text-2xl mt-12 mb-4 text-slate-900">More Information</h2>
             <p className="text-gray-600 mb-6">
-              For more information about how we protect your privacy, please see our <Link to="/privacy-policy" className="text-teal-600 hover:text-teal-700">Privacy Policy</Link>.
+              For more information about how we protect your privacy, please see our <Link to="/privacy-policy" className="text-teal-600 hover:text-teal-700 cursor-pointer">Privacy Policy</Link>.
             </p>
 
             <h2 className="text-2xl mt-12 mb-4 text-slate-900">Contact Us</h2>
@@ -196,8 +196,8 @@ export function CookiePolicyPage() {
             </p>
             <div className="bg-slate-50 rounded-xl p-6 mb-8">
               <p className="text-gray-700 mb-2"><strong>TaxClaim</strong></p>
-              <p className="text-gray-600 mb-1">Email: <a href="mailto:cpa@taxclaim.co" className="text-teal-600 hover:text-teal-700">cpa@taxclaim.co</a></p>
-              <p className="text-gray-600 mb-1">Phone: <a href="tel:+14153047262" className="text-teal-600 hover:text-teal-700">+1 (415) 304-7262</a></p>
+              <p className="text-gray-600 mb-1">Email: <a href="mailto:cpa@taxclaim.co" className="text-teal-600 hover:text-teal-700 cursor-pointer">cpa@taxclaim.co</a></p>
+              <p className="text-gray-600 mb-1">Phone: <a href="tel:+14153047262" className="text-teal-600 hover:text-teal-700 cursor-pointer">+1 (415) 304-7262</a></p>
               <p className="text-gray-600">Location: San Jose, California</p>
             </div>
 
