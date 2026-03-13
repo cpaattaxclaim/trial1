@@ -10,7 +10,9 @@ import {
   ArrowRight, 
   Mail,
   MessageSquare,
-  Check
+  Check,
+  Phone,
+  Clock
 } from 'lucide-react';
 
 export function PartnerSpecial() {
@@ -47,18 +49,18 @@ export function PartnerSpecial() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section - Left Aligned */}
+      {/* Hero Section - Left Aligned matching Home Page */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDE2YzAgMi4yMTEtMS43ODkgNC00IDRzLTQtMS43ODkgNC00IDEuNzg5LTQgNC00IDQgMS43ODkgNCA0em0tNiAyNGMwIDIuMjExLTEuNzg5IDQtNCA0cy00LTEuNzg5LTQtNCAxLjc4OS00IDQtNCA0IDEuNzg5IDQgNHptMTggMGMwIDIuMjExLTEuNzg5IDQtNCA0cy00LTEuNzg5LTQtNCAxLjc4OS00IDQtNCA0IDEuNzg5IDQgNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-50"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-left">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl mb-6">Business Tax & Advisory</h1>
-            <p className="text-xl text-gray-300 mb-8">
+            <h1 className="text-4xl md:text-6xl mb-6 font-bold">Business Tax & Advisory</h1>
+            <p className="text-xl text-gray-300 mb-8 font-light">
               Expert tax guidance and compliance for business entities. Experience direct CPA access and professional processing for all your corporate filing needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8" onClick={() => document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                View Service Details
+              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8 rounded-full" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                Schedule Free Consultation
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
@@ -66,24 +68,22 @@ export function PartnerSpecial() {
         </div>
       </section>
 
-      {/* Pricing Section - $750 Starting */}
-      <section id="pricing-section" className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white border-2 border-teal-600 rounded-2xl p-8 shadow-xl relative">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-              Featured Service
+      {/* Pricing Card - Services UI */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-lg mx-auto bg-white rounded-3xl p-8 shadow-sm border border-gray-100 relative overflow-hidden">
+            <div className="absolute top-0 right-0 bg-teal-600 text-white px-6 py-2 rounded-bl-2xl text-sm font-medium">
+              Professional
             </div>
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900">Business Tax Filing</h3>
-                <p className="text-gray-600 mt-1 text-left">For Corporations & Multi-Member LLCs</p>
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold text-slate-900">$750</div>
-                <div className="text-sm text-gray-500">Starting at</div>
-              </div>
+            <div className="mb-8 text-left">
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Business Tax Filing</h3>
+              <p className="text-gray-600">For Corporations & Multi-Member LLCs</p>
             </div>
-            <ul className="space-y-4 mb-8 text-left">
+            <div className="mb-8 text-left">
+              <span className="text-5xl font-bold text-slate-900">$750</span>
+              <span className="text-gray-500 ml-2 text-lg">Starting at</span>
+            </div>
+            <ul className="space-y-4 mb-10 text-left">
               {[
                 'Federal & State Tax Returns',
                 'K-1 Issuance for Partners',
@@ -92,89 +92,105 @@ export function PartnerSpecial() {
                 'IRS Audit Protection'
               ].map((feature, i) => (
                 <li key={i} className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-teal-600 flex-shrink-0" />
+                  <div className="bg-teal-50 p-1 rounded-full">
+                    <Check className="w-4 h-4 text-teal-600" />
+                  </div>
                   <span className="text-gray-700">{feature}</span>
                 </li>
               ))}
             </ul>
-            <Button className="w-full bg-teal-600 hover:bg-teal-700 py-6 text-lg" onClick={() => document.getElementById('priority-intake')?.scrollIntoView({ behavior: 'smooth' })}>
-              Start Business Filing
+            <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white py-6 rounded-xl text-lg" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+              Get Started
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Workflow Section - Left Aligned */}
-      <section className="py-16 bg-slate-50 border-y border-gray-200">
+      {/* Contact Section - Replicated from Contact Us Page */}
+      <section id="contact" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-left mb-12">
-            <h2 className="text-3xl text-slate-900 font-medium">How We Work Together</h2>
-            <p className="text-gray-600 mt-2">A seamless hand-off designed for professional bookkeeping firms</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm text-left">
-              <div className="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-6">1</div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2 font-medium">Referral</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">Introduce your client through this portal for priority intake.</p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm text-left">
-              <div className="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-6">2</div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2 font-medium">Preparation</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">We handle complex C-Corp compliance and technical reporting.</p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm text-left">
-              <div className="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-6">3</div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2 font-medium">Finalization</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">We sync with your books to ensure tax-ready accuracy.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="text-left">
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">Let's Connect</h2>
+              <p className="text-xl text-gray-600 mb-12 font-light">
+                Ready to optimize your business taxes? Contact us for a consultation.
+              </p>
 
-      {/* Contact Section */}
-      <section id="priority-intake" className="py-20 text-left">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-12 items-start">
-            <div className="lg:col-span-1">
-              <h2 className="text-3xl mb-6 text-slate-900">Get in Touch</h2>
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <Mail className="text-teal-600" /> <span className="text-gray-600">cpa@taxclaim.co</span>
+              <div className="space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="bg-teal-50 p-3 rounded-xl">
+                    <Mail className="w-6 h-6 text-teal-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-900">Email Us</h3>
+                    <p className="text-gray-600 font-light">cpa@taxclaim.co</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <MessageSquare className="text-teal-600" /> <span className="text-gray-600">WhatsApp Available</span>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-teal-50 p-3 rounded-xl">
+                    <MessageSquare className="w-6 h-6 text-teal-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-900">WhatsApp</h3>
+                    <p className="text-gray-600 italic font-light text-sm">Priority consultation messaging enabled.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-teal-50 p-3 rounded-xl">
+                    <Clock className="w-6 h-6 text-teal-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-900">Working Hours</h3>
+                    <p className="text-gray-600 font-light">Mon - Fri: 9:00 AM - 6:00 PM PST</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-2">
-              <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-                {submitted ? (
-                  <div className="py-12 text-center">
-                    <CheckCircle2 className="w-16 h-16 text-teal-600 mx-auto mb-4" />
-                    <h3 className="text-2xl mb-2 text-slate-900">Thank You!</h3>
-                    <p className="text-gray-600">Your inquiry has been received. We will contact you shortly.</p>
+            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl shadow-slate-200/50 border border-slate-100 text-left">
+              {submitted ? (
+                <div className="text-center py-12">
+                  <div className="bg-teal-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 className="w-10 h-10 text-teal-600" />
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Full Name *</Label>
-                        <Input id="name" required value={formData.name} onChange={(e) => handleChange('name', e.target.value)} />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email Address *</Label>
-                        <Input id="email" type="email" required value={formData.email} onChange={(e) => handleChange('email', e.target.value)} />
-                      </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Message Sent</h3>
+                  <p className="text-gray-600">We will get back to you within 24 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-slate-900 font-medium">Full Name</Label>
+                      <Input id="name" required placeholder="John Doe" className="bg-slate-50 border-none h-12 focus:ring-2 focus:ring-teal-600" value={formData.name} onChange={(e) => handleChange('name', e.target.value)} />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea id="message" required value={formData.message} onChange={(e) => handleChange('message', e.target.value)} rows={5} />
+                      <Label htmlFor="email" className="text-slate-900 font-medium">Email Address</Label>
+                      <Input id="email" type="email" required placeholder="john@example.com" className="bg-slate-50 border-none h-12 focus:ring-2 focus:ring-teal-600" value={formData.email} onChange={(e) => handleChange('email', e.target.value)} />
                     </div>
-                    <Button type="submit" size="lg" className="w-full bg-teal-600 hover:bg-teal-700 text-lg py-6">Send Message</Button>
-                  </form>
-                )}
-              </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-slate-900 font-medium">Message</Label>
+                    <Textarea id="message" required placeholder="Tell us about your business tax needs..." rows={5} className="bg-slate-50 border-none focus:ring-2 focus:ring-teal-600 p-4" value={formData.message} onChange={(e) => handleChange('message', e.target.value)} />
+                  </div>
+
+                  {/* Referral Fee Disclosure */}
+                  <div className="flex items-center gap-3 p-4 bg-teal-50/50 rounded-xl border border-teal-100">
+                    <div className="bg-teal-600 rounded-full p-1 flex-shrink-0">
+                      <Check className="w-3 h-3 text-white" />
+                    </div>
+                    <p className="text-sm text-slate-700 font-medium">
+                      We offer referral commissions on our services referred by a partner. It can go up to 20% of the fees charged.
+                    </p>
+                  </div>
+
+                  <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white h-14 rounded-xl text-lg font-bold transition-all shadow-lg shadow-teal-600/20">
+                    Send Message
+                  </Button>
+                </form>
+              )}
             </div>
           </div>
         </div>
