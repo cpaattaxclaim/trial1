@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
+import { useSEO } from '../hooks/useSEO';
 import { 
   Shield, 
   Award, 
@@ -14,6 +15,12 @@ import {
 } from 'lucide-react';
 
 export function AboutPage() {
+  useSEO({
+    title: 'About TaxClaim | Licensed CPA — San Jose, CA',
+    description: 'Meet the licensed CPA behind TaxClaim. We combine deep tax expertise with personalised service to help individuals and businesses in San Jose and beyond.',
+    canonical: 'https://taxclaim.co/about',
+  });
+
   const credentials = [
     {
       icon: Award,
