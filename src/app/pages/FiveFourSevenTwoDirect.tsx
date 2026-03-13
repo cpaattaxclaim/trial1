@@ -44,7 +44,7 @@ function ContactItem({ icon, title, value, href, isExternal = false }: any) {
           href={href} 
           target={isExternal ? "_blank" : undefined} 
           rel={isExternal ? "noopener noreferrer" : undefined} 
-          className="text-slate-600 hover:text-teal-600 transition-colors"
+          className="text-slate-600 hover:text-teal-600 transition-colors cursor-pointer"
         >
           {value}
         </a>
@@ -83,8 +83,7 @@ export function FiveFourSevenTwoDirect() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch(`https://formspree.io/f/mlgplgkj`, 
-      {
+      const response = await fetch(`https://formspree.io/f/mlgplgkj`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify(formData),
@@ -105,7 +104,6 @@ export function FiveFourSevenTwoDirect() {
     }
   };
 
-  // Business Tax Filing service data — from Code 1
   const businessTaxService = {
     id: 'business-tax',
     icon: Building2,
@@ -137,14 +135,21 @@ export function FiveFourSevenTwoDirect() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <div className="max-w-3xl">
             <h1 className="text-5xl mb-6 font-normal">Business Advisory & Services</h1>
-            <p className="text-xl text-gray-300 font-light leading-relaxed">
+            <p className="text-xl text-gray-300 font-light leading-relaxed mb-8">
               Professional tax strategy and business formation services. Reach out today for a consultation.
             </p>
+            <Button
+              size="lg"
+              className="bg-teal-600 hover:bg-teal-700 text-lg px-8 cursor-pointer"
+              onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Schedule Free Consultation
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Business Tax Filing Section — UI from Code 1 */}
+      {/* Business Tax Filing Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
@@ -166,7 +171,7 @@ export function FiveFourSevenTwoDirect() {
                 <p className="text-gray-700 mb-6">{businessTaxService.description}</p>
 
                 <Button 
-                  className="w-full bg-teal-600 hover:bg-teal-700"
+                  className="w-full bg-teal-600 hover:bg-teal-700 cursor-pointer"
                   onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   Get Started
@@ -281,8 +286,6 @@ export function FiveFourSevenTwoDirect() {
                 <ContactItem icon={<Phone className="text-teal-600" />} title="Phone" value="+1 (415) 304-7262" href="tel:+14153047262" />
                 <ContactItem icon={<MessageSquare className="text-teal-600" />} title="WhatsApp" value="Chat instantly" href="https://wa.me/14153047262" isExternal />
               </div>
-
-
             </div>
 
             <div className="lg:col-span-2">
@@ -322,10 +325,10 @@ export function FiveFourSevenTwoDirect() {
                       <div className="space-y-2">
                         <Label>Business Type</Label>
                         <Select onValueChange={(v) => handleChange('businessType', v)}>
-                          <SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger>
+                          <SelectTrigger className="cursor-pointer"><SelectValue placeholder="Select type" /></SelectTrigger>
                           <SelectContent>
                             {BUSINESS_TYPES.map(type => (
-                              <SelectItem key={type} value={type}>{type}</SelectItem>
+                              <SelectItem className="cursor-pointer" key={type} value={type}>{type}</SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
@@ -335,10 +338,10 @@ export function FiveFourSevenTwoDirect() {
                     <div className="space-y-2">
                       <Label>Service Interested In *</Label>
                       <Select required onValueChange={(v) => handleChange('service', v)}>
-                        <SelectTrigger><SelectValue placeholder="Select a service" /></SelectTrigger>
+                        <SelectTrigger className="cursor-pointer"><SelectValue placeholder="Select a service" /></SelectTrigger>
                         <SelectContent>
                           {SERVICES.map(service => (
-                            <SelectItem key={service} value={service}>{service}</SelectItem>
+                            <SelectItem className="cursor-pointer" key={service} value={service}>{service}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
@@ -363,7 +366,7 @@ export function FiveFourSevenTwoDirect() {
                       </Label>
                     </div>
 
-                    <Button type="submit" disabled={isSubmitting} className="w-full bg-teal-600 hover:bg-teal-700 h-12 text-lg">
+                    <Button type="submit" disabled={isSubmitting} className="w-full bg-teal-600 hover:bg-teal-700 h-12 text-lg cursor-pointer">
                       {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...</> : 'Send Message'}
                     </Button>
 
