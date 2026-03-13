@@ -12,7 +12,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '../components/ui/select';
-import { Mail, Phone, MessageSquare, CheckCircle2, Loader2, Building2 } from 'lucide-react';
+import { Mail, Phone, MessageSquare, CheckCircle2, Loader2, Building2, ArrowRight } from 'lucide-react';
 
 const BUSINESS_TYPES = [
   "LLC",
@@ -71,7 +71,7 @@ export function FiveFourSevenTwoDirect() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section - Matching CODE 2 UI */}
+      {/* Page Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl text-left">
@@ -83,20 +83,25 @@ export function FiveFourSevenTwoDirect() {
         </div>
       </section>
 
-      {/* Business Tax Filing - EXACT REPLICA FROM SERVICES */}
+      {/* Business Tax Filing - EXACT REPLICA INCLUDING PRICE AND BUTTON */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-            <div className="grid md:grid-cols-3">
-              <div className="md:col-span-1 bg-slate-50 p-8 text-left">
+          <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="grid md:grid-cols-3 text-left">
+              <div className="md:col-span-1 bg-slate-50 p-8">
                 <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
                   <Building2 className="w-6 h-6 text-teal-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Business Tax Filing</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Business Tax Filing</h3>
                 <p className="text-sm text-slate-500 mb-4 font-medium">Partnerships, S-Corps, C-Corps</p>
+                <div className="text-3xl font-bold text-teal-600 mb-4">Starting from $750</div>
                 <p className="text-slate-600 mb-6">Comprehensive business tax preparation for partnerships, S-Corporations, and C-Corporations.</p>
+                <Button className="w-full bg-teal-600 hover:bg-teal-700" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Get Started
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
               </div>
-              <div className="md:col-span-2 p-8 text-left">
+              <div className="md:col-span-2 p-8">
                 <h4 className="font-bold text-slate-900 mb-4">What's Included</h4>
                 <div className="grid sm:grid-cols-2 gap-3 mb-8">
                   {[
@@ -119,12 +124,15 @@ export function FiveFourSevenTwoDirect() {
         </div>
       </section>
 
-      {/* Why Choose TaxClaim - EXACT REPLICA FROM HOME */}
+      {/* Why Choose TaxClaim - EXACT REPLICA INCLUDING SUBHEADING */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Choose TaxClaim?</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">Why Choose TaxClaim?</h2>
+              <p className="text-lg text-slate-600 mb-8">
+                We're not just tax preparers. We're your strategic partners in business success.
+              </p>
               <div className="space-y-6">
                 {[
                   { title: 'Licensed & Certified', desc: 'CPA licensed in Washington State with expertise across all 50 states.' },
@@ -158,8 +166,8 @@ export function FiveFourSevenTwoDirect() {
         </div>
       </section>
 
-      {/* Contact Section - EXACT REPLICA FROM CONTACT CODE */}
-      <section className="py-20">
+      {/* Contact Section - RESTORED PLACEHOLDERS AND UI */}
+      <section id="contact-form" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12 text-left">
             <div className="lg:col-span-1 space-y-8">
@@ -186,18 +194,18 @@ export function FiveFourSevenTwoDirect() {
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label>Full Name *</Label>
-                        <Input required value={formData.name} onChange={(e) => handleChange('name', e.target.value)} />
+                        <Input required value={formData.name} onChange={(e) => handleChange('name', e.target.value)} placeholder="John Doe" />
                       </div>
                       <div className="space-y-2">
                         <Label>Email Address *</Label>
-                        <Input required type="email" value={formData.email} onChange={(e) => handleChange('email', e.target.value)} />
+                        <Input required type="email" value={formData.email} onChange={(e) => handleChange('email', e.target.value)} placeholder="john@example.com" />
                       </div>
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label>Phone Number</Label>
-                        <Input type="tel" value={formData.phone} onChange={(e) => handleChange('phone', e.target.value)} />
+                        <Input type="tel" value={formData.phone} onChange={(e) => handleChange('phone', e.target.value)} placeholder="+1 (555) 000-0000" />
                       </div>
                       <div className="space-y-2">
                         <Label>Business Type *</Label>
@@ -212,21 +220,21 @@ export function FiveFourSevenTwoDirect() {
 
                     <div className="space-y-2">
                       <Label>Message *</Label>
-                      <Textarea required rows={5} value={formData.message} onChange={(e) => handleChange('message', e.target.value)} />
+                      <Textarea required rows={5} value={formData.message} onChange={(e) => handleChange('message', e.target.value)} placeholder="How can we help you?" />
                     </div>
 
-                    {/* Referral Agreement Section */}
+                    {/* Updated Referral Language */}
                     <div className="flex items-center space-x-3 p-4 bg-slate-50 rounded-xl border border-slate-200">
                       <input 
                         type="checkbox" 
                         id="referral" 
-                        className="w-5 h-5 accent-teal-600" 
+                        className="w-5 h-5 accent-teal-600 cursor-pointer" 
                         checked={formData.referralAgreement}
                         onChange={(e) => handleChange('referralAgreement', e.target.checked)}
                         required
                       />
-                      <Label htmlFor="referral" className="text-sm text-slate-700">
-                        I am interested in the referral partnership program (up to 20% commission).
+                      <Label htmlFor="referral" className="text-sm text-slate-700 cursor-pointer">
+                        I am interested in joining the partnership program (TaxClaim pays up to 20% referral commission).
                       </Label>
                     </div>
 
@@ -248,7 +256,7 @@ export function FiveFourSevenTwoDirect() {
 
 function ContactItem({ icon, title, value, href, isExternal = false }: any) {
   return (
-    <div className="flex items-start gap-4 text-left">
+    <div className="flex items-start gap-4">
       <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center shrink-0">
         {icon}
       </div>
