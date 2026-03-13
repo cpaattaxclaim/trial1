@@ -8,18 +8,18 @@ import { FAQPage } from "./pages/FAQPage";
 import { BlogPage } from "./pages/BlogPage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
-import { PartnerSpecial } from './pages/PartnerSpecial';
 import { CookiePolicyPage } from "./pages/CookiePolicyPage";
+
+// 1. Import the new hidden page component
+import { FiveFourSevenTwoDirect } from './pages/FiveFourSevenTwoDirect';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // If there is no hash (like #tax-filing), scroll to the very top
     if (!hash) {
       window.scrollTo(0, 0);
     } else {
-      // If there IS a hash, find that element and scroll to it
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) {
@@ -40,7 +40,7 @@ function RootLayout() {
   );
 }
 
-// SUCCESS: Changed to createBrowserRouter for Clean URLs
+// SUCCESS: Updated with the new 5472Direct route
 export const router = createBrowserRouter([
   {
     Component: RootLayout,
@@ -53,8 +53,10 @@ export const router = createBrowserRouter([
       { path: "/resources", Component: BlogPage },
       { path: "/privacy-policy", Component: PrivacyPolicyPage },
       { path: "/terms-of-service", Component: TermsOfServicePage },
-      { path: "/priority-partner", Component: PartnerSpecial },
       { path: "/cookie-policy", Component: CookiePolicyPage },
+      
+      // 2. Add the hidden partner page path here
+      { path: "/5472direct", Component: FiveFourSevenTwoDirect },
     ],
   },
 ]);
