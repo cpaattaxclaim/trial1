@@ -3,10 +3,13 @@ import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
-import { Calendar, Clock, ArrowRight, FileText, TrendingUp } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, FileText, TrendingUp, Loader2, CheckCircle2 } from 'lucide-react';
 
 export function BlogPage() {
   const [activeCategory, setActiveCategory] = useState('All Articles');
+  const [email, setEmail] = useState('');
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
 
   const articles = [
     {
@@ -54,6 +57,29 @@ export function BlogPage() {
     ? articles 
     : articles.filter(article => article.category === activeCategory);
 
+  const handleSubscribe = async () => {
+    if (!email) return;
+    setIsSubscribing(true);
+    try {
+      const response = await fetch('https://formspree.io/f/mreylenj', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (response.ok) {
+        setSubscribed(true);
+        setEmail('');
+        setTimeout(() => setSubscribed(false), 5000);
+      } else {
+        alert('Subscription failed. Please try again.');
+      }
+    } catch (error) {
+      alert('An error occurred. Please try again.');
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -78,7 +104,7 @@ export function BlogPage() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-lg border transition-colors ${
+                className={`px-4 py-2 rounded-lg border transition-colors cursor-pointer ${
                   activeCategory === category
                     ? 'bg-teal-600 text-white border-teal-600'
                     : 'bg-white text-gray-700 border-gray-300 hover:border-teal-600 hover:text-teal-600'
@@ -102,7 +128,7 @@ export function BlogPage() {
                   href={article.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl hover:border-teal-200 transition-all group"
+                  className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl hover:border-teal-200 transition-all group cursor-pointer"
                 >
                   <div className="p-8">
                     <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-teal-600 transition-colors">
@@ -145,7 +171,7 @@ export function BlogPage() {
               <p className="text-gray-500 text-lg">No articles found in this category yet. Check back soon!</p>
               <button 
                 onClick={() => setActiveCategory('All Articles')}
-                className="text-teal-600 mt-2 hover:underline"
+                className="text-teal-600 mt-2 hover:underline cursor-pointer"
               >
                 View all articles
               </button>
@@ -163,16 +189,30 @@ export function BlogPage() {
               Subscribe to our newsletter for the latest tax tips and regulatory updates.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 rounded-lg text-slate-900 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-400 h-10"
-              />
-              <Button className="bg-teal-600 hover:bg-teal-700 h-10 px-6">
-                Subscribe
-              </Button>
-            </div>
+            {subscribed ? (
+              <div className="flex items-center justify-center gap-2 text-teal-300">
+                <CheckCircle2 className="w-5 h-5" />
+                <span>You're subscribed! Thanks for joining.</span>
+              </div>
+            ) : (
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
+                  className="flex-1 px-4 py-2 rounded-lg text-slate-900 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-400 h-10"
+                />
+                <Button
+                  onClick={handleSubscribe}
+                  disabled={isSubscribing || !email}
+                  className="bg-teal-600 hover:bg-teal-700 h-10 px-6 cursor-pointer"
+                >
+                  {isSubscribing ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Subscribing...</> : 'Subscribe'}
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -186,13 +226,13 @@ export function BlogPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://taxclaim.co/contact">
-              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-3">
+            <a href="https://taxclaim.co/contact" className="cursor-pointer">
+              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-3 cursor-pointer">
                 Schedule Consultation
               </Button>
             </a>
-            <a href="https://taxclaim.co/services">
-              <Button size="lg" variant="outline" className="px-8 py-3">
+            <a href="https://taxclaim.co/services" className="cursor-pointer">
+              <Button size="lg" variant="outline" className="px-8 py-3 cursor-pointer">
                 View Our Services
               </Button>
             </a>
