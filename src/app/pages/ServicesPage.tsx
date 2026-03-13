@@ -18,11 +18,9 @@ import {
 } from 'lucide-react';
 
 export function ServicesPage() {
-  // Handle scrolling to hash on page load
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
-      // Wait for the page to render
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
@@ -205,8 +203,8 @@ export function ServicesPage() {
                     
                     <p className="text-gray-700 mb-6">{service.description}</p>
                     
-                    <Link to="/contact">
-                      <Button className="w-full bg-teal-600 hover:bg-teal-700">
+                    <Link to="/contact" className="cursor-pointer">
+                      <Button className="w-full bg-teal-600 hover:bg-teal-700 cursor-pointer">
                         Get Started
                       </Button>
                     </Link>
@@ -256,7 +254,6 @@ export function ServicesPage() {
           </div>
 
           <div className="relative max-w-5xl mx-auto">
-            {/* Connection line */}
             <div className="hidden lg:block absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-teal-200 via-teal-400 to-teal-200"></div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -311,13 +308,13 @@ export function ServicesPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8">
+            <Link to="/contact" className="cursor-pointer">
+              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8 cursor-pointer">
                 Request Consultation
               </Button>
             </Link>
-            <Link to="/faq">
-              <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent border-white text-white hover:bg-white/10">
+            <Link to="/faq" className="cursor-pointer">
+              <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent border-white text-white hover:!bg-white/10 hover:!text-white hover:!border-white cursor-pointer">
                 View FAQ
               </Button>
             </Link>
