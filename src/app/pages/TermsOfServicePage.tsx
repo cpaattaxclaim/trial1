@@ -78,7 +78,7 @@ export function TermsOfServicePage() {
 
             <h2 className="text-2xl mt-12 mb-4 text-slate-900">5. Confidentiality</h2>
             <p className="text-gray-600 mb-6">
-              We maintain strict confidentiality of all client information in accordance with professional standards and applicable laws. Information will only be disclosed with your consent or as required by law. For more details, see our <Link to="/privacy-policy" className="text-teal-600 hover:text-teal-700">Privacy Policy</Link>.
+              We maintain strict confidentiality of all client information in accordance with professional standards and applicable laws. Information will only be disclosed with your consent or as required by law. For more details, see our <Link to="/privacy-policy" className="text-teal-600 hover:text-teal-700 cursor-pointer">Privacy Policy</Link>.
             </p>
 
             <h2 className="text-2xl mt-12 mb-4 text-slate-900">6. Limitations of Liability</h2>
@@ -168,8 +168,8 @@ export function TermsOfServicePage() {
             </p>
             <div className="bg-slate-50 rounded-xl p-6 mb-8">
               <p className="text-gray-700 mb-2"><strong>TaxClaim</strong></p>
-              <p className="text-gray-600 mb-1">Email: <a href="mailto:cpa@taxclaim.co" className="text-teal-600 hover:text-teal-700">cpa@taxclaim.co</a></p>
-              <p className="text-gray-600 mb-1">Phone: <a href="tel:+14153047262" className="text-teal-600 hover:text-teal-700">+1 (415) 304-7262</a></p>
+              <p className="text-gray-600 mb-1">Email: <a href="mailto:cpa@taxclaim.co" className="text-teal-600 hover:text-teal-700 cursor-pointer">cpa@taxclaim.co</a></p>
+              <p className="text-gray-600 mb-1">Phone: <a href="tel:+14153047262" className="text-teal-600 hover:text-teal-700 cursor-pointer">+1 (415) 304-7262</a></p>
               <p className="text-gray-600">Location: San Jose, California</p>
             </div>
 
