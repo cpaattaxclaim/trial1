@@ -4,12 +4,12 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useSEO } from '../../hooks/useSEO';
-import { 
-  FileText, 
-  Building2, 
-  Calculator, 
-  ShieldCheck, 
-  BookOpen, 
+import {
+  FileText,
+  Building2,
+  Calculator,
+  ShieldCheck,
+  BookOpen,
   TrendingUp,
   CheckCircle2,
   Phone,
@@ -198,19 +198,23 @@ export function ServicesPage() {
                   {/* Left: Service Info */}
                   <div className="md:col-span-1 bg-slate-50 p-8">
                     <div className="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
-                      <service.icon className="w-8 h-8 text-teal-600" />
+                      <service.icon className="w-8 h-8 text-teal-600" aria-hidden="true" />
                     </div>
-                    
-                    <h3 className="text-2xl mb-2 text-slate-900">{service.title}</h3>
+
+                    <h2 className="text-2xl mb-2 text-slate-900">{service.title}</h2>
                     {service.subtitle && (
                       <p className="text-sm text-gray-600 mb-4">{service.subtitle}</p>
                     )}
-                    
+
                     <div className="text-3xl text-teal-600 mb-4">{service.price}</div>
-                    
+
                     <p className="text-gray-700 mb-6">{service.description}</p>
-                    
-                    <Link to="/contact" className="cursor-pointer">
+
+                    <Link
+                      to="/contact"
+                      aria-label={`Get started with ${service.title} at TaxClaim CPA`}
+                      className="cursor-pointer"
+                    >
                       <Button className="w-full bg-teal-600 hover:bg-teal-700 cursor-pointer">
                         Get Started
                       </Button>
@@ -219,11 +223,11 @@ export function ServicesPage() {
 
                   {/* Right: What's Included */}
                   <div className="md:col-span-2 p-8">
-                    <h4 className="text-lg mb-4 text-slate-900">What's Included</h4>
+                    <h3 className="text-lg mb-4 text-slate-900">What's Included</h3>
                     <div className="grid sm:grid-cols-2 gap-3 mb-6">
                       {service.included.map((item, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                           <span className="text-gray-700 text-sm">{item}</span>
                         </div>
                       ))}
@@ -231,11 +235,11 @@ export function ServicesPage() {
 
                     {service.notIncluded.length > 0 && (
                       <>
-                        <h4 className="text-lg mb-4 text-slate-900">Additional Services Available</h4>
+                        <h3 className="text-lg mb-4 text-slate-900">Additional Services Available</h3>
                         <div className="space-y-2">
                           {service.notIncluded.map((item, i) => (
                             <div key={i} className="flex items-start gap-2">
-                              <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
                                 <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                               </div>
                               <span className="text-gray-600 text-sm">{item}</span>
@@ -261,8 +265,8 @@ export function ServicesPage() {
           </div>
 
           <div className="relative max-w-5xl mx-auto">
-            <div className="hidden lg:block absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-teal-200 via-teal-400 to-teal-200"></div>
-            
+            <div className="hidden lg:block absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-teal-200 via-teal-400 to-teal-200" aria-hidden="true"></div>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
@@ -293,7 +297,7 @@ export function ServicesPage() {
                 <div key={idx} className="relative">
                   <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:border-teal-200 transition-all h-full">
                     <div className="relative z-10 mb-4">
-                      <item.icon className="w-8 h-8 text-teal-600" />
+                      <item.icon className="w-8 h-8 text-teal-600" aria-hidden="true" />
                     </div>
                     <div className="text-sm font-semibold text-teal-600 mb-2">STEP {item.step}</div>
                     <h3 className="text-xl mb-3 text-slate-900">{item.title}</h3>
@@ -313,14 +317,22 @@ export function ServicesPage() {
           <p className="text-xl text-gray-300 mb-8">
             Contact us today for a free consultation and personalized quote.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="cursor-pointer">
+            <Link
+              to="/contact"
+              aria-label="Request a free tax consultation with TaxClaim CPA"
+              className="cursor-pointer"
+            >
               <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8 cursor-pointer">
                 Request Consultation
               </Button>
             </Link>
-            <Link to="/faq" className="cursor-pointer">
+            <Link
+              to="/faq"
+              aria-label="View frequently asked questions about TaxClaim CPA services"
+              className="cursor-pointer"
+            >
               <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent border-white text-white hover:!bg-white/10 hover:!text-white hover:!border-white cursor-pointer">
                 View FAQ
               </Button>
