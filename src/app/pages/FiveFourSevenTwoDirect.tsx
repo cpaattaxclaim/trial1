@@ -281,14 +281,7 @@ export function FiveFourSevenTwoDirect() {
                 <ContactItem icon={<MessageSquare className="text-teal-600" />} title="WhatsApp" value="Chat instantly" href="https://wa.me/14153047262" isExternal />
               </div>
 
-              <div className="p-6 bg-slate-50 rounded-xl border border-slate-200">
-                <h3 className="font-bold text-slate-900 mb-4">Office Hours (PST)</h3>
-                <div className="text-sm space-y-2 text-slate-600">
-                  <div className="flex justify-between"><span>Mon - Fri</span> <span className="text-slate-900">9AM - 6PM</span></div>
-                  <div className="flex justify-between"><span>Saturday</span> <span className="text-slate-900">10AM - 2PM</span></div>
-                  <div className="flex justify-between"><span>Sunday</span> <span className="text-slate-900">Closed</span></div>
-                </div>
-              </div>
+
             </div>
 
             <div className="lg:col-span-2">
