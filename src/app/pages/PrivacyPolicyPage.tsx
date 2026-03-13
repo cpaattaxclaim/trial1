@@ -1,8 +1,14 @@
 import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { useSEO } from '../../hooks/useSEO';
 
 export function PrivacyPolicyPage() {
+  useSEO({
+    title: 'Privacy Policy | TaxClaim CPA',
+    description: 'Learn how TaxClaim collects, uses, and protects your personal information. We are committed to safeguarding your data in accordance with professional CPA standards.',
+    canonical: 'https://taxclaim.co/privacy-policy',
+  });
   return (
     <div className="min-h-screen bg-white">
       <Header />
