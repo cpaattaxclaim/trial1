@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet, useLocation } from "react-router";
+import { createBrowserRouter, Outlet, useLocation, Navigate } from "react-router";
 import { useEffect } from "react";
 import { HomePage } from "./pages/HomePage";
 import { ServicesPage } from "./pages/ServicesPage";
@@ -10,13 +10,10 @@ import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 import { CookiePolicyPage } from "./pages/CookiePolicyPage";
 import { BlogPostPage } from './pages/BlogPostPage';
-
-// 1. Import the new hidden page component
 import { FiveFourSevenTwoDirect } from './pages/FiveFourSevenTwoDirect';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
-
   useEffect(() => {
     if (!hash) {
       window.scrollTo(0, 0);
@@ -28,7 +25,6 @@ function ScrollToTop() {
       }
     }
   }, [pathname, hash]);
-
   return null;
 }
 
@@ -41,7 +37,6 @@ function RootLayout() {
   );
 }
 
-// SUCCESS: Updated with the new 5472Direct route
 export const router = createBrowserRouter([
   {
     Component: RootLayout,
@@ -51,14 +46,13 @@ export const router = createBrowserRouter([
       { path: "/about", Component: AboutPage },
       { path: "/contact", Component: ContactPage },
       { path: "/faq", Component: FAQPage },
-      { path: "/resources", Component: BlogPage },
+      { path: "/blog", Component: BlogPage },
       { path: "/blog/:slug", Component: BlogPostPage },
+      // Redirect /resources to /blog so old links don't break
+      { path: "/resources", element: <Navigate to="/blog" replace /> },
       { path: "/privacy-policy", Component: PrivacyPolicyPage },
       { path: "/terms-of-service", Component: TermsOfServicePage },
       { path: "/cookie-policy", Component: CookiePolicyPage },
-
-      
-      // 2. Add the hidden partner page path here
       { path: "/5472direct", Component: FiveFourSevenTwoDirect },
     ],
   },
