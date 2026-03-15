@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from './ui/button';
-import logoImg from '../../assets/header.webp';
+import logoImg from '../../assets/Header.webp';
 
 function TaxClaimLogo() {
   return (
