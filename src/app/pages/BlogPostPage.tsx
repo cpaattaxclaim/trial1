@@ -142,20 +142,27 @@ export function BlogPostPage() {
       {/* Article Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Back link on its own line */}
           <Link
             to="/resources"
-            className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-8 transition-colors"
+            className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-1" />
             Back to Blog
           </Link>
 
-          <div className="inline-block px-3 py-1 bg-teal-600 text-white rounded-full text-xs mb-4">
-            {post.category}
+          {/* Category badge on its own line */}
+          <div className="mb-4">
+            <span className="inline-block px-3 py-1 bg-teal-600 text-white rounded-full text-xs">
+              {post.category}
+            </span>
           </div>
 
+          {/* Title */}
           <h1 className="text-4xl md:text-5xl mb-6 leading-tight">{post.title}</h1>
 
+          {/* Date and read time */}
           <div className="flex items-center gap-4 text-sm text-gray-400">
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
@@ -166,6 +173,7 @@ export function BlogPostPage() {
               {post.readTime || '3 min read'}
             </div>
           </div>
+
         </div>
       </section>
 
