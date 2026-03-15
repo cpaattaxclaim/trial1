@@ -111,7 +111,7 @@ export function FiveFourSevenTwoDirect() {
           <div className="max-w-3xl">
             <h1 className="text-5xl mb-6">Complex Form 5472 case? We can help.</h1>
             <p className="text-xl text-gray-300 leading-relaxed mb-8">
-              If 5472Direct screened out your case because it's more complex than their standard self-serve flow, TaxClaim is the CPA option for foreign-owned single-member LLCs that need professional Form 5472 and pro forma 1120 support.
+              Foreign-owned single-member LLCs have unique U.S. tax obligations. Missing or incorrect Form 5472 filings can trigger penalties of $25,000 or more. We provide licensed CPA support for complex Form 5472 and pro forma 1120 filings, ensuring your LLC stays compliant without the stress of navigating it alone.
             </p>
             <Button
               size="lg"
@@ -165,10 +165,10 @@ export function FiveFourSevenTwoDirect() {
                 <div className="md:col-span-2 p-8">
                   <h4 className="text-lg mb-2 text-slate-900">What TaxClaim can help with</h4>
                   <p className="text-gray-600 text-sm mb-2">
-                    This page is specifically for cases referred from 5472Direct. These are foreign-owned single-member LLCs whose situation is too complex for a standard self-serve filing tool and need CPA review.
+                    Form 5472 compliance for foreign-owned single-member LLCs is one of the most commonly mishandled filings with the IRS. Missing or incorrect filings can result in penalties of $25,000 or more, even when no tax is owed.
                   </p>
                   <p className="text-gray-600 text-sm mb-6">
-                    These cases need a licensed CPA to step in, assess the specifics, and handle the filing with the care and accuracy that a self-serve tool cannot provide.
+                    We work directly with you to review your LLC's structure, prepare the required forms accurately, and file on time, giving you confidence that your U.S. tax obligations are fully covered.
                   </p>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {[
@@ -197,7 +197,7 @@ export function FiveFourSevenTwoDirect() {
             <div>
               <h2 className="text-4xl mb-6 text-slate-900">Why Choose TaxClaim?</h2>
               <p className="text-lg text-gray-600 mb-8">
-                5472Direct handles straightforward filings through their self-serve tool. When a case gets screened out as too complex, TaxClaim is the CPA option, bringing professional review, judgment, and accurate filing to situations that need it.
+                We understand that foreign-owned LLC compliance in the U.S. is not straightforward. TaxClaim brings the expertise, attention to detail, and direct communication that complex Form 5472 cases require.
               </p>
               <div className="space-y-4">
                 {[
@@ -258,7 +258,7 @@ export function FiveFourSevenTwoDirect() {
             <div className="lg:col-span-1 space-y-8">
               <div>
                 <h2 className="text-2xl font-bold text-slate-900 mb-2">Talk to a CPA about your Form 5472 case</h2>
-                <p className="text-gray-600 text-sm">Tell us about your LLC and why your case was referred from 5472Direct. We'll review your situation and let you know the best next step.</p>
+                <p className="text-gray-600 text-sm">Tell us about your LLC and why your case was referred from 5472Direct. We'll review the details and walk you through the best next step.</p>
               </div>
               <div className="space-y-6">
                 <ContactItem icon={<Mail className="text-teal-600" />} title="Email" value="cpa@taxclaim.co" href="mailto:cpa@taxclaim.co" />
