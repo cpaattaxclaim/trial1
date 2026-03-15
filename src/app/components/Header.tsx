@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from './ui/button';
-import logoImg from '../../assets/e09cf434f4642b4eefbedaec44ef7fab7fd81999.png';
+import logoImg from '../../assets/header.webp';
 
 function TaxClaimLogo() {
   return (
@@ -38,9 +38,9 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center gap-6">
-              <a href="mailto:cpa@taxclaim.co" className="flex items-center gap-2 hover:text-teal-300 transition-colors cursor-pointer">
+              <a href={`mailto:${'cpa'}@${'taxclaim'}.co`} className="flex items-center gap-2 hover:text-teal-300 transition-colors cursor-pointer">
                 <Mail className="w-4 h-4" />
-                <span className="hidden sm:inline">cpa@taxclaim.co</span>
+                <span className="hidden sm:inline">cpa&#64;taxclaim.co</span>
               </a>
               <a href="tel:+14153047262" className="flex items-center gap-2 hover:text-teal-300 transition-colors cursor-pointer">
                 <Phone className="w-4 h-4" />
