@@ -62,15 +62,12 @@ export function BlogPostPage() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useSEO(
-    post
-      ? {
-          title: `${post.title} | TaxClaim CPA Blog`,
-          description: post.excerpt,
-          canonical: `https://taxclaim.co/blog/${slug}`,
-        }
-      : {}
-  );
+  // Fixed: always passes valid strings — falls back to defaults until post loads
+  useSEO({
+    title: post ? `${post.title} | TaxClaim CPA Blog` : 'TaxClaim CPA Blog',
+    description: post?.excerpt || 'Expert tax and business insights from TaxClaim CPA.',
+    canonical: `https://taxclaim.co/blog/${slug}`,
+  });
 
   useEffect(() => {
     client
@@ -125,7 +122,7 @@ export function BlogPostPage() {
         <Header />
         <div className="max-w-3xl mx-auto px-4 py-40 text-center">
           <h1 className="text-3xl text-slate-900 mb-4">Article not found</h1>
-          <Link to="/resources" className="cursor-pointer">
+          <Link to="/blog" className="cursor-pointer">
             <Button className="bg-teal-600 hover:bg-teal-700 cursor-pointer">Back to Blog</Button>
           </Link>
         </div>
@@ -144,7 +141,7 @@ export function BlogPostPage() {
 
           {/* Back link */}
           <Link
-            to="/resources"
+            to="/blog"
             className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-6 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 mr-1" />
@@ -200,7 +197,7 @@ export function BlogPostPage() {
 
           {/* Back to all articles */}
           <div className="mt-16 pt-8 border-t border-gray-200">
-            <Link to="/resources" className="cursor-pointer">
+            <Link to="/blog" className="cursor-pointer">
               <Button
                 variant="outline"
                 className="border-teal-600 text-teal-600 hover:bg-teal-50 cursor-pointer"
@@ -221,16 +218,16 @@ export function BlogPostPage() {
             Let's discuss your specific situation with a personalized consultation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://taxclaim.co/contact" className="cursor-pointer">
+            <Link to="/contact" className="cursor-pointer">
               <Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-3 cursor-pointer">
                 Schedule Consultation
               </Button>
-            </a>
-            <a href="https://taxclaim.co/services" className="cursor-pointer">
+            </Link>
+            <Link to="/services" className="cursor-pointer">
               <Button size="lg" variant="outline" className="px-8 py-3 cursor-pointer">
                 View Our Services
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
