@@ -153,9 +153,6 @@ export function FiveFourSevenTwoDirect() {
                   </div>
                   <h3 className="text-2xl mb-2 text-slate-900">CPA support for complex filing cases</h3>
                   <div className="text-3xl text-teal-600 mb-4 mt-4">Starting from $750</div>
-                  <p className="text-gray-700 mb-6 text-sm">
-                    Cases referred from 5472Direct are often outside a standard self-serve flow and need a CPA to review, prepare, and file accurately.
-                  </p>
                   <Button
                     className="w-full bg-teal-600 hover:bg-teal-700 cursor-pointer"
                     onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
@@ -167,8 +164,11 @@ export function FiveFourSevenTwoDirect() {
                 {/* Right */}
                 <div className="md:col-span-2 p-8">
                   <h4 className="text-lg mb-2 text-slate-900">What TaxClaim can help with</h4>
-                  <p className="text-gray-600 text-sm mb-6">
+                  <p className="text-gray-600 text-sm mb-2">
                     This page is specifically for cases referred from 5472Direct. These are foreign-owned single-member LLCs whose situation is too complex for a standard self-serve filing tool and need CPA review.
+                  </p>
+                  <p className="text-gray-600 text-sm mb-6">
+                    These cases need a licensed CPA to step in, assess the specifics, and handle the filing with the care and accuracy that a self-serve tool cannot provide.
                   </p>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {[
