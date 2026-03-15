@@ -9,6 +9,7 @@ import { BlogPage } from "./pages/BlogPage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 import { CookiePolicyPage } from "./pages/CookiePolicyPage";
+import { BlogPostPage } from './pages/BlogPostPage';
 
 // 1. Import the new hidden page component
 import { FiveFourSevenTwoDirect } from './pages/FiveFourSevenTwoDirect';
@@ -51,9 +52,11 @@ export const router = createBrowserRouter([
       { path: "/contact", Component: ContactPage },
       { path: "/faq", Component: FAQPage },
       { path: "/resources", Component: BlogPage },
+      { path: "/blog/:slug", Component: BlogPostPage },
       { path: "/privacy-policy", Component: PrivacyPolicyPage },
       { path: "/terms-of-service", Component: TermsOfServicePage },
       { path: "/cookie-policy", Component: CookiePolicyPage },
+
       
       // 2. Add the hidden partner page path here
       { path: "/5472direct", Component: FiveFourSevenTwoDirect },
