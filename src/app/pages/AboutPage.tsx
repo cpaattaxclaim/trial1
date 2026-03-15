@@ -39,8 +39,8 @@ export function AboutPage() {
     },
     {
       icon: TrendingUp,
-      title: 'Proven Results',
-      desc: '99% client satisfaction with measurable tax savings'
+      title: 'On-Time Filing',
+      desc: '100% on-time filing record across all client engagements'
     }
   ];
 
