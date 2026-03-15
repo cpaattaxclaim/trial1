@@ -20,7 +20,7 @@ import {
 
 export function ServicesPage() {
   useSEO({
-    title: 'Services & Pricing | TaxClaim CPA — San Jose, CA',
+    title: 'Services | TaxClaim CPA - San Jose, CA',
     description: 'Transparent pricing for individual & business tax filing, bookkeeping, sales tax, company formation, IRS resolution, and advisory. Starting from $200. No hidden fees.',
     canonical: 'https://taxclaim.co/services',
   });
