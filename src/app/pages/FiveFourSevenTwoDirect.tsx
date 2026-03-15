@@ -104,6 +104,7 @@ export function FiveFourSevenTwoDirect() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+      <main>
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
@@ -368,6 +369,7 @@ export function FiveFourSevenTwoDirect() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );
