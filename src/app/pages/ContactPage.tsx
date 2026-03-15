@@ -112,7 +112,7 @@ export function ContactPage() {
             <div className="lg:col-span-1 space-y-8">
               <h2 className="text-2xl font-bold text-slate-900">Contact Details</h2>
               <div className="space-y-6">
-                <ContactItem icon={<Mail className="text-teal-600" />} title="Email" value="cpa@taxclaim.co" href="mailto:cpa@taxclaim.co" />
+                <ContactItem icon={<Mail className="text-teal-600" />} title="Email" value="cpa&#64;taxclaim.co" href={`mailto:${"cpa"}@${"taxclaim"}.co`} />
                 <ContactItem icon={<Phone className="text-teal-600" />} title="Phone" value="+1 (415) 304-7262" href="tel:+14153047262" />
                 <ContactItem icon={<MessageSquare className="text-teal-600" />} title="WhatsApp" value="Chat instantly" href="https://wa.me/14153047262" isExternal />
               </div>
