@@ -37,9 +37,15 @@ const portableTextComponents = {
     image: ({ value }) => (
       <figure className="my-8">
         <img
-          src={urlFor(value).width(800).url()}
+          src={urlFor(value).width(800).format('webp').quality(85).url()}
+          srcSet={`
+            ${urlFor(value).width(400).format('webp').quality(85).url()} 400w,
+            ${urlFor(value).width(800).format('webp').quality(85).url()} 800w
+          `}
+          sizes="(max-width: 640px) 400px, 800px"
           alt={value.alt || ''}
           className="w-full rounded-xl"
+          loading="lazy"
         />
         {value.caption && (
           <figcaption className="text-center text-sm text-gray-500 mt-2">{value.caption}</figcaption>
@@ -177,12 +183,19 @@ export function BlogPostPage() {
       <section className="py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Main image if exists */}
+          {/* Main image if exists — responsive WebP via Sanity */}
           {post.mainImage && (
             <img
-              src={urlFor(post.mainImage).width(800).url()}
+              src={urlFor(post.mainImage).width(800).format('webp').quality(85).url()}
+              srcSet={`
+                ${urlFor(post.mainImage).width(400).format('webp').quality(85).url()} 400w,
+                ${urlFor(post.mainImage).width(800).format('webp').quality(85).url()} 800w,
+                ${urlFor(post.mainImage).width(1200).format('webp').quality(85).url()} 1200w
+              `}
+              sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px"
               alt={post.title}
               className="w-full rounded-xl mb-10"
+              loading="lazy"
             />
           )}
 
