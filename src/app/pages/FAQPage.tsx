@@ -13,7 +13,7 @@ import { MessageSquare } from 'lucide-react';
 
 export function FAQPage() {
   useSEO({
-    title: 'FAQ | TaxClaim CPA — Common Tax & Accounting Questions',
+    title: 'FAQ | TaxClaim CPA - Common Tax & Accounting Questions',
     description: 'Got questions about tax filing, bookkeeping, IRS notices, or company formation? Browse TaxClaim\'s frequently asked questions or contact us for a free consultation.',
     canonical: 'https://taxclaim.co/faq',
   });
