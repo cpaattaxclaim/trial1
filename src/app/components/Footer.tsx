@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import logoWhiteImg from '../../assets/footer.webp';
+import logoWhiteImg from '../../assets/Footer.webp';
 
 export function Footer() {
   return (
