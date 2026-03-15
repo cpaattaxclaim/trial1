@@ -38,7 +38,7 @@ const SERVICES = [
 
 export function ContactPage() {
   useSEO({
-    title: 'Contact TaxClaim | Free CPA Consultation — San Jose, CA',
+    title: 'Contact TaxClaim | Free CPA Consultation - San Jose, CA',
     description: 'Schedule a free consultation with TaxClaim. Reach us by email, phone, or WhatsApp. We serve individuals and businesses across the US with expert tax and advisory services.',
     canonical: 'https://taxclaim.co/contact',
   });
