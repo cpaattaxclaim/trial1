@@ -197,7 +197,7 @@ export function FiveFourSevenTwoDirect() {
             <div>
               <h2 className="text-4xl mb-6 text-slate-900">Why Choose TaxClaim?</h2>
               <p className="text-lg text-gray-600 mb-8">
-                We understand that foreign-owned LLC compliance in the U.S. is not straightforward. TaxClaim brings the expertise, attention to detail, and direct communication that complex Form 5472 cases require.
+                We understand that foreign-owned LLC compliance in the U.S. is not always straightforward. TaxClaim brings the expertise, attention to detail, and direct communication that complex Form 5472 cases require.
               </p>
               <div className="space-y-4">
                 {[
