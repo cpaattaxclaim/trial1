@@ -11,6 +11,8 @@ import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 import { CookiePolicyPage } from "./pages/CookiePolicyPage";
 import { BlogPostPage } from './pages/BlogPostPage';
 import { FiveFourSevenTwoDirect } from './pages/FiveFourSevenTwoDirect';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -54,6 +56,7 @@ export const router = createBrowserRouter([
       { path: "/terms-of-service", Component: TermsOfServicePage },
       { path: "/cookie-policy", Component: CookiePolicyPage },
       { path: "/5472direct", Component: FiveFourSevenTwoDirect },
+      { path: "*", Component: NotFoundPage },
     ],
   },
 ]);
