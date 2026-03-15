@@ -16,7 +16,7 @@ import {
 
 export function AboutPage() {
   useSEO({
-    title: 'About TaxClaim | Licensed CPA — San Jose, CA',
+    title: 'About TaxClaim | Licensed CPA - San Jose, CA',
     description: 'Meet the licensed CPA behind TaxClaim. We combine deep tax expertise with personalised service to help individuals and businesses in San Jose and beyond.',
     canonical: 'https://taxclaim.co/about',
   });
