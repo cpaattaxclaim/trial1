@@ -1,18 +1,21 @@
 import { createBrowserRouter, Outlet, useLocation, Navigate } from "react-router";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
+
+// Eagerly loaded — core pages
 import { HomePage } from "./pages/HomePage";
-import { ServicesPage } from "./pages/ServicesPage";
-import { AboutPage } from "./pages/AboutPage";
-import { ContactPage } from "./pages/ContactPage";
-import { FAQPage } from "./pages/FAQPage";
-import { BlogPage } from "./pages/BlogPage";
-import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
-import { TermsOfServicePage } from "./pages/TermsOfServicePage";
-import { CookiePolicyPage } from "./pages/CookiePolicyPage";
-import { BlogPostPage } from './pages/BlogPostPage';
-import { FiveFourSevenTwoDirect } from './pages/FiveFourSevenTwoDirect';
-import { NotFoundPage } from './pages/NotFoundPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+import { NotFoundPage } from "./pages/NotFoundPage";
+
+// Lazy loaded — reduces initial bundle size
+const ServicesPage = lazy(() => import("./pages/ServicesPage").then(m => ({ default: m.ServicesPage })));
+const AboutPage = lazy(() => import("./pages/AboutPage").then(m => ({ default: m.AboutPage })));
+const ContactPage = lazy(() => import("./pages/ContactPage").then(m => ({ default: m.ContactPage })));
+const FAQPage = lazy(() => import("./pages/FAQPage").then(m => ({ default: m.FAQPage })));
+const BlogPage = lazy(() => import("./pages/BlogPage").then(m => ({ default: m.BlogPage })));
+const BlogPostPage = lazy(() => import("./pages/BlogPostPage").then(m => ({ default: m.BlogPostPage })));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage").then(m => ({ default: m.PrivacyPolicyPage })));
+const TermsOfServicePage = lazy(() => import("./pages/TermsOfServicePage").then(m => ({ default: m.TermsOfServicePage })));
+const CookiePolicyPage = lazy(() => import("./pages/CookiePolicyPage").then(m => ({ default: m.CookiePolicyPage })));
+const FiveFourSevenTwoDirect = lazy(() => import("./pages/FiveFourSevenTwoDirect").then(m => ({ default: m.FiveFourSevenTwoDirect })));
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -34,7 +37,9 @@ function RootLayout() {
   return (
     <>
       <ScrollToTop />
-      <Outlet />
+      <Suspense fallback={<div className="min-h-screen bg-white" />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
@@ -50,7 +55,6 @@ export const router = createBrowserRouter([
       { path: "/faq", Component: FAQPage },
       { path: "/blog", Component: BlogPage },
       { path: "/blog/:slug", Component: BlogPostPage },
-      // Redirect /resources to /blog so old links don't break
       { path: "/resources", element: <Navigate to="/blog" replace /> },
       { path: "/privacy-policy", Component: PrivacyPolicyPage },
       { path: "/terms-of-service", Component: TermsOfServicePage },
