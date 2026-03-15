@@ -7,11 +7,20 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  // CHANGED: From '/trial1/' to '/' because of the custom domain
-  base: '/', 
+  base: '/',
   resolve: {
     alias: {
       "@": "/src",
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router'],
+          sanity: ['@sanity/client', '@portabletext/react'],
+        }
+      }
+    }
+  }
 })
