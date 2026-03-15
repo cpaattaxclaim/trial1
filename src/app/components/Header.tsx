@@ -51,6 +51,7 @@ export function Header() {
               href="https://wa.me/14153047262"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
               className="flex items-center gap-2 text-teal-300 hover:text-teal-200 transition-colors cursor-pointer"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -66,8 +67,8 @@ export function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center cursor-pointer">
-            <img src={logoImg} alt="TaxClaim – CPA & Business Advisory" className="h-10 w-auto" />
+          <Link to="/" aria-label="TaxClaim Home" className="flex items-center cursor-pointer">
+            <img src={logoImg} alt="TaxClaim – CPA & Business Advisory" className="h-10 w-auto" fetchPriority="high" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -96,6 +97,7 @@ export function Header() {
           <button
             className="md:hidden p-2 cursor-pointer"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
