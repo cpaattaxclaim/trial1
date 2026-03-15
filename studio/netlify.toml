@@ -1,0 +1,7 @@
+[build]
+  command = "npm install && npm run build"
+  publish = "dist"
+
+[build.environment]
+  SANITY_STUDIO_PROJECT_ID = "95kssyaz"
+  SANITY_STUDIO_DATASET = "production"
