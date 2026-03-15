@@ -5,7 +5,6 @@ import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useSEO } from '../../hooks/useSEO';
 import { Calendar, Clock, ArrowRight, FileText, TrendingUp, Loader2, CheckCircle2 } from 'lucide-react';
-import { client } from '../lib/sanityClient';
 import { client } from '../../lib/sanityClient';
 
 // Map category to icon
