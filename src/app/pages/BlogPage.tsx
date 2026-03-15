@@ -109,6 +109,7 @@ export function BlogPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+      <main>
 
       {/* Page Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
@@ -128,6 +129,7 @@ export function BlogPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/blog/compliance-101-keeping-your-business-in-good-standing"
+            aria-label="Read featured article: Compliance 101: Keeping Your Business in Good Standing"
             className="block bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow group cursor-pointer"
           >
             <div className="grid md:grid-cols-2">
@@ -200,22 +202,9 @@ export function BlogPage() {
                   <Link
                     key={article._id}
                     to={`/blog/${article.slug?.current}`}
+                    aria-label={`Read article: ${article.title}`}
                     className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl hover:border-teal-200 transition-all group cursor-pointer"
                   >
-                    {/* Main image if exists — responsive WebP */}
-                    {article.mainImage && (
-                      <img
-                        src={urlFor(article.mainImage).width(600).height(300).format('webp').quality(85).url()}
-                        srcSet={`
-                          ${urlFor(article.mainImage).width(400).height(200).format('webp').quality(85).url()} 400w,
-                          ${urlFor(article.mainImage).width(600).height(300).format('webp').quality(85).url()} 600w
-                        `}
-                        sizes="(max-width: 640px) 400px, 600px"
-                        alt={article.title}
-                        className="w-full h-48 object-cover"
-                        loading="lazy"
-                      />
-                    )}
                     <div className="p-8">
                       <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-teal-600 transition-colors">
                         <Icon className="w-6 h-6 text-teal-600 group-hover:text-white transition-colors" />
@@ -339,6 +328,7 @@ export function BlogPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );
