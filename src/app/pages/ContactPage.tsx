@@ -90,6 +90,7 @@ export function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+      <main>
 
       {/* Page Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
@@ -204,6 +205,7 @@ export function ContactPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );
