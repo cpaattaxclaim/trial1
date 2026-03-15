@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import logoWhiteImg from '../../assets/ab39d0d1adb619a98bbaa602fe6d2ee4a7060e88.png';
+import logoWhiteImg from '../../assets/footer.webp';
 
 export function Footer() {
   return (
@@ -97,8 +97,8 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <Mail className="w-4 h-4 mt-1 text-teal-300 flex-shrink-0" />
-                <a href="mailto:cpa@taxclaim.co" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
-                  cpa@taxclaim.co
+                <a href={`mailto:${'cpa'}@${'taxclaim'}.co`} className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
+                  cpa&#64;taxclaim.co
                 </a>
               </li>
               <li className="flex items-start gap-2">
