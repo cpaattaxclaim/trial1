@@ -197,7 +197,7 @@ export function FiveFourSevenTwoDirect() {
             <div>
               <h2 className="text-4xl mb-6 text-slate-900">Why Choose TaxClaim?</h2>
               <p className="text-lg text-gray-600 mb-8">
-                We understand that foreign-owned LLC compliance in the U.S. is not always straightforward. TaxClaim brings the expertise, attention to detail, and direct communication that complex Form 5472 cases require.
+                We're not just tax preparers – we're your strategic partners in business success. Our comprehensive approach ensures you're not only compliant but positioned for growth.
               </p>
               <div className="space-y-4">
                 {[
@@ -261,7 +261,7 @@ export function FiveFourSevenTwoDirect() {
                 <p className="text-gray-600 text-sm">Tell us about your LLC and why your case was referred from 5472Direct. We'll review the details and walk you through the best next step.</p>
               </div>
               <div className="space-y-6">
-                <ContactItem icon={<Mail className="text-teal-600" />} title="Email" value="cpa@taxclaim.co" href="mailto:cpa@taxclaim.co" />
+                <ContactItem icon={<Mail className="text-teal-600" />} title="Email" value="cpa&#64;taxclaim.co" href={`mailto:${"cpa"}@${"taxclaim"}.co`} />
                 <ContactItem icon={<Phone className="text-teal-600" />} title="Phone" value="+1 (415) 304-7262" href="tel:+14153047262" />
                 <ContactItem icon={<MessageSquare className="text-teal-600" />} title="WhatsApp" value="Chat instantly" href="https://wa.me/14153047262" isExternal />
               </div>
