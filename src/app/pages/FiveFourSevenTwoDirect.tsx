@@ -349,7 +349,7 @@ export function FiveFourSevenTwoDirect() {
                         required
                       />
                       <Label htmlFor="referral" className="text-xs text-slate-500 cursor-pointer leading-relaxed">
-                        This engagement may be subject to a referral fee of up to 20%. By checking this box, you acknowledge and agree to these terms.
+                        I acknowledge that TaxClaim may pay a standard referral fee to 5472Direct for this introduction. This fee is paid entirely by TaxClaim and does not increase the cost of my services.
                       </Label>
                     </div>
 
