@@ -114,10 +114,12 @@ export function BlogPostPage() {
     return (
       <div className="min-h-screen bg-white">
         <Header />
+      <main>
         <div className="flex justify-center items-center py-40">
           <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
         </div>
-        <Footer />
+        </main>
+      <Footer />
       </div>
     );
   }
@@ -126,13 +128,15 @@ export function BlogPostPage() {
     return (
       <div className="min-h-screen bg-white">
         <Header />
+      <main>
         <div className="max-w-3xl mx-auto px-4 py-40 text-center">
           <h1 className="text-3xl text-slate-900 mb-4">Article not found</h1>
           <Link to="/blog" className="cursor-pointer">
             <Button className="bg-teal-600 hover:bg-teal-700 cursor-pointer">Back to Blog</Button>
           </Link>
         </div>
-        <Footer />
+        </main>
+      <Footer />
       </div>
     );
   }
@@ -140,6 +144,7 @@ export function BlogPostPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+      <main>
 
       {/* Article Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
@@ -245,6 +250,7 @@ export function BlogPostPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );
