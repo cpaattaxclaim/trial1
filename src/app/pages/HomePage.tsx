@@ -19,7 +19,7 @@ import {
 
 export function HomePage() {
   useSEO({
-    title: 'TaxClaim | CPA & Business Advisory — San Jose, CA',
+    title: 'TaxClaim | CPA & Business Advisory - San Jose, CA',
     description: 'TaxClaim is a licensed CPA firm in San Jose offering individual & business tax filing, bookkeeping, company formation, IRS resolution, and advisory services. Get a free consultation today.',
     canonical: 'https://taxclaim.co/',
   });
