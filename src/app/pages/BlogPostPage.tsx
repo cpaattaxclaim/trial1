@@ -8,7 +8,6 @@ import { Calendar, Clock, ArrowLeft, Loader2 } from 'lucide-react';
 import { client, urlFor } from '../../lib/sanityClient';
 import { PortableText } from '@portabletext/react';
 
-// Portable Text components to render Sanity rich text with your site's styles
 const portableTextComponents = {
   block: {
     normal: ({ children }) => <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>,
@@ -126,8 +125,8 @@ export function BlogPostPage() {
         <Header />
         <div className="max-w-3xl mx-auto px-4 py-40 text-center">
           <h1 className="text-3xl text-slate-900 mb-4">Article not found</h1>
-          <Link to="/resources">
-            <Button className="bg-teal-600 hover:bg-teal-700">Back to Blog</Button>
+          <Link to="/resources" className="cursor-pointer">
+            <Button className="bg-teal-600 hover:bg-teal-700 cursor-pointer">Back to Blog</Button>
           </Link>
         </div>
         <Footer />
@@ -143,16 +142,16 @@ export function BlogPostPage() {
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Back link on its own line */}
+          {/* Back link */}
           <Link
             to="/resources"
-            className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-6 transition-colors"
+            className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-6 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 mr-1" />
             Back to Blog
           </Link>
 
-          {/* Category badge on its own line */}
+          {/* Category badge */}
           <div className="mb-4">
             <span className="inline-block px-3 py-1 bg-teal-600 text-white rounded-full text-xs">
               {post.category}
@@ -199,10 +198,13 @@ export function BlogPostPage() {
             )}
           </div>
 
-          {/* Back link */}
+          {/* Back to all articles */}
           <div className="mt-16 pt-8 border-t border-gray-200">
-            <Link to="/resources">
-              <Button variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50">
+            <Link to="/resources" className="cursor-pointer">
+              <Button
+                variant="outline"
+                className="border-teal-600 text-teal-600 hover:bg-teal-50 cursor-pointer"
+              >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to all articles
               </Button>
@@ -219,13 +221,13 @@ export function BlogPostPage() {
             Let's discuss your specific situation with a personalized consultation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://taxclaim.co/contact">
-              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-3">
+            <a href="https://taxclaim.co/contact" className="cursor-pointer">
+              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-3 cursor-pointer">
                 Schedule Consultation
               </Button>
             </a>
-            <a href="https://taxclaim.co/services">
-              <Button size="lg" variant="outline" className="px-8 py-3">
+            <a href="https://taxclaim.co/services" className="cursor-pointer">
+              <Button size="lg" variant="outline" className="px-8 py-3 cursor-pointer">
                 View Our Services
               </Button>
             </a>
