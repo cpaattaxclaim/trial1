@@ -1,0 +1,231 @@
+import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router';
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
+import { Button } from '../components/ui/button';
+import { useSEO } from '../../hooks/useSEO';
+import { Calendar, Clock, ArrowLeft, Loader2 } from 'lucide-react';
+import { client, urlFor } from '../../lib/sanityClient';
+import { PortableText } from '@portabletext/react';
+
+// Portable Text components to render Sanity rich text with your site's styles
+const portableTextComponents = {
+  block: {
+    normal: ({ children }) => <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>,
+    h2: ({ children }) => <h2 className="text-2xl text-slate-900 mt-10 mb-4">{children}</h2>,
+    h3: ({ children }) => <h3 className="text-xl text-slate-900 mt-8 mb-3">{children}</h3>,
+    blockquote: ({ children }) => (
+      <blockquote className="border-l-4 border-teal-500 pl-4 italic text-gray-600 my-6">
+        {children}
+      </blockquote>
+    ),
+  },
+  marks: {
+    strong: ({ children }) => <strong className="font-semibold text-slate-900">{children}</strong>,
+    em: ({ children }) => <em className="italic">{children}</em>,
+    link: ({ value, children }) => (
+      <a
+        href={value?.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-teal-600 underline hover:text-teal-700"
+      >
+        {children}
+      </a>
+    ),
+  },
+  types: {
+    image: ({ value }) => (
+      <figure className="my-8">
+        <img
+          src={urlFor(value).width(800).url()}
+          alt={value.alt || ''}
+          className="w-full rounded-xl"
+        />
+        {value.caption && (
+          <figcaption className="text-center text-sm text-gray-500 mt-2">{value.caption}</figcaption>
+        )}
+      </figure>
+    ),
+  },
+  list: {
+    bullet: ({ children }) => <ul className="list-disc pl-6 mb-4 space-y-2 text-gray-700">{children}</ul>,
+    number: ({ children }) => <ol className="list-decimal pl-6 mb-4 space-y-2 text-gray-700">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }) => <li>{children}</li>,
+    number: ({ children }) => <li>{children}</li>,
+  },
+};
+
+export function BlogPostPage() {
+  const { slug } = useParams();
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useSEO(
+    post
+      ? {
+          title: `${post.title} | TaxClaim CPA Blog`,
+          description: post.excerpt,
+          canonical: `https://taxclaim.co/blog/${slug}`,
+        }
+      : {}
+  );
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "post" && slug.current == $slug][0] {
+          _id,
+          title,
+          slug,
+          category,
+          excerpt,
+          publishedAt,
+          readTime,
+          body,
+          mainImage,
+        }`,
+        { slug }
+      )
+      .then((data) => {
+        setPost(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Sanity fetch error:', err);
+        setLoading(false);
+      });
+  }, [slug]);
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <div className="flex justify-center items-center py-40">
+          <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (!post) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <div className="max-w-3xl mx-auto px-4 py-40 text-center">
+          <h1 className="text-3xl text-slate-900 mb-4">Article not found</h1>
+          <Link to="/resources">
+            <Button className="bg-teal-600 hover:bg-teal-700">Back to Blog</Button>
+          </Link>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+
+      {/* Article Hero */}
+      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            to="/resources"
+            className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-8 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 mr-1" />
+            Back to Blog
+          </Link>
+
+          <div className="inline-block px-3 py-1 bg-teal-600 text-white rounded-full text-xs mb-4">
+            {post.category}
+          </div>
+
+          <h1 className="text-4xl md:text-5xl mb-6 leading-tight">{post.title}</h1>
+
+          <div className="flex items-center gap-4 text-sm text-gray-400">
+            <div className="flex items-center gap-1">
+              <Calendar className="w-4 h-4" />
+              {formatDate(post.publishedAt)}
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="w-4 h-4" />
+              {post.readTime || '3 min read'}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Article Content */}
+      <section className="py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Main image if exists */}
+          {post.mainImage && (
+            <img
+              src={urlFor(post.mainImage).width(800).url()}
+              alt={post.title}
+              className="w-full rounded-xl mb-10"
+            />
+          )}
+
+          {/* Article body */}
+          <div className="text-lg">
+            {post.body ? (
+              <PortableText value={post.body} components={portableTextComponents} />
+            ) : (
+              <p className="text-gray-500">No content available.</p>
+            )}
+          </div>
+
+          {/* Back link */}
+          <div className="mt-16 pt-8 border-t border-gray-200">
+            <Link to="/resources">
+              <Button variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to all articles
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl mb-4 text-slate-900">Need Professional Tax Help?</h2>
+          <p className="text-lg text-gray-600 mb-8">
+            Let's discuss your specific situation with a personalized consultation.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://taxclaim.co/contact">
+              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-3">
+                Schedule Consultation
+              </Button>
+            </a>
+            <a href="https://taxclaim.co/services">
+              <Button size="lg" variant="outline" className="px-8 py-3">
+                View Our Services
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
