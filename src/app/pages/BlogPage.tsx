@@ -4,7 +4,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useSEO } from '../../hooks/useSEO';
-import { Calendar, Clock, ArrowRight, FileText, TrendingUp, BookOpen, Loader2, CheckCircle2 } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, FileText, TrendingUp, Loader2, CheckCircle2 } from 'lucide-react';
 import { client } from '../../lib/sanityClient';
 
 // Map category to icon
@@ -141,12 +141,12 @@ export function BlogPage() {
                   Compliance 101: Keeping Your Business in Good Standing
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  A practical guide to understanding your business compliance obligations, from annual filings to registered agent requirements, so you never fall out of good standing.
+                  State and federal agencies are increasingly focused on the compliance gap. If your records don't account for Secretary of State renewals or multi-state payroll, your business could be sitting on a liability heading into the next filing season.
                 </p>
                 <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
-                    March 7, 2026
+                    March 15, 2026
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="w-4 h-4" />
@@ -158,8 +158,13 @@ export function BlogPage() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-teal-600 to-teal-700 p-12 flex items-center justify-center">
-                <BookOpen className="w-32 h-32 text-white opacity-50" />
+              <div className="overflow-hidden">
+                <img
+                  src="https://cdn.sanity.io/images/95kssyaz/production/70a4de12e8ff1e0a2653bce56bf32755df8c410b-1321x768.png"
+                  alt="Compliance 101: Keeping Your Business in Good Standing"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
             </div>
           </Link>
