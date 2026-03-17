@@ -92,6 +92,7 @@ export function BlogPostPage() {
     description: seoDescription,
     canonical: 'https://taxclaim.co/blog/' + slug,
     ogImage: seoOgImage,
+    ogType: 'article',
   });
 
   useEffect(() => {
@@ -185,7 +186,7 @@ export function BlogPostPage() {
 
         {/* Article Hero */}
         <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px:8">
             <Link
               to="/blog"
               className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-6 transition-colors cursor-pointer"
