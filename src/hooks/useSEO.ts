@@ -5,14 +5,13 @@ interface SEOProps {
   description: string;
   canonical?: string;
   noindex?: boolean;
+  ogImage?: string;
 }
 
-export function useSEO({ title, description, canonical, noindex = false }: SEOProps) {
+export function useSEO({ title, description, canonical, noindex = false, ogImage }: SEOProps) {
   useEffect(() => {
-    // Title
     document.title = title;
 
-    // Helper to set or create a meta tag
     const setMeta = (selector: string, attr: string, value: string) => {
       let el = document.querySelector(selector) as HTMLMetaElement | null;
       if (!el) {
@@ -23,6 +22,10 @@ export function useSEO({ title, description, canonical, noindex = false }: SEOPr
       el.setAttribute('content', value);
     };
 
+    const removeMeta = (selector: string) => {
+      document.querySelector(selector)?.remove();
+    };
+
     // Standard meta
     setMeta('meta[name="description"]', 'name=description', description);
     setMeta('meta[name="robots"]', 'name=robots', noindex ? 'noindex,nofollow' : 'index,follow');
@@ -30,15 +33,27 @@ export function useSEO({ title, description, canonical, noindex = false }: SEOPr
     // Open Graph
     setMeta('meta[property="og:title"]', 'property=og:title', title);
     setMeta('meta[property="og:description"]', 'property=og:description', description);
-    setMeta('meta[property="og:type"]', 'property=og:type', 'website');
+    setMeta('meta[property="og:type"]', 'property=og:type', 'article');
     setMeta('meta[property="og:site_name"]', 'property=og:site_name', 'TaxClaim');
 
+    if (ogImage) {
+      setMeta('meta[property="og:image"]', 'property=og:image', ogImage);
+    } else {
+      removeMeta('meta[property="og:image"]');
+    }
+
     // Twitter / X
-    setMeta('meta[name="twitter:card"]', 'name=twitter:card', 'summary');
+    setMeta('meta[name="twitter:card"]', 'name=twitter:card', ogImage ? 'summary_large_image' : 'summary');
     setMeta('meta[name="twitter:site"]', 'name=twitter:site', '@cpaattaxclaim');
     setMeta('meta[name="twitter:creator"]', 'name=twitter:creator', '@cpaattaxclaim');
     setMeta('meta[name="twitter:title"]', 'name=twitter:title', title);
     setMeta('meta[name="twitter:description"]', 'name=twitter:description', description);
+
+    if (ogImage) {
+      setMeta('meta[name="twitter:image"]', 'name=twitter:image', ogImage);
+    } else {
+      removeMeta('meta[name="twitter:image"]');
+    }
 
     // Canonical
     let canonicalEl = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -51,9 +66,8 @@ export function useSEO({ title, description, canonical, noindex = false }: SEOPr
       canonicalEl.setAttribute('href', canonical);
     }
 
-    // JSON-LD: sameAs links for brand entity disambiguation
-    const existingJsonLd = document.querySelector('script[data-taxclaim-sameas]');
-    if (!existingJsonLd) {
+    // JSON-LD brand entity
+    if (!document.querySelector('script[data-taxclaim-sameas]')) {
       const script = document.createElement('script');
       script.type = 'application/ld+json';
       script.setAttribute('data-taxclaim-sameas', 'true');
@@ -73,5 +87,5 @@ export function useSEO({ title, description, canonical, noindex = false }: SEOPr
       });
       document.head.appendChild(script);
     }
-  }, [title, description, canonical, noindex]);
+  }, [title, description, canonical, noindex, ogImage]);
 }
