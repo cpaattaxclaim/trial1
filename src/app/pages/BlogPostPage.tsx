@@ -25,7 +25,7 @@ const portableTextComponents = {
     link: ({ value, children }) => {
       const href = value ? value.href : '';
       return (
-        <a
+        
           href={href}
           target="_blank"
           rel="noopener noreferrer"
@@ -87,7 +87,7 @@ export function BlogPostPage() {
     ? post.seo.ogImage.asset.url
     : undefined;
 
-  useSEO({
+  const seoTags = useSEO({
     title: seoTitle,
     description: seoDescription,
     canonical: 'https://taxclaim.co/blog/' + slug,
@@ -137,6 +137,7 @@ export function BlogPostPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-white">
+        {seoTags}
         <Header />
         <main>
           <div className="flex justify-center items-center py-40">
@@ -151,6 +152,7 @@ export function BlogPostPage() {
   if (!post) {
     return (
       <div className="min-h-screen bg-white">
+        {seoTags}
         <Header />
         <main>
           <div className="max-w-3xl mx-auto px-4 py-40 text-center">
@@ -177,6 +179,7 @@ export function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {seoTags}
       <Header />
       <main>
 
