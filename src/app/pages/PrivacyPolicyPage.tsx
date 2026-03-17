@@ -142,7 +142,7 @@ export function PrivacyPolicyPage() {
               <p className="text-gray-700 mb-2"><strong>TaxClaim</strong></p>
               <p className="text-gray-600 mb-1">Email: <a href={`mailto:${'cpa'}@${'taxclaim'}.co`} className="text-teal-600 hover:text-teal-700 cursor-pointer">cpa&#64;taxclaim.co</a></p>
               <p className="text-gray-600 mb-1">Phone: <a href="tel:+14153047262" className="text-teal-600 hover:text-teal-700 cursor-pointer">+1 (415) 304-7262</a></p>
-              <p className="text-gray-600">Location: San Jose, California</p>
+              <p className="text-gray-600">Location: 3401 Iron Point Drive, San Jose, CA 95134</p>
             </div>
           </div>
         </div>
