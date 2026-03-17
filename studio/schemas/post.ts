@@ -58,5 +58,32 @@ export default {
       type: 'array',
       of: [{ type: 'block' }, { type: 'image' }],
     },
+    // ✅ SEO Fields
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          title: 'SEO Title',
+          type: 'string',
+          description: 'Overrides the post title in search results. Recommended: 50–60 characters.',
+        },
+        {
+          name: 'description',
+          title: 'Meta Description',
+          type: 'text',
+          rows: 3,
+          description: 'Summary shown in search results. Recommended: 150–160 characters.',
+        },
+        {
+          name: 'ogImage',
+          title: 'Social Share Image',
+          type: 'image',
+          description: 'Image shown when shared on social media. Ideal size: 1200×630px.',
+        },
+      ],
+    },
   ],
 }
