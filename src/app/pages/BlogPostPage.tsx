@@ -22,16 +22,19 @@ const portableTextComponents = {
   marks: {
     strong: ({ children }) => <strong className="font-semibold text-slate-900">{children}</strong>,
     em: ({ children }) => <em className="italic">{children}</em>,
-    link: ({ value, children }) => (
-      <a 
-        href={value?.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-teal-600 underline hover:text-teal-700"
-      >
-        {children}
-      </a>
-    ),
+    link: ({ value, children }) => {
+      const href = value ? value.href : '';
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-teal-600 underline hover:text-teal-700"
+        >
+          {children}
+        </a>
+      );
+    },
   },
   types: {
     image: ({ value }) => (
