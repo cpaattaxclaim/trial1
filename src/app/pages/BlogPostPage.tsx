@@ -23,8 +23,8 @@ const portableTextComponents = {
     strong: ({ children }) => <strong className="font-semibold text-slate-900">{children}</strong>,
     em: ({ children }) => <em className="italic">{children}</em>,
     link: ({ value, children }) => (
-      
-        href={value && value.href}
+      <a 
+        href={value?.href}
         target="_blank"
         rel="noopener noreferrer"
         className="text-teal-600 underline hover:text-teal-700"
