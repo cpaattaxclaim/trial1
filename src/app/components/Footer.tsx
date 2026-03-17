@@ -109,7 +109,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-1 text-teal-300 flex-shrink-0" />
-                <span className="text-gray-400">San Jose, CA</span>
+                <span className="text-gray-400">3401 Iron Point Drive, San Jose, CA 95134</span>
               </li>
               <li>
                 <a
