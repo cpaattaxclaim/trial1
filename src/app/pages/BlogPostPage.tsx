@@ -34,15 +34,15 @@ const portableTextComponents = {
     ),
     link: ({ value, children }) => {
       const href = value && value.href ? value.href : '';
-      return (
-        
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-teal-600 underline hover:text-teal-700"
-        >
-          {children}
-        </a>
+      return React.createElement(
+        'a',
+        {
+          href: href,
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          className: 'text-teal-600 underline hover:text-teal-700',
+        },
+        children
       );
     },
   },
