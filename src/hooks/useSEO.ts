@@ -7,16 +7,17 @@ interface SEOProps {
   canonical?: string;
   noindex?: boolean;
   ogImage?: string;
+  ogType?: string;
 }
 
-export function useSEO({ title, description, canonical, noindex = false, ogImage }: SEOProps) {
+export function useSEO({ title, description, canonical, noindex = false, ogImage, ogType = 'website' }: SEOProps) {
   return createElement(Helmet, null,
     createElement('title', null, title),
     createElement('meta', { name: 'description', content: description }),
     createElement('meta', { name: 'robots', content: noindex ? 'noindex,nofollow' : 'index,follow' }),
     createElement('meta', { property: 'og:title', content: title }),
     createElement('meta', { property: 'og:description', content: description }),
-    createElement('meta', { property: 'og:type', content: 'article' }),
+    createElement('meta', { property: 'og:type', content: ogType }),
     createElement('meta', { property: 'og:site_name', content: 'TaxClaim' }),
     ...(ogImage ? [createElement('meta', { property: 'og:image', content: ogImage })] : []),
     createElement('meta', { name: 'twitter:card', content: ogImage ? 'summary_large_image' : 'summary' }),
