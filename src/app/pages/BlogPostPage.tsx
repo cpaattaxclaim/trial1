@@ -24,7 +24,7 @@ const portableTextComponents = {
     em: ({ children }) => <em className="italic">{children}</em>,
     link: ({ value, children }) => (
       
-        href={value?.href}
+        href={value && value.href}
         target="_blank"
         rel="noopener noreferrer"
         className="text-teal-600 underline hover:text-teal-700"
@@ -68,12 +68,27 @@ export function BlogPostPage() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // ✅ SEO: uses seo fields if filled, falls back to post title/excerpt
+  const seoTitle = post && post.seo && post.seo.title
+    ? post.seo.title
+    : post
+    ? post.title + ' | TaxClaim CPA Blog'
+    : 'TaxClaim CPA Blog';
+
+  const seoDescription = post && post.seo && post.seo.description
+    ? post.seo.description
+    : post && post.excerpt
+    ? post.excerpt
+    : 'Expert tax and business insights from TaxClaim CPA.';
+
+  const seoOgImage = post && post.seo && post.seo.ogImage && post.seo.ogImage.asset
+    ? post.seo.ogImage.asset.url
+    : undefined;
+
   useSEO({
-    title: post?.seo?.title || (post ? `${post.title} | TaxClaim CPA Blog` : 'TaxClaim CPA Blog'),
-    description: post?.seo?.description || post?.excerpt || 'Expert tax and business insights from TaxClaim CPA.',
-    canonical: `https://taxclaim.co/blog/${slug}`,
-    ogImage: post?.seo?.ogImage?.asset?.url,
+    title: seoTitle,
+    description: seoDescription,
+    canonical: 'https://taxclaim.co/blog/' + slug,
+    ogImage: seoOgImage,
   });
 
   useEffect(() => {
@@ -147,6 +162,16 @@ export function BlogPostPage() {
     );
   }
 
+  const mainImageSrc = post.mainImage
+    ? urlFor(post.mainImage).width(800).format('webp').quality(85).url()
+    : null;
+
+  const mainImageSrcSet = post.mainImage
+    ? `${urlFor(post.mainImage).width(400).format('webp').quality(85).url()} 400w,
+       ${urlFor(post.mainImage).width(800).format('webp').quality(85).url()} 800w,
+       ${urlFor(post.mainImage).width(1200).format('webp').quality(85).url()} 1200w`
+    : null;
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -184,14 +209,10 @@ export function BlogPostPage() {
         {/* Article Content */}
         <section className="py-16">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            {post.mainImage && (
+            {mainImageSrc && (
               <img
-                src={urlFor(post.mainImage).width(800).format('webp').quality(85).url()}
-                srcSet={`
-                  ${urlFor(post.mainImage).width(400).format('webp').quality(85).url()} 400w,
-                  ${urlFor(post.mainImage).width(800).format('webp').quality(85).url()} 800w,
-                  ${urlFor(post.mainImage).width(1200).format('webp').quality(85).url()} 1200w
-                `}
+                src={mainImageSrc}
+                srcSet={mainImageSrcSet}
                 sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px"
                 alt={post.title}
                 className="w-full rounded-xl mb-10"
