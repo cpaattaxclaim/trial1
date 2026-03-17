@@ -10,9 +10,15 @@ import { PortableText } from '@portabletext/react';
 
 const portableTextComponents = {
   block: {
-    normal: ({ children }) => <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>,
-    h2: ({ children }) => <h2 className="text-2xl text-slate-900 mt-10 mb-4">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-xl text-slate-900 mt-8 mb-3">{children}</h3>,
+    normal: ({ children }) => (
+      <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>
+    ),
+    h2: ({ children }) => (
+      <h2 className="text-2xl text-slate-900 mt-10 mb-4">{children}</h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-xl text-slate-900 mt-8 mb-3">{children}</h3>
+    ),
     blockquote: ({ children }) => (
       <blockquote className="border-l-4 border-teal-500 pl-4 italic text-gray-600 my-6">
         {children}
@@ -20,10 +26,14 @@ const portableTextComponents = {
     ),
   },
   marks: {
-    strong: ({ children }) => <strong className="font-semibold text-slate-900">{children}</strong>,
-    em: ({ children }) => <em className="italic">{children}</em>,
+    strong: ({ children }) => (
+      <strong className="font-semibold text-slate-900">{children}</strong>
+    ),
+    em: ({ children }) => (
+      <em className="italic">{children}</em>
+    ),
     link: ({ value, children }) => {
-      const href = value ? value.href : '';
+      const href = value && value.href ? value.href : '';
       return (
         
           href={href}
@@ -51,14 +61,20 @@ const portableTextComponents = {
           loading="lazy"
         />
         {value.caption && (
-          <figcaption className="text-center text-sm text-gray-500 mt-2">{value.caption}</figcaption>
+          <figcaption className="text-center text-sm text-gray-500 mt-2">
+            {value.caption}
+          </figcaption>
         )}
       </figure>
     ),
   },
   list: {
-    bullet: ({ children }) => <ul className="list-disc pl-6 mb-4 space-y-2 text-gray-700">{children}</ul>,
-    number: ({ children }) => <ol className="list-decimal pl-6 mb-4 space-y-2 text-gray-700">{children}</ol>,
+    bullet: ({ children }) => (
+      <ul className="list-disc pl-6 mb-4 space-y-2 text-gray-700">{children}</ul>
+    ),
+    number: ({ children }) => (
+      <ol className="list-decimal pl-6 mb-4 space-y-2 text-gray-700">{children}</ol>
+    ),
   },
   listItem: {
     bullet: ({ children }) => <li>{children}</li>,
@@ -71,21 +87,24 @@ export function BlogPostPage() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const seoTitle = post && post.seo && post.seo.title
-    ? post.seo.title
-    : post
-    ? post.title + ' | TaxClaim CPA Blog'
-    : 'TaxClaim CPA Blog';
+  const seoTitle =
+    post && post.seo && post.seo.title
+      ? post.seo.title
+      : post
+      ? post.title + ' | TaxClaim CPA Blog'
+      : 'TaxClaim CPA Blog';
 
-  const seoDescription = post && post.seo && post.seo.description
-    ? post.seo.description
-    : post && post.excerpt
-    ? post.excerpt
-    : 'Expert tax and business insights from TaxClaim CPA.';
+  const seoDescription =
+    post && post.seo && post.seo.description
+      ? post.seo.description
+      : post && post.excerpt
+      ? post.excerpt
+      : 'Expert tax and business insights from TaxClaim CPA.';
 
-  const seoOgImage = post && post.seo && post.seo.ogImage && post.seo.ogImage.asset
-    ? post.seo.ogImage.asset.url
-    : undefined;
+  const seoOgImage =
+    post && post.seo && post.seo.ogImage && post.seo.ogImage.asset
+      ? post.seo.ogImage.asset.url
+      : undefined;
 
   const seoTags = useSEO({
     title: seoTitle,
@@ -159,7 +178,9 @@ export function BlogPostPage() {
           <div className="max-w-3xl mx-auto px-4 py-40 text-center">
             <h1 className="text-3xl text-slate-900 mb-4">Article not found</h1>
             <Link to="/blog" className="cursor-pointer">
-              <Button className="bg-teal-600 hover:bg-teal-700 cursor-pointer">Back to Blog</Button>
+              <Button className="bg-teal-600 hover:bg-teal-700 cursor-pointer">
+                Back to Blog
+              </Button>
             </Link>
           </div>
         </main>
@@ -186,7 +207,7 @@ export function BlogPostPage() {
 
         {/* Article Hero */}
         <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px:8">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link
               to="/blog"
               className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-6 transition-colors cursor-pointer"
@@ -199,7 +220,9 @@ export function BlogPostPage() {
                 {post.category}
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl mb-6 leading-tight">{post.title}</h1>
+            <h1 className="text-4xl md:text-5xl mb-6 leading-tight">
+              {post.title}
+            </h1>
             <div className="flex items-center gap-4 text-sm text-gray-400">
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
@@ -228,7 +251,10 @@ export function BlogPostPage() {
             )}
             <div className="text-lg">
               {post.body ? (
-                <PortableText value={post.body} components={portableTextComponents} />
+                <PortableText
+                  value={post.body}
+                  components={portableTextComponents}
+                />
               ) : (
                 <p className="text-gray-500">No content available.</p>
               )}
@@ -250,13 +276,18 @@ export function BlogPostPage() {
         {/* CTA Section */}
         <section className="py-20 bg-slate-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl mb-4 text-slate-900">Need Professional Tax Help?</h2>
+            <h2 className="text-3xl mb-4 text-slate-900">
+              Need Professional Tax Help?
+            </h2>
             <p className="text-lg text-gray-600 mb-8">
               Let's discuss your specific situation with a personalized consultation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="cursor-pointer">
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-3 cursor-pointer">
+                <Button
+                  size="lg"
+                  className="bg-teal-600 hover:bg-teal-700 px-8 py-3 cursor-pointer"
+                >
                   Schedule Consultation
                 </Button>
               </Link>
