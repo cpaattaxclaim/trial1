@@ -109,13 +109,14 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-1 text-teal-300 flex-shrink-0" />
-                <span className="text-gray-400">3401 Iron Point Drive, San Jose, CA 95134</span>
+                <span className="text-gray-400">3401 Iron Point Drive,<br />San Jose, CA 95134</span>
               </li>
               <li>
                 <a
                   href="https://wa.me/14153047262"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Chat on WhatsApp"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-teal-600 hover:bg-teal-700 rounded-lg transition-colors cursor-pointer"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
