@@ -77,8 +77,8 @@ const portableTextComponents = {
     ),
   },
   listItem: {
-    bullet: ({ children }) => <li>{children}</li>,
-    number: ({ children }) => <li>{children}</li>,
+    bullet: ({ children }) => <li className="text-justify">{children}</li>,
+    number: ({ children }) => <li className="text-justify">{children}</li>,
   },
 };
 
