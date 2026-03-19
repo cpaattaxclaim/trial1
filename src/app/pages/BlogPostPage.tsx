@@ -11,7 +11,7 @@ import { PortableText } from '@portabletext/react';
 const portableTextComponents = {
   block: {
     normal: ({ children }) => (
-      <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>
+      <p className="mb-4 text-gray-700 leading-relaxed text-justify">{children}</p>
     ),
     h2: ({ children }) => (
       <h2 className="text-2xl text-slate-900 mt-10 mb-4">{children}</h2>
