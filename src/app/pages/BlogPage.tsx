@@ -4,19 +4,19 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useSEO } from '../../hooks/useSEO';
-import { Calendar, Clock, ArrowRight, FileText, TrendingUp, Loader2, CheckCircle2 } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, FileText, TrendingUp, Building2, ShieldCheck, Rocket, Calculator, Loader2, CheckCircle2 } from 'lucide-react';
 import { client } from '../../lib/sanityClient';
 
 // Map category to icon
-const categoryIcons = {
-  Compliance: TrendingUp,
-  'Tax Filing': FileText,
+const categoryIcons: Record<string, any> = {
   'Tax Planning': TrendingUp,
-  IRS: FileText,
-  Bookkeeping: FileText,
-  Startup: TrendingUp,
-  'Business Formation': FileText,
+  'Tax Filing': FileText,
+  'Business Formation': Building2,
+  IRS: ShieldCheck,
+  Startup: Rocket,
+  Bookkeeping: Calculator,
   'Business Growth': TrendingUp,
+  Compliance: ShieldCheck,
 };
 
 export function BlogPage() {
