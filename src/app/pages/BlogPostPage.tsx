@@ -305,6 +305,33 @@ export function BlogPostPage() {
           </div>
         </section>
 
+        {/* CTA Section — topic-specific from Sanity, generic fallback */}
+        <section className="py-12 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl mb-4 text-slate-900">
+              {post.ctaText || 'Let TaxClaim handle this for you.'}
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Flat fee. Fully remote. 100% on-time.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact#contact-form" className="cursor-pointer">
+                <Button
+                  size="lg"
+                  className="bg-teal-600 hover:bg-teal-700 px-8 py-3 cursor-pointer"
+                >
+                  {post.ctaButtonLabel || 'Get Started'}
+                </Button>
+              </Link>
+              <Link to="/services" className="cursor-pointer">
+                <Button size="lg" variant="outline" className="px-8 py-3 cursor-pointer">
+                  View Our Services
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Related Posts — keeps readers in funnel, passes SEO authority */}
         {relatedPosts.length > 0 && (
           <section className="py-16 bg-slate-50">
@@ -340,33 +367,6 @@ export function BlogPostPage() {
             </div>
           </section>
         )}
-
-        {/* CTA Section — topic-specific from Sanity, generic fallback */}
-        <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl mb-4 text-slate-900">
-              {post.ctaText || 'Let TaxClaim handle this for you.'}
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Flat-fee tax filing and strategy for individuals, freelancers, LLCs, and businesses. Fully remote, 100% on-time.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact#contact-form" className="cursor-pointer">
-                <Button
-                  size="lg"
-                  className="bg-teal-600 hover:bg-teal-700 px-8 py-3 cursor-pointer"
-                >
-                  {post.ctaButtonLabel || 'Get Started'}
-                </Button>
-              </Link>
-              <Link to="/services" className="cursor-pointer">
-                <Button size="lg" variant="outline" className="px-8 py-3 cursor-pointer">
-                  View Our Services
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
 
       </main>
       <Footer />
