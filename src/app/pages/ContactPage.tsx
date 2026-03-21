@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
@@ -16,6 +16,7 @@ import {
 import { Mail, Phone, MessageSquare, CheckCircle2, Loader2 } from 'lucide-react';
 
 const BUSINESS_TYPES = [
+  "Salaried / W-2 Employee",
   "Individual/Self-Employed",
   "LLC",
   "Partnership",
@@ -54,6 +55,19 @@ export function ContactPage() {
     message: '',
     _gotcha: '' 
   });
+
+  // Scroll to form if #contact-form is in the URL
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === '#contact-form') {
+      setTimeout(() => {
+        const el = document.getElementById('contact-form');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
 
   const handleChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -98,7 +112,7 @@ export function ContactPage() {
           <div className="max-w-3xl">
             <h1 className="text-5xl mb-6">Get in Touch</h1>
             <p className="text-xl text-gray-300">
-              Professional tax strategy and business formation services. Reach out today for a consultation.
+              Whether you are filing as an individual, running a business, or managing a US LLC from abroad, TaxClaim is ready to help.
             </p>
           </div>
         </div>
@@ -128,8 +142,8 @@ export function ContactPage() {
               </div>
             </div>
 
-            {/* Form Section */}
-            <div className="lg:col-span-2">
+            {/* Form Section — id enables direct scroll from blog CTAs */}
+            <div className="lg:col-span-2" id="contact-form">
               <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
                 {submitted ? (
                   <div className="py-16 text-center animate-in fade-in zoom-in">
