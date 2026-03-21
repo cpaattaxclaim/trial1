@@ -4,9 +4,20 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useSEO } from '../../hooks/useSEO';
-import { Calendar, Clock, ArrowLeft, Loader2 } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, ArrowRight, FileText, TrendingUp, Building2, ShieldCheck, Rocket, Calculator, Loader2 } from 'lucide-react';
 import { client, urlFor } from '../../lib/sanityClient';
 import { PortableText } from '@portabletext/react';
+
+const categoryIcons: Record<string, any> = {
+  'Tax Planning': TrendingUp,
+  'Tax Filing': FileText,
+  'Business Formation': Building2,
+  IRS: ShieldCheck,
+  Startup: Rocket,
+  Bookkeeping: Calculator,
+  'Business Growth': TrendingUp,
+  Compliance: ShieldCheck,
+};
 
 const portableTextComponents = {
   block: {
@@ -85,6 +96,7 @@ const portableTextComponents = {
 export function BlogPostPage() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
+  const [relatedPosts, setRelatedPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const seoTitle =
@@ -127,6 +139,8 @@ export function BlogPostPage() {
           readTime,
           body,
           mainImage,
+          ctaText,
+          ctaButtonLabel,
           seo {
             title,
             description,
@@ -138,6 +152,24 @@ export function BlogPostPage() {
       .then((data) => {
         setPost(data);
         setLoading(false);
+        // Fetch related posts from same category
+        if (data && data.category) {
+          client
+            .fetch(
+              `*[_type == "post" && category == $category && slug.current != $slug] | order(publishedAt desc)[0...3] {
+                _id,
+                title,
+                slug,
+                category,
+                excerpt,
+                publishedAt,
+                readTime,
+              }`,
+              { category: data.category, slug }
+            )
+            .then((related) => setRelatedPosts(related))
+            .catch((err) => console.error('Related posts fetch error:', err));
+        }
       })
       .catch((err) => {
         console.error('Sanity fetch error:', err);
@@ -273,22 +305,58 @@ export function BlogPostPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-slate-50">
+        {/* Related Posts — keeps readers in funnel, passes SEO authority */}
+        {relatedPosts.length > 0 && (
+          <section className="py-16 bg-slate-50">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-2xl text-slate-900 mb-8">Related Articles</h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedPosts.map((related: any) => {
+                  const Icon = categoryIcons[related.category] || FileText;
+                  return (
+                    <Link
+                      key={related._id}
+                      to={`/blog/${related.slug?.current}`}
+                      aria-label={`Read article: ${related.title}`}
+                      className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-teal-200 transition-all group cursor-pointer"
+                    >
+                      <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center mb-3 group-hover:bg-teal-600 transition-colors">
+                        <Icon className="w-5 h-5 text-teal-600 group-hover:text-white transition-colors" />
+                      </div>
+                      <h3 className="text-base font-medium text-slate-900 group-hover:text-teal-600 transition-colors mb-2 leading-snug">
+                        {related.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 line-clamp-2 mb-3">
+                        {related.excerpt}
+                      </p>
+                      <div className="flex items-center text-teal-600 text-sm">
+                        <span>Read article</span>
+                        <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* CTA Section — topic-specific from Sanity, generic fallback */}
+        <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl mb-4 text-slate-900">
-              Need Professional Tax Help?
+              {post.ctaText || 'Let TaxClaim handle this for you.'}
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              Let's discuss your specific situation with a personalized consultation.
+            Flat-fee tax filing and strategy for individuals, freelancers, LLCs, and businesses. Fully remote, 100% on-time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="cursor-pointer">
+              <Link to="/contact#contact-form" className="cursor-pointer">
                 <Button
                   size="lg"
                   className="bg-teal-600 hover:bg-teal-700 px-8 py-3 cursor-pointer"
                 >
-                  Schedule Consultation
+                  {post.ctaButtonLabel || 'Get Started'}
                 </Button>
               </Link>
               <Link to="/services" className="cursor-pointer">
