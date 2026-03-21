@@ -58,7 +58,7 @@ export default {
       type: 'array',
       of: [{ type: 'block' }, { type: 'image' }],
     },
-    // ✅ SEO Fields
+    // SEO Fields
     {
       name: 'seo',
       title: 'SEO',
@@ -81,9 +81,22 @@ export default {
           name: 'ogImage',
           title: 'Social Share Image',
           type: 'image',
-          description: 'Image shown when shared on social media. Ideal size: 1200×630px.',
+          description: 'Image shown when shared on social media. Ideal size: 1200x630px.',
         },
       ],
+    },
+    // CTA Fields
+    {
+      name: 'ctaText',
+      title: 'CTA Heading',
+      type: 'string',
+      description: 'Custom heading shown at the bottom of this post. If left blank, a generic fallback is used. E.g. Not sure if S-Corp is right for you? TaxClaim runs the numbers.',
+    },
+    {
+      name: 'ctaButtonLabel',
+      title: 'CTA Button Label',
+      type: 'string',
+      description: 'Button text shown with the CTA. If left blank, defaults to Get Started. E.g. Book a Free Call',
     },
   ],
 }
