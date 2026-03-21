@@ -268,8 +268,9 @@ export function BlogPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-12 text-center">
             <h2 className="text-3xl mb-4">Stay Updated with Tax Tips & Insights</h2>
+            {/* UPDATED: specific opt-in copy, no em dash */}
             <p className="text-lg text-gray-300 mb-8">
-              Subscribe to our newsletter for the latest tax tips and regulatory updates.
+              Get monthly tax tips for freelancers, LLC owners, and small business owners. Straight from a licensed CPA.
             </p>
 
             {subscribed ? (
@@ -309,19 +310,18 @@ export function BlogPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section — UPDATED: direct, specific copy */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl mb-6 text-slate-900">Need Professional Tax Help?</h2>
+          <h2 className="text-4xl mb-6 text-slate-900">Ready to stop overpaying on taxes?</h2>
           <p className="text-xl text-gray-600 mb-8">
-            While our blog articles are helpful, nothing beats personalized professional advice.
-            Let's discuss your specific situation.
+          TaxClaim handles tax filing and strategy for individuals, freelancers, LLCs, and businesses. Flat fee, fully remote, 100% on-time filing.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact" className="cursor-pointer">
               <Button size="lg" className="bg-teal-600 hover:bg-teal-700 px-8 py-3 cursor-pointer">
-                Schedule Consultation
+                Get Started
               </Button>
             </Link>
             <Link to="/services" className="cursor-pointer">
