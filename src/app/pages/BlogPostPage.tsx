@@ -5,6 +5,7 @@ import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useSEO } from '../../hooks/useSEO';
 import { Calendar, Clock, ArrowLeft, ArrowRight, FileText, TrendingUp, Building2, ShieldCheck, Rocket, Calculator, Loader2 } from 'lucide-react';
+import React from 'react';
 import { client, urlFor } from '../../lib/sanityClient';
 import { PortableText } from '@portabletext/react';
 
