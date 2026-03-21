@@ -17,7 +17,7 @@ import { Mail, Phone, MessageSquare, CheckCircle2, Loader2 } from 'lucide-react'
 
 const BUSINESS_TYPES = [
   "Salaried / W-2 Employee",
-  "Individual/Self-Employed",
+  "Individual / Self-Employed",
   "LLC",
   "Partnership",
   "S-Corporation",
@@ -31,10 +31,10 @@ const SERVICES = [
   "Business Tax Filing",
   "Sales & Use Tax",
   "Company Formation",
-  "IRS/State Resolution",
+  "IRS / State Resolution",
   "Bookkeeping",
   "Business Consulting",
-  "Other/Not Sure"
+  "Other / Not Sure"
 ];
 
 export function ContactPage() {
@@ -136,7 +136,7 @@ export function ContactPage() {
                 <h3 className="font-bold text-slate-900 mb-4">Office Hours (PST)</h3>
                 <div className="text-sm space-y-2 text-slate-600">
                   <div className="flex justify-between"><span>Mon - Fri</span> <span className="text-slate-900">9AM - 6PM</span></div>
-                  <div className="flex justify-between"><span>Saturday</span> <span className="text-slate-900">10AM - 2PM</span></div>
+                  <div className="flex justify-between"><span>Saturday</span> <span className="text-slate-900">9AM - 2PM</span></div>
                   <div className="flex justify-between"><span>Sunday</span> <span className="text-slate-900">Closed</span></div>
                 </div>
               </div>
