@@ -348,7 +348,7 @@ export function BlogPostPage() {
               {post.ctaText || 'Let TaxClaim handle this for you.'}
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-            Flat-fee tax filing and strategy for individuals, freelancers, LLCs, and businesses. Fully remote, 100% on-time.
+              Flat-fee tax filing and strategy for individuals, freelancers, LLCs, and businesses. Fully remote, 100% on-time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact#contact-form" className="cursor-pointer">
