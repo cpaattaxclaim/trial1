@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm install --legacy-peer-deps && vite-react-ssg build"
+    "build": "vite-react-ssg build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -78,5 +78,10 @@
     "tailwindcss": "4.1.12",
     "vite": "6.3.5",
     "vite-react-ssg": "^0.6.0"
+  },
+  "overrides": {
+    "vite-react-ssg": {
+      "vite": "$vite"
+    }
   }
 }
