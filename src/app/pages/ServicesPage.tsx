@@ -272,7 +272,17 @@ export function ServicesPage() {
                       {service.subtitle && (
                         <p className="text-sm text-gray-600 mb-4">{service.subtitle}</p>
                       )}
-                      <div className="text-2xl text-teal-600 mb-4">{service.price}</div>
+                      <div className="text-2xl text-teal-600 mb-3">{service.price}</div>
+                      {service.tiers && (
+                        <div className="flex flex-col gap-1 mb-4 border-t border-gray-200 pt-3">
+                          {service.tiers.map((tier, i) => (
+                            <div key={i} className="flex items-center justify-between gap-2">
+                              <span className="text-gray-500 text-xs">{tier.label}</span>
+                              <span className="text-teal-600 text-xs font-medium whitespace-nowrap">{tier.price}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                       <p className="text-gray-700 mb-6 text-sm">{service.description}</p>
                       <Link
                         to={`/contact?service=${encodeURIComponent(service.contactService)}&message=${encodeURIComponent(service.contactMessage)}`}
@@ -292,21 +302,6 @@ export function ServicesPage() {
                         <div className="flex items-start gap-3 bg-teal-50 border border-teal-200 rounded-lg p-4 mb-6">
                           <ShieldAlert className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                           <p className="text-sm text-teal-900">{service.penaltyNote}</p>
-                        </div>
-                      )}
-
-                      {/* Pricing Tiers */}
-                      {service.tiers && (
-                        <div className="mb-6">
-                          <h4 className="text-lg mb-3 text-slate-900">Pricing Tiers</h4>
-                          <div className="grid sm:grid-cols-2 gap-3">
-                            {service.tiers.map((tier, i) => (
-                              <div key={i} className="bg-white border border-gray-200 rounded-xl p-4 hover:border-teal-200 transition-colors">
-                                <div className="text-teal-600 mb-1">{tier.price}</div>
-                                <div className="text-gray-600 text-sm">{tier.label}</div>
-                              </div>
-                            ))}
-                          </div>
                         </div>
                       )}
 
