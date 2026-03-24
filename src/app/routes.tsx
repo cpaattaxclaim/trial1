@@ -16,11 +16,8 @@ const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage").then(m 
 const TermsOfServicePage = lazy(() => import("./pages/TermsOfServicePage").then(m => ({ default: m.TermsOfServicePage })));
 const CookiePolicyPage = lazy(() => import("./pages/CookiePolicyPage").then(m => ({ default: m.CookiePolicyPage })));
 const FiveFourSevenTwoDirect = lazy(() => import("./pages/FiveFourSevenTwoDirect").then(m => ({ default: m.FiveFourSevenTwoDirect })));
-
 // [NEW] International Tax page lazy import
-const InternationalTaxPage = lazy(() =>
-  import("./pages/InternationalTaxPage").then(m => ({ default: m.InternationalTaxPage }))
-);
+const InternationalTaxPage = lazy(() => import("./pages/InternationalTaxPage").then(m => ({ default: m.InternationalTaxPage })));
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -57,7 +54,6 @@ export const router = createBrowserRouter([
 
       // [NEW] International Tax route
       { path: "/international-tax", Component: InternationalTaxPage },
-
       { path: "/services", Component: ServicesPage },
       { path: "/about", Component: AboutPage },
       { path: "/contact", Component: ContactPage },
