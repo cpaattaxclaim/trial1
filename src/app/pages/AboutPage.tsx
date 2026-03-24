@@ -97,17 +97,17 @@ export function AboutPage() {
   ];
 
   const countries = [
-    { name: 'United States', flag: '🇺🇸' },
-    { name: 'United Kingdom', flag: '🇬🇧' },
-    { name: 'India', flag: '🇮🇳' },
-    { name: 'Singapore', flag: '🇸🇬' },
-    { name: 'UAE', flag: '🇦🇪' },
-    { name: 'Germany', flag: '🇩🇪' },
-    { name: 'Netherlands', flag: '🇳🇱' },
-    { name: 'Canada', flag: '🇨🇦' },
-    { name: 'China', flag: '🇨🇳' },
-    { name: 'New Zealand', flag: '🇳🇿' },
-    { name: 'South Africa', flag: '🇿🇦' },
+    { name: 'United States', code: 'us' },
+    { name: 'United Kingdom', code: 'gb' },
+    { name: 'India', code: 'in' },
+    { name: 'Singapore', code: 'sg' },
+    { name: 'UAE', code: 'ae' },
+    { name: 'Germany', code: 'de' },
+    { name: 'Netherlands', code: 'nl' },
+    { name: 'Canada', code: 'ca' },
+    { name: 'China', code: 'cn' },
+    { name: 'New Zealand', code: 'nz' },
+    { name: 'South Africa', code: 'za' },
   ];
 
   return (
@@ -115,7 +115,7 @@ export function AboutPage() {
       <Header />
       <main>
 
-        {/* Page Hero */}
+        {/* Hero */}
         <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
@@ -127,39 +127,29 @@ export function AboutPage() {
           </div>
         </section>
 
-        {/* Mission Section */}
+        {/* Mission */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-block px-4 py-2 bg-teal-100 rounded-full mb-6">
-                  <span className="text-teal-700">Our Mission</span>
-                </div>
                 <h2 className="text-4xl mb-6 text-slate-900">
-                  US Tax Compliance for Foreign Founders and Cross-Border Businesses
+                  US Tax Compliance for Foreign Founders
                 </h2>
-                <p className="text-lg text-gray-600 mb-6">
-                  At TaxClaim, we specialize in US tax compliance for foreign founders, cross-border businesses, and anyone navigating the intersection of US and international tax law. Our advisor is dual-qualified as a US CPA and Indian Chartered Accountant - with clients across 11 countries including the UK, Singapore, UAE, India, Germany, Netherlands, Canada, China, New Zealand, and South Africa.
-                </p>
                 <p className="text-lg text-gray-600 mb-8">
-                  Whether you have a foreign-owned US LLC, need to file Form 5471 for a foreign corporation, or are setting up your first US entity as a non-resident founder, we handle the full compliance picture so you can focus on building your business.
+                  We specialize in US tax compliance for foreign founders and cross-border businesses.
                 </p>
-                <Link to="/contact" className="cursor-pointer">
-                  <Button size="lg" className="bg-teal-600 hover:bg-teal-700 cursor-pointer">
+                <Link to="/contact">
+                  <Button className="bg-teal-600 hover:bg-teal-700">
                     Work With Us
                   </Button>
                 </Link>
               </div>
+
               <div className="grid grid-cols-2 gap-6">
                 {credentials.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-teal-200 transition-all"
-                  >
-                    <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
-                      <item.icon className="w-6 h-6 text-teal-600" />
-                    </div>
-                    <h3 className="mb-2 text-slate-900">{item.title}</h3>
+                  <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6">
+                    <item.icon className="w-6 h-6 text-teal-600 mb-3" />
+                    <h3>{item.title}</h3>
                     <p className="text-sm text-gray-600">{item.desc}</p>
                   </div>
                 ))}
@@ -168,27 +158,15 @@ export function AboutPage() {
           </div>
         </section>
 
-        {/* Values Section */}
+        {/* Values */}
         <section className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl mb-4 text-slate-900">Our Core Values</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                These principles guide everything we do and every decision we make for our clients
-              </p>
-            </div>
             <div className="grid md:grid-cols-2 gap-8">
               {values.map((value, idx) => (
                 <div key={idx} className="bg-white border border-gray-200 rounded-xl p-8">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <value.icon className="w-6 h-6 text-teal-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl mb-2 text-slate-900">{value.title}</h3>
-                      <p className="text-gray-600">{value.desc}</p>
-                    </div>
-                  </div>
+                  <value.icon className="w-6 h-6 text-teal-600 mb-3" />
+                  <h3>{value.title}</h3>
+                  <p className="text-gray-600">{value.desc}</p>
                 </div>
               ))}
             </div>
@@ -198,154 +176,93 @@ export function AboutPage() {
         {/* Expertise Section */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div className="grid lg:grid-cols-2 gap-12">
 
-              {/* Left column */}
-              <div>
-                <h2 className="text-4xl mb-6 text-slate-900">Our Expertise</h2>
-                <p className="text-lg text-gray-600 mb-8">
-                  With 7+ years of experience serving clients across the US, UK, Netherlands, New Zealand, Germany, Singapore, Canada, UAE, India, China, and South Africa, we have developed deep expertise in international and domestic tax compliance.
-                </p>
+              {/* LEFT COLUMN */}
+              <div className="flex flex-col gap-6">
 
-                {/* Dark card */}
+                {/* Why Remote */}
                 <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-8">
                   <h3 className="text-2xl mb-4">Why Remote Services?</h3>
-                  <p className="text-gray-300 mb-6">
-                    In today's digital world, you do not need to be in the same city to receive exceptional service. Our remote-first approach means:
-                  </p>
                   <ul className="space-y-3">
                     {[
-                      'Work with us from anywhere in the world',
-                      'Foreign founders do not need to be in the US to work with us - we handle your US compliance entirely remotely, across any time zone',
-                      'Flexible scheduling around your availability',
-                      'Secure document sharing and collaboration',
+                      'Work from anywhere',
+                      'No US presence required',
+                      'Flexible scheduling',
+                      'Secure document sharing',
                       'Fast turnaround times',
                     ].map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-teal-300 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-200">{item}</span>
+                      <li key={idx} className="flex gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-teal-300" />
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Industries and Countries stacked full width */}
-                <div className="mt-6 flex flex-col gap-4">
-
-                  {/* Industries */}
-                  <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
-                    <h4 className="text-base mb-2 text-slate-900">Industries We Serve</h4>
-                    <div className="flex flex-wrap gap-1.5">
-                      {industries.map((industry, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2.5 py-1 bg-white border border-teal-200 rounded-full text-xs text-gray-700"
-                        >
-                          {industry}
-                        </span>
-                      ))}
-                    </div>
+                {/* Countries */}
+                <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
+                  <h4 className="mb-2">Countries We Serve</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {countries.map((c) => (
+                      <div key={c.name} className="flex items-center gap-1 px-2 py-1 bg-white border rounded-full text-sm">
+                        <img
+                          src={`https://flagcdn.com/w20/${c.code}.png`}
+                          alt={c.name}
+                          className="w-4 h-3"
+                        />
+                        <span>{c.name}</span>
+                      </div>
+                    ))}
                   </div>
-
-                  {/* Countries */}
-                  <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
-                    <h4 className="text-base mb-2 text-slate-900">Countries We Serve</h4>
-                    <div className="flex flex-wrap gap-1.5">
-                      {countries.map((country) => (
-                        <div
-                          key={country.name}
-                          className="flex items-center gap-1 px-2.5 py-1 bg-white border border-teal-200 rounded-full"
-                        >
-                          <span className="text-sm">{country.flag}</span>
-                          <span className="text-xs text-gray-700">{country.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
                 </div>
+
               </div>
 
-              {/* Right column */}
-              <div>
-                <h3 className="text-2xl mb-6 text-slate-900">Areas of Specialization</h3>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {expertise.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3 bg-slate-50 rounded-lg p-4">
-                      <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-sm">{item}</span>
-                    </div>
-                  ))}
+              {/* RIGHT COLUMN */}
+              <div className="flex flex-col gap-6">
+
+                {/* Expertise */}
+                <div>
+                  <h3 className="text-2xl mb-4">Areas of Specialization</h3>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {expertise.map((item, idx) => (
+                      <div key={idx} className="bg-slate-50 p-4 rounded-lg flex gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-teal-600" />
+                        <span className="text-sm">{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+
+                {/* Industries */}
+                <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
+                  <h4 className="mb-2">Industries We Serve</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {industries.map((i, idx) => (
+                      <span key={idx} className="px-2 py-1 bg-white border rounded-full text-sm">
+                        {i}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
               </div>
 
             </div>
+
           </div>
         </section>
 
-        {/* Credentials Section */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl mb-4 text-slate-900">Professional Credentials</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Our qualifications ensure you receive the highest level of professional service
-              </p>
-            </div>
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Award className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-xl mb-2 text-slate-900">Licensed US CPA</h3>
-                  <p className="text-gray-600 text-sm">
-                    Certified Public Accountant licensed in Washington State
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Award className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-xl mb-2 text-slate-900">Indian CA (ICAI)</h3>
-                  <p className="text-gray-600 text-sm">
-                    Chartered Accountant qualified through the Institute of Chartered Accountants of India
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Shield className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-xl mb-2 text-slate-900">IRS PTIN and Specializations</h3>
-                  <p className="text-gray-600 text-sm">
-                    IRS PTIN holder with specialization in Form 5471, FBAR, FATCA, and cross-border compliance
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl mb-6">Ready to Sort Your US Tax Compliance?</h2>
-            <p className="text-xl text-gray-300 mb-8">
-              Whether you have a foreign-owned US entity, need to file Form 5471, or are setting up your first US structure, book a free clarity call and we will tell you exactly what is required.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="cursor-pointer">
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8 cursor-pointer">
-                  Book a Free Clarity Call
-                </Button>
-              </Link>
-              <Link to="/services" className="cursor-pointer">
-                <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent border-white text-white hover:!bg-white/10 hover:!text-white hover:!border-white cursor-pointer">
-                  View Services
-                </Button>
-              </Link>
-            </div>
-          </div>
+        {/* CTA */}
+        <section className="py-20 bg-slate-900 text-white text-center">
+          <h2 className="text-4xl mb-6">Ready to Start?</h2>
+          <Link to="/contact">
+            <Button className="bg-teal-600 hover:bg-teal-700">
+              Book a Call
+            </Button>
+          </Link>
         </section>
 
       </main>
