@@ -1,4 +1,4 @@
-Make these changes in service page:import { Link } from 'react-router';
+import { Link } from 'react-router';
 import { useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
