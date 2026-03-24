@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';  // ← THIS ONE
+import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
   return (
