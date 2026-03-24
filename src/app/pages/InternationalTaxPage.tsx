@@ -271,33 +271,46 @@ export function InternationalTaxPage() {
         </section>
 
         {/* Penalty Stakes — teal card, no full-width banner */}
-        <section className="py-12">
+        <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-start gap-4 max-w-4xl mx-auto bg-teal-50 border border-teal-200 rounded-2xl p-8">
-              <ShieldAlert className="w-8 h-8 text-teal-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-lg text-slate-900 mb-3">The Penalty Stakes</h3>
-                <div className="grid sm:grid-cols-3 gap-6 text-sm text-slate-700">
-                  <div>
-                    <div className="text-2xl text-teal-600 mb-1">$25,000</div>
-                    <div>per form per year for missing Form 5472</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl text-teal-600 mb-1">$10,000+</div>
-                    <div>base penalty for missing Form 5471, plus $10,000 per month after IRS notice</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl text-teal-600 mb-1">No limit</div>
-                    <div>on statute of limitations for a return with a missing Form 5471 - your entire return stays open to audit indefinitely</div>
-                  </div>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl mb-4 text-slate-900">The Penalty Stakes</h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                These penalties are avoidable - but only if you act before the deadline.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg hover:border-teal-200 transition-all text-center">
+                <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                  <ShieldAlert className="w-7 h-7 text-teal-600" />
                 </div>
-                <p className="mt-4 text-slate-600 text-sm">
-                  These penalties are avoidable - but only if you act before the deadline. Most foreign founders do not find out about them until after the fact.
-                </p>
+                <div className="text-teal-600 text-xs tracking-widest mb-2">FORM 5472</div>
+                <h3 className="text-3xl text-slate-900 mb-2">$25,000</h3>
+                <p className="text-gray-600 text-sm">per form per year - with no cap if multiple years are missed</p>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg hover:border-teal-200 transition-all text-center">
+                <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                  <ShieldAlert className="w-7 h-7 text-teal-600" />
+                </div>
+                <div className="text-teal-600 text-xs tracking-widest mb-2">FORM 5471</div>
+                <h3 className="text-3xl text-slate-900 mb-2">$10,000+</h3>
+                <p className="text-gray-600 text-sm">base penalty plus $10,000 per month after IRS notice</p>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg hover:border-teal-200 transition-all text-center">
+                <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                  <ShieldAlert className="w-7 h-7 text-teal-600" />
+                </div>
+                <div className="text-teal-600 text-xs tracking-widest mb-2">AUDIT RISK</div>
+                <h3 className="text-3xl text-slate-900 mb-2">No Limit</h3>
+                <p className="text-gray-600 text-sm">on statute of limitations - your entire return stays open to audit indefinitely</p>
               </div>
             </div>
+            <p className="text-center text-gray-500 text-sm mt-8">
+              Most foreign founders do not find out about these penalties until after the fact.
+            </p>
           </div>
         </section>
+
 
         {/* Services */}
         <section className="py-20">
