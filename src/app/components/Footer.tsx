@@ -6,10 +6,10 @@ export function Footer() {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
 
           {/* Column 1: Brand */}
-          <div className="lg:col-span-1">
+          <div>
             <div className="mb-4">
               <img src={logoWhiteImg} alt="TaxClaim - CPA and Business Advisory" className="h-10 w-auto" />
             </div>
@@ -19,7 +19,7 @@ export function Footer() {
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="lg:col-span-1">
+          <div>
             <h3 className="font-semibold mb-5">Quick Links</h3>
             <ul className="space-y-3">
               <li>
@@ -56,7 +56,7 @@ export function Footer() {
           </div>
 
           {/* Column 3: International Tax */}
-          <div className="lg:col-span-1">
+          <div>
             <h3 className="font-semibold mb-5">International Tax</h3>
             <ul className="space-y-3 text-sm">
               <li>
@@ -93,7 +93,7 @@ export function Footer() {
           </div>
 
           {/* Column 4: Domestic Services */}
-          <div className="lg:col-span-1">
+          <div>
             <h3 className="font-semibold mb-5">Domestic Services</h3>
             <ul className="space-y-3 text-sm">
               <li>
@@ -135,10 +135,9 @@ export function Footer() {
           </div>
 
           {/* Column 5: Contact */}
-          <div className="lg:col-span-1">
+          <div>
             <h3 className="font-semibold mb-5">Contact Us</h3>
 
-            {/* WhatsApp button - div not li, removes the bullet dot */}
             <div className="mb-4">
               <a
                 href="https://wa.me/14153047262"
