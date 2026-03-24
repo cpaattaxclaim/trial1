@@ -298,4 +298,107 @@ export function ServicesPage() {
                       {/* Pricing Tiers */}
                       {service.tiers && (
                         <div className="mb-6">
-                          <h4 className="text-lg mb-3 text-slate-900">Pricing 
+                          <h4 className="text-lg mb-3 text-slate-900">Pricing Tiers</h4>
+                          <div className="grid sm:grid-cols-2 gap-3">
+                            {service.tiers.map((tier, i) => (
+                              <div key={i} className="bg-white border border-gray-200 rounded-xl p-4 hover:border-teal-200 transition-colors">
+                                <div className="text-teal-600 mb-1">{tier.price}</div>
+                                <div className="text-gray-600 text-sm">{tier.label}</div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <h4 className="text-lg mb-4 text-slate-900">What is Included</h4>
+                      <div className="grid sm:grid-cols-2 gap-3 mb-6">
+                        {service.included.map((item, i) => (
+                          <div key={i} className="flex items-start gap-2">
+                            <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                            <span className="text-gray-700 text-sm">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {service.notIncluded && service.notIncluded.length > 0 && (
+                        <>
+                          <h4 className="text-lg mb-4 text-slate-900">Additional Services Available</h4>
+                          <div className="space-y-2">
+                            {service.notIncluded.map((item, i) => (
+                              <div key={i} className="flex items-start gap-2">
+                                <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                  <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                                </div>
+                                <span className="text-gray-600 text-sm">{item}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Process Section */}
+        <section className="py-20 bg-gradient-to-br from-slate-50 to-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl mb-4 text-slate-900">How It Works</h2>
+              <p className="text-xl text-gray-600">Simple, straightforward process to get you started</p>
+            </div>
+            <div className="relative max-w-5xl mx-auto">
+              <div className="hidden lg:block absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-teal-200 via-teal-400 to-teal-200"></div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                  { step: '01', title: 'Contact Us', desc: 'Reach out via contact form, email, or WhatsApp', icon: Phone },
+                  { step: '02', title: 'Free Consultation', desc: 'Discuss your needs and get a custom quote', icon: MessageCircle },
+                  { step: '03', title: 'Onboarding', desc: 'Sign engagement letter and provide documents while we set up your account', icon: FileCheck },
+                  { step: '04', title: 'Service Delivery', desc: 'Receive expert service with ongoing support', icon: CheckSquare },
+                ].map((item, idx) => (
+                  <div key={idx} className="relative">
+                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:border-teal-200 transition-all h-full">
+                      <div className="relative z-10 mb-4">
+                        <item.icon className="w-8 h-8 text-teal-600" />
+                      </div>
+                      <div className="text-sm font-semibold text-teal-600 mb-2">STEP {item.step}</div>
+                      <h3 className="text-xl mb-3 text-slate-900">{item.title}</h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl mb-6">Foreign founder or cross-border business?</h2>
+            <p className="text-xl text-gray-300 mb-8">
+              Book a free clarity call and we will tell you exactly what is required for your situation.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact?service=International+Tax+%26+Compliance&message=I+need+help+with+international+tax+compliance+for+my+US+entity." className="cursor-pointer">
+                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8 cursor-pointer">
+                  Book a Free Clarity Call
+                </Button>
+              </Link>
+              <Link to="/faq" className="cursor-pointer">
+                <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent border-white text-white hover:!bg-white/10 hover:!text-white hover:!border-white cursor-pointer">
+                  View FAQ
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+      </main>
+      <Footer />
+    </div>
+  );
+}
