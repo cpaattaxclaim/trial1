@@ -272,17 +272,7 @@ export function ServicesPage() {
                       {service.subtitle && (
                         <p className="text-sm text-gray-600 mb-4">{service.subtitle}</p>
                       )}
-                      <div className="text-2xl text-teal-600 mb-3">{service.price}</div>
-                      {service.tiers && (
-                        <div className="flex flex-col gap-1 mb-4 border-t border-gray-200 pt-3">
-                          {service.tiers.map((tier, i) => (
-                            <div key={i} className="flex items-center justify-between gap-2">
-                              <span className="text-gray-500 text-xs">{tier.label}</span>
-                              <span className="text-teal-600 text-xs font-medium whitespace-nowrap">{tier.price}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                      <div className="text-2xl text-teal-600 mb-4">{service.price}</div>
                       <p className="text-gray-700 mb-6 text-sm">{service.description}</p>
                       <Link
                         to={`/contact?service=${encodeURIComponent(service.contactService)}&message=${encodeURIComponent(service.contactMessage)}`}
@@ -295,9 +285,9 @@ export function ServicesPage() {
                     </div>
 
                     {/* Right */}
-                    <div className="md:col-span-2 p-8">
+                    <div className="md:col-span-2 p-8 flex flex-col">
 
-                      {/* Penalty note - teal scheme */}
+                      {/* Penalty note */}
                       {service.penaltyNote && (
                         <div className="flex items-start gap-3 bg-teal-50 border border-teal-200 rounded-lg p-4 mb-6">
                           <ShieldAlert className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
@@ -305,6 +295,7 @@ export function ServicesPage() {
                         </div>
                       )}
 
+                      {/* What is Included */}
                       <h4 className="text-lg mb-4 text-slate-900">What is Included</h4>
                       <div className="grid sm:grid-cols-2 gap-3 mb-6">
                         {service.included.map((item, i) => (
@@ -315,10 +306,11 @@ export function ServicesPage() {
                         ))}
                       </div>
 
+                      {/* Additional Services */}
                       {service.notIncluded && service.notIncluded.length > 0 && (
                         <>
                           <h4 className="text-lg mb-4 text-slate-900">Additional Services Available</h4>
-                          <div className="space-y-2">
+                          <div className="grid sm:grid-cols-2 gap-3 mb-6">
                             {service.notIncluded.map((item, i) => (
                               <div key={i} className="flex items-start gap-2">
                                 <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -330,6 +322,22 @@ export function ServicesPage() {
                           </div>
                         </>
                       )}
+
+                      {/* Pricing Tiers - compact chips at bottom */}
+                      {service.tiers && (
+                        <div className="mt-auto pt-4 border-t border-gray-100">
+                          <div className="flex flex-wrap gap-2">
+                            {service.tiers.map((tier, i) => (
+                              <div key={i} className="flex items-center gap-1.5 bg-slate-50 border border-gray-200 rounded-lg px-3 py-1.5">
+                                <span className="text-teal-600 text-xs font-medium">{tier.price}</span>
+                                <span className="text-gray-300 text-xs">|</span>
+                                <span className="text-gray-500 text-xs">{tier.label}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                     </div>
                   </div>
                 </div>
