@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../components/ui/accordion';
-import { MessageSquare, ArrowRight } from 'lucide-react';
+import { MessageSquare, ArrowRight, Globe2, FileText, BookOpen } from 'lucide-react';
 
 export function FAQPage() {
   useSEO({
@@ -312,7 +312,7 @@ export function FAQPage() {
           </div>
         </section>
 
-        {/* Quick Links */}
+        {/* Explore More */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -320,39 +320,42 @@ export function FAQPage() {
               <p className="text-lg text-gray-600">Learn more about our services and how we can help</p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-              <Link
-                to="/international-tax"
-                className="bg-white border border-gray-200 rounded-xl p-8 text-center hover:shadow-lg hover:border-teal-200 transition-all group cursor-pointer"
-              >
-                <h3 className="text-xl mb-2 text-slate-900 group-hover:text-teal-600 transition-colors">
-                  International Tax
-                </h3>
-                <p className="text-gray-600">
-                  Form 5471, FBAR, FATCA, and foreign founder compliance
-                </p>
-              </Link>
-              <Link
-                to="/services"
-                className="bg-white border border-gray-200 rounded-xl p-8 text-center hover:shadow-lg hover:border-teal-200 transition-all group cursor-pointer"
-              >
-                <h3 className="text-xl mb-2 text-slate-900 group-hover:text-teal-600 transition-colors">
-                  View All Services
-                </h3>
-                <p className="text-gray-600">
-                  Explore our complete range of tax and business services
-                </p>
-              </Link>
-              <Link
-                to="/blog"
-                className="bg-white border border-gray-200 rounded-xl p-8 text-center hover:shadow-lg hover:border-teal-200 transition-all group cursor-pointer"
-              >
-                <h3 className="text-xl mb-2 text-slate-900 group-hover:text-teal-600 transition-colors">
-                  Blog
-                </h3>
-                <p className="text-gray-600">
-                  Read helpful articles and tax tips for foreign founders
-                </p>
-              </Link>
+              {[
+                {
+                  icon: Globe2,
+                  label: 'INTERNATIONAL TAX',
+                  title: 'International Tax',
+                  desc: 'Form 5471, FBAR, FATCA, and foreign founder compliance',
+                  href: '/international-tax',
+                },
+                {
+                  icon: FileText,
+                  label: 'SERVICES',    
+                  title: 'View All Services',
+                  desc: 'Explore our complete range of tax and business services',
+                  href: '/services',
+                },
+                {
+                  icon: BookOpen,
+                  label: 'BLOG',
+                  title: 'Blog',
+                  desc: 'Read helpful articles and tax tips for foreign founders',
+                  href: '/blog',
+                },
+              ].map((item, idx) => (
+                <Link
+                  key={idx}
+                  to={item.href}
+                  className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:border-teal-200 transition-all cursor-pointer"
+                >
+                  <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                    <item.icon className="w-6 h-6 text-teal-600" />
+                  </div>
+                  <div className="text-sm font-semibold text-teal-600 mb-2">{item.label}</div>
+                  <h3 className="text-xl mb-3 text-slate-900">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
