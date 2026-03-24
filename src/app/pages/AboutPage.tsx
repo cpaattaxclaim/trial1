@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 
-export function AboutPage() {  // ← Named export matches routes
+export function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -17,7 +17,10 @@ export function AboutPage() {  // ← Named export matches routes
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
               Streamlined US tax compliance for foreign companies
             </p>
-            <Link to="/services" className="bg-white text-blue-900 px-12 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition duration-300">
+            <Link 
+              to="/services" 
+              className="bg-white text-blue-900 px-12 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition duration-300 inline-block"
+            >
               View Services
             </Link>
           </div>
@@ -76,11 +79,11 @@ export function AboutPage() {  // ← Named export matches routes
           </div>
         </section>
 
-        {/* Industries & Countries */}
+        {/* Industries & Countries - Matches your screenshot */}
         <section className="py-24 bg-gray-50">
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-8">
-              {/* Industries - Below Dark Card */}
+              {/* Left - Industries (below dark card) */}
               <div className="bg-gradient-to-br from-cyan-500 to-teal-500 text-white p-12 rounded-3xl shadow-xl h-80 flex flex-col justify-between">
                 <div>
                   <h3 className="text-3xl font-bold mb-6">Industries We Serve</h3>
@@ -93,7 +96,7 @@ export function AboutPage() {  // ← Named export matches routes
                 </ul>
               </div>
 
-              {/* Countries - Below Light Cards */}
+              {/* Right - Countries (below light cards) */}
               <div className="bg-gradient-to-br from-slate-700 to-gray-800 text-white p-12 rounded-3xl shadow-xl h-80 flex flex-col justify-between">
                 <div>
                   <h3 className="text-3xl font-bold mb-6">Countries We Serve</h3>
@@ -115,7 +118,7 @@ export function AboutPage() {  // ← Named export matches routes
           </div>
         </section>
 
-        {/* CTA */}
+        {/* CTA Section */}
         <section className="py-24 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -124,11 +127,17 @@ export function AboutPage() {  // ← Named export matches routes
             <p className="text-xl mb-12 max-w-2xl mx-auto">
               Schedule a free consultation with our tax experts today.
             </p>
-            <div className="space-x-4 inline-flex">
-              <Link to="/contact" className="bg-white text-blue-700 px-10 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition duration-300">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                to="/contact" 
+                className="bg-white text-blue-700 px-10 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition duration-300"
+              >
                 Get Started Free
               </Link>
-              <Link to="/services" className="border-2 border-white text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-700 transition duration-300">
+              <Link 
+                to="/services" 
+                className="border-2 border-white text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-700 transition duration-300"
+              >
                 Learn More
               </Link>
             </div>
