@@ -21,8 +21,13 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // ── [CHANGED] Navigation updated to include International Tax ─────────────
   const navigation = [
     { name: 'Home', href: '/' },
+
+    // 🔴 NEW
+    { name: 'International Tax', href: '/international-tax' },
+
     { name: 'Services', href: '/services' },
     { name: 'About', href: '/about' },
     { name: 'FAQ', href: '/faq' },
@@ -68,7 +73,7 @@ export function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" aria-label="TaxClaim Home" className="flex items-center cursor-pointer">
-            <img src={logoImg} alt="TaxClaim – CPA & Business Advisory" className="h-10 w-auto" fetchPriority="high" />
+            <img src={logoImg} alt="TaxClaim - CPA & Business Advisory" className="h-10 w-auto" fetchPriority="high" />
           </Link>
 
           {/* Desktop Navigation */}
