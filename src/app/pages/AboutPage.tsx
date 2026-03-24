@@ -97,17 +97,17 @@ export function AboutPage() {
   ];
 
   const countries = [
-    { name: 'United States', code: 'us' },
-    { name: 'United Kingdom', code: 'gb' },
-    { name: 'India', code: 'in' },
-    { name: 'Singapore', code: 'sg' },
-    { name: 'UAE', code: 'ae' },
-    { name: 'Germany', code: 'de' },
-    { name: 'Netherlands', code: 'nl' },
-    { name: 'Canada', code: 'ca' },
-    { name: 'China', code: 'cn' },
-    { name: 'New Zealand', code: 'nz' },
-    { name: 'South Africa', code: 'za' },
+    { name: 'United States', flag: '🇺🇸' },
+    { name: 'United Kingdom', flag: '🇬🇧' },
+    { name: 'India', flag: '🇮🇳' },
+    { name: 'Singapore', flag: '🇸🇬' },
+    { name: 'UAE', flag: '🇦🇪' },
+    { name: 'Germany', flag: '🇩🇪' },
+    { name: 'Netherlands', flag: '🇳🇱' },
+    { name: 'Canada', flag: '🇨🇦' },
+    { name: 'China', flag: '🇨🇳' },
+    { name: 'New Zealand', flag: '🇳🇿' },
+    { name: 'South Africa', flag: '🇿🇦' },
   ];
 
   return (
@@ -117,152 +117,113 @@ export function AboutPage() {
 
         {/* Hero */}
         <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <h1 className="text-5xl mb-6">About TaxClaim</h1>
-              <p className="text-xl text-gray-300">
-                Dual-qualified US CPA and Indian CA specializing in international tax compliance for foreign founders and cross-border businesses worldwide.
-              </p>
-            </div>
+          <div className="max-w-7xl mx-auto px-4">
+            <h1 className="text-5xl mb-6">About TaxClaim</h1>
+            <p className="text-xl text-gray-300 max-w-3xl">
+              Dual-qualified US CPA and Indian CA specializing in international tax compliance for foreign founders and cross-border businesses worldwide.
+            </p>
           </div>
         </section>
 
         {/* Mission */}
         <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl mb-6 text-slate-900">
-                  US Tax Compliance for Foreign Founders
-                </h2>
-                <p className="text-lg text-gray-600 mb-8">
-                  We specialize in US tax compliance for foreign founders and cross-border businesses.
-                </p>
-                <Link to="/contact">
-                  <Button className="bg-teal-600 hover:bg-teal-700">
-                    Work With Us
-                  </Button>
-                </Link>
-              </div>
-
-              <div className="grid grid-cols-2 gap-6">
-                {credentials.map((item, idx) => (
-                  <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6">
-                    <item.icon className="w-6 h-6 text-teal-600 mb-3" />
-                    <h3>{item.title}</h3>
-                    <p className="text-sm text-gray-600">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
+          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-4xl mb-6 text-slate-900">
+                US Tax Compliance for Foreign Founders
+              </h2>
+              <p className="text-lg text-gray-600 mb-6">
+                We specialize in cross-border tax compliance and planning.
+              </p>
+              <Link to="/contact">
+                <Button className="bg-teal-600 hover:bg-teal-700">
+                  Work With Us
+                </Button>
+              </Link>
             </div>
-          </div>
-        </section>
 
-        {/* Values */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-8">
-              {values.map((value, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 rounded-xl p-8">
-                  <value.icon className="w-6 h-6 text-teal-600 mb-3" />
-                  <h3>{value.title}</h3>
-                  <p className="text-gray-600">{value.desc}</p>
+            <div className="grid grid-cols-2 gap-6">
+              {credentials.map((item, idx) => (
+                <div key={idx} className="border p-6 rounded-xl">
+                  <item.icon className="w-6 h-6 text-teal-600 mb-2" />
+                  <h3>{item.title}</h3>
+                  <p className="text-sm text-gray-600">{item.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Expertise Section */}
+        {/* Core Section (FIXED LAYOUT) */}
         <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
 
-            <div className="grid lg:grid-cols-2 gap-12">
+            {/* LEFT */}
+            <div>
 
-              {/* LEFT COLUMN */}
-              <div className="flex flex-col gap-6">
-
-                {/* Why Remote */}
-                <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-8">
-                  <h3 className="text-2xl mb-4">Why Remote Services?</h3>
-                  <ul className="space-y-3">
-                    {[
-                      'Work from anywhere',
-                      'No US presence required',
-                      'Flexible scheduling',
-                      'Secure document sharing',
-                      'Fast turnaround times',
-                    ].map((item, idx) => (
-                      <li key={idx} className="flex gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-teal-300" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Countries */}
-                <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
-                  <h4 className="mb-2">Countries We Serve</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {countries.map((c) => (
-                      <div key={c.name} className="flex items-center gap-1 px-2 py-1 bg-white border rounded-full text-sm">
-                        <img
-                          src={`https://flagcdn.com/w20/${c.code}.png`}
-                          alt={c.name}
-                          className="w-4 h-3"
-                        />
-                        <span>{c.name}</span>
-                      </div>
-                    ))}
+              {/* Expertise */}
+              <h3 className="text-2xl mb-6 text-slate-900">
+                Areas of Specialization
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-4 mb-6">
+                {expertise.map((item, idx) => (
+                  <div key={idx} className="flex gap-2 bg-slate-50 p-4 rounded-lg">
+                    <CheckCircle2 className="w-5 h-5 text-teal-600" />
+                    <span className="text-sm">{item}</span>
                   </div>
-                </div>
-
+                ))}
               </div>
 
-              {/* RIGHT COLUMN */}
-              <div className="flex flex-col gap-6">
-
-                {/* Expertise */}
-                <div>
-                  <h3 className="text-2xl mb-4">Areas of Specialization</h3>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {expertise.map((item, idx) => (
-                      <div key={idx} className="bg-slate-50 p-4 rounded-lg flex gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-teal-600" />
-                        <span className="text-sm">{item}</span>
-                      </div>
-                    ))}
-                  </div>
+              {/* Industries BELOW */}
+              <div className="bg-teal-50 border rounded-xl p-5">
+                <h4 className="mb-2 text-slate-900">Industries We Serve</h4>
+                <div className="flex flex-wrap gap-2">
+                  {industries.map((i, idx) => (
+                    <span key={idx} className="px-3 py-1 bg-white border rounded-full text-xs">
+                      {i}
+                    </span>
+                  ))}
                 </div>
+              </div>
 
-                {/* Industries */}
-                <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
-                  <h4 className="mb-2">Industries We Serve</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {industries.map((i, idx) => (
-                      <span key={idx} className="px-2 py-1 bg-white border rounded-full text-sm">
-                        {i}
-                      </span>
-                    ))}
-                  </div>
+            </div>
+
+            {/* RIGHT */}
+            <div>
+
+              {/* Why Remote */}
+              <div className="bg-slate-900 text-white rounded-2xl p-8 mb-6">
+                <h3 className="text-2xl mb-4">Why Remote Services?</h3>
+                <ul className="space-y-3">
+                  {[
+                    'Work from anywhere',
+                    'No US presence required',
+                    'Flexible scheduling',
+                    'Secure collaboration',
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex gap-2">
+                      <CheckCircle2 className="text-teal-400 w-5 h-5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Countries BELOW */}
+              <div className="bg-teal-50 border rounded-xl p-5">
+                <h4 className="mb-2 text-slate-900">Countries We Serve</h4>
+                <div className="flex flex-wrap gap-2">
+                  {countries.map((c) => (
+                    <span key={c.name} className="px-3 py-1 bg-white border rounded-full text-xs">
+                      {c.flag} {c.name}
+                    </span>
+                  ))}
                 </div>
-
               </div>
 
             </div>
 
           </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-20 bg-slate-900 text-white text-center">
-          <h2 className="text-4xl mb-6">Ready to Start?</h2>
-          <Link to="/contact">
-            <Button className="bg-teal-600 hover:bg-teal-700">
-              Book a Call
-            </Button>
-          </Link>
         </section>
 
       </main>
