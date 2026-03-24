@@ -1,10 +1,11 @@
-import { Link } from 'react-router';
+Make these changes in service page:import { Link } from 'react-router';
 import { useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useSEO } from '../../hooks/useSEO';
 import { 
+  Globe,
   FileText, 
   Building2, 
   Calculator, 
@@ -20,8 +21,8 @@ import {
 
 export function ServicesPage() {
   useSEO({
-    title: 'Services & Pricing | TaxClaim CPA - San Jose, CA',
-    description: 'Transparent pricing for individual & business tax filing, bookkeeping, sales tax, company formation, IRS resolution, and advisory. Starting from $200. No hidden fees.',
+    title: 'Services & Pricing | TaxClaim — US Tax for Foreign Founders',
+    description: 'International tax compliance, business and individual tax filing, bookkeeping, company formation, and IRS resolution. Specialist CPA serving clients across 11 countries.',
     canonical: 'https://taxclaim.co/services',
   });
 
@@ -38,6 +39,25 @@ export function ServicesPage() {
   }, []);
 
   const services = [
+    {
+      id: 'international-tax',
+      icon: Globe,
+      title: 'International Tax & Compliance',
+      price: 'Custom Pricing — Book a Call',
+      subtitle: 'Foreign Founders & Cross-Border Businesses',
+      description: 'Full-service international tax compliance for foreign-owned US entities, US persons with foreign corporations, and cross-border businesses worldwide.',
+      included: [
+        'Foreign-owned US entity compliance (Form 5472 + pro forma 1120)',
+        'US persons with foreign corporations (Form 5471)',
+        'FBAR (FinCEN 114) filing',
+        'FATCA (Form 8938) reporting',
+        'Form 1040-NR for non-resident aliens',
+        'Cross-border tax planning and treaty analysis',
+        'EIN application for foreign nationals without SSN',
+        'Foreign Founder Setup Package (Formation + EIN + first-year compliance)',
+      ],
+      notIncluded: []
+    },
     {
       id: 'tax-filing',
       icon: FileText,
@@ -179,7 +199,7 @@ export function ServicesPage() {
           <div className="max-w-3xl">
             <h1 className="text-5xl mb-6">Our Services</h1>
             <p className="text-xl text-gray-300">
-              Transparent, competitive pricing for all your tax and business needs. No hidden fees, no surprises.
+              International tax compliance, business and individual tax filing, and advisory services - transparent pricing, no hidden fees.
             </p>
           </div>
         </div>
