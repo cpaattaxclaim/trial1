@@ -20,14 +20,16 @@ export default {
       type: 'string',
       options: {
         list: [
-          { title: 'Tax Planning', value: 'Tax Planning' },
+          { title: 'International Tax & Compliance', value: 'International Tax & Compliance' },
+          { title: 'Foreign-Owned US Entities', value: 'Foreign-Owned US Entities' },
+          { title: 'FBAR & FATCA', value: 'FBAR & FATCA' },
+          { title: 'Cross-Border Structures', value: 'Cross-Border Structures' },
+          { title: 'Foreign Founder Essentials', value: 'Foreign Founder Essentials' },
+          { title: 'US Business Tax', value: 'US Business Tax' },
+          { title: 'US Individual Tax', value: 'US Individual Tax' },
+          { title: 'Compliance & Filings', value: 'Compliance & Filings' },
           { title: 'Business Formation', value: 'Business Formation' },
-          { title: 'Compliance', value: 'Compliance' },
-          { title: 'Tax Filing', value: 'Tax Filing' },
-          { title: 'IRS', value: 'IRS' },
-          { title: 'Business Growth', value: 'Business Growth' },
-          { title: 'Startup', value: 'Startup' },
-          { title: 'Bookkeeping', value: 'Bookkeeping' },
+          { title: 'Bookkeeping & Finance', value: 'Bookkeeping & Finance' },
         ],
       },
     },
@@ -94,14 +96,14 @@ export default {
       title: 'CTA Heading',
       type: 'string',
       description:
-        'Custom heading shown at the bottom of this post. If left blank, a generic fallback is used. E.g. Not sure if S-Corp is right for you? TaxClaim runs the numbers.',
+        'Custom heading shown at the bottom of this post. If left blank, a generic fallback is used.',
     },
     {
       name: 'ctaButtonLabel',
       title: 'CTA Button Label',
       type: 'string',
       description:
-        'Button text shown with the CTA. If left blank, defaults to Get Started. E.g. Book a Free Call',
+        'Button text shown with the CTA. If left blank, defaults to Get Started.',
     },
   ],
 };
