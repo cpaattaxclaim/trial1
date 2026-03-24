@@ -26,6 +26,14 @@ export function Footer() {
                   Home
                 </Link>
               </li>
+
+              {/* [NEW] International Tax page added */}
+              <li>
+                <Link to="/international-tax" className="text-gray-400 hover:text-teal-300 text-sm transition-colors cursor-pointer">
+                  International Tax
+                </Link>
+              </li>
+
               <li>
                 <Link to="/services" className="text-gray-400 hover:text-teal-300 text-sm transition-colors cursor-pointer">
                   Services
