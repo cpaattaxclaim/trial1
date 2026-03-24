@@ -6,10 +6,10 @@ export function Footer() {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
 
           {/* Column 1: Brand */}
-          <div>
+          <div className="min-w-0">
             <div className="mb-4">
               <img src={logoWhiteImg} alt="TaxClaim - CPA and Business Advisory" className="h-10 w-auto" />
             </div>
@@ -19,7 +19,7 @@ export function Footer() {
           </div>
 
           {/* Column 2: Quick Links */}
-          <div>
+          <div className="min-w-0">
             <h3 className="font-semibold mb-5">Quick Links</h3>
             <ul className="space-y-3 text-sm">
               <li>
@@ -56,9 +56,9 @@ export function Footer() {
           </div>
 
           {/* Column 3: International Tax */}
-          <div>
+          <div className="min-w-0">
             <h3 className="font-semibold mb-5">International Tax</h3>
-            <ul className="space-y-3 text-sm break-words">
+            <ul className="space-y-3 text-xs leading-relaxed">
               <li>
                 <Link to="/international-tax" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
                   International Tax and Compliance
@@ -93,9 +93,9 @@ export function Footer() {
           </div>
 
           {/* Column 4: Domestic Services */}
-          <div>
+          <div className="min-w-0">
             <h3 className="font-semibold mb-5">Domestic Services</h3>
-            <ul className="space-y-3 text-sm break-words">
+            <ul className="space-y-3 text-xs leading-relaxed">
               <li>
                 <Link to="/services#business-tax" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
                   Business Tax Filing
@@ -135,7 +135,7 @@ export function Footer() {
           </div>
 
           {/* Column 5: Contact */}
-          <div>
+          <div className="min-w-0">
             <h3 className="font-semibold mb-5">Contact Us</h3>
 
             <div className="mb-4">
