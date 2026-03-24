@@ -12,7 +12,6 @@ import {
   BarChart2,
   BadgeCheck,
   Lightbulb,
-  Globe2,
 } from 'lucide-react';
 
 export function AboutPage() {
@@ -200,11 +199,15 @@ export function AboutPage() {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12">
+
+              {/* Left column */}
               <div>
                 <h2 className="text-4xl mb-6 text-slate-900">Our Expertise</h2>
                 <p className="text-lg text-gray-600 mb-8">
                   With 7+ years of experience serving clients across the US, UK, Netherlands, New Zealand, Germany, Singapore, Canada, UAE, India, China, and South Africa, we have developed deep expertise in international and domestic tax compliance.
                 </p>
+
+                {/* Dark card */}
                 <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-8">
                   <h3 className="text-2xl mb-4">Why Remote Services?</h3>
                   <p className="text-gray-300 mb-6">
@@ -225,8 +228,45 @@ export function AboutPage() {
                     ))}
                   </ul>
                 </div>
+
+                {/* Industries and Countries stacked full width */}
+                <div className="mt-6 flex flex-col gap-4">
+
+                  {/* Industries */}
+                  <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
+                    <h4 className="text-base mb-2 text-slate-900">Industries We Serve</h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {industries.map((industry, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2.5 py-1 bg-white border border-teal-200 rounded-full text-xs text-gray-700"
+                        >
+                          {industry}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Countries */}
+                  <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
+                    <h4 className="text-base mb-2 text-slate-900">Countries We Serve</h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {countries.map((country) => (
+                        <div
+                          key={country.name}
+                          className="flex items-center gap-1 px-2.5 py-1 bg-white border border-teal-200 rounded-full"
+                        >
+                          <span className="text-sm">{country.flag}</span>
+                          <span className="text-xs text-gray-700">{country.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
+              {/* Right column */}
               <div>
                 <h3 className="text-2xl mb-6 text-slate-900">Areas of Specialization</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -237,49 +277,8 @@ export function AboutPage() {
                     </div>
                   ))}
                 </div>
-
-                {/* Industries and Countries side by side */}
-                <div className="mt-8 grid sm:grid-cols-2 gap-6">
-
-                  {/* Industries */}
-                  <div className="bg-teal-50 border border-teal-200 rounded-xl p-6">
-                    <h4 className="text-lg mb-2 text-slate-900">Industries We Serve</h4>
-                    <p className="text-gray-600 text-sm mb-4">
-                      Businesses across various industries:
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {industries.map((industry, idx) => (
-                        <span
-                          key={idx}
-                          className="px-3 py-1 bg-white border border-teal-200 rounded-full text-sm text-gray-700"
-                        >
-                          {industry}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Countries */}
-                  <div className="bg-teal-50 border border-teal-200 rounded-xl p-6">
-                    <h4 className="text-lg mb-2 text-slate-900">Countries We Serve</h4>
-                    <p className="text-gray-600 text-sm mb-4">
-                      Clients based across 11 countries:
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {countries.map((country) => (
-                        <div
-                          key={country.name}
-                          className="flex items-center gap-1.5 px-3 py-1 bg-white border border-teal-200 rounded-full"
-                        >
-                          <span className="text-base">{country.flag}</span>
-                          <span className="text-sm text-gray-700">{country.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                </div>
               </div>
+
             </div>
           </div>
         </section>
