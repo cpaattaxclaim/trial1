@@ -14,7 +14,7 @@ import {
   Lightbulb,
 } from 'lucide-react';
 
-// SVG flags
+// Import SVGs for flags (assume you have them in public/flags folder)
 import USFlag from '../../public/flags/us.svg';
 import UKFlag from '../../public/flags/uk.svg';
 import IndiaFlag from '../../public/flags/india.svg';
@@ -36,17 +36,49 @@ export function AboutPage() {
   });
 
   const credentials = [
-    { icon: Award, title: 'Dual Qualified', desc: 'Licensed US CPA (Washington State) and Indian Chartered Accountant (ICAI)' },
-    { icon: Shield, title: '7+ Years Experience', desc: 'Extensive professional tax and accounting expertise across US and international tax law' },
-    { icon: Users, title: '150+ Clients', desc: 'Serving clients across 11 countries worldwide' },
-    { icon: TrendingUp, title: 'On-Time Filing', desc: '100% on-time filing record across all client engagements' },
+    {
+      icon: Award,
+      title: 'Dual Qualified',
+      desc: 'Licensed US CPA (Washington State) and Indian Chartered Accountant (ICAI)',
+    },
+    {
+      icon: Shield,
+      title: '7+ Years Experience',
+      desc: 'Extensive professional tax and accounting expertise across US and international tax law',
+    },
+    {
+      icon: Users,
+      title: '150+ Clients',
+      desc: 'Serving clients across 11 countries worldwide',
+    },
+    {
+      icon: TrendingUp,
+      title: 'On-Time Filing',
+      desc: '100% on-time filing record across all client engagements',
+    },
   ];
 
   const values = [
-    { icon: BarChart2, title: 'Precision and Accuracy', desc: 'We ensure every number is correct and every deduction is maximized, protecting you from audits and penalties.' },
-    { icon: BadgeCheck, title: 'Client-Centered Service', desc: 'Your success is our success. We build long-term relationships based on trust and results.' },
-    { icon: Lightbulb, title: 'Proactive Guidance', desc: 'We provide year-round strategic advice to optimize your financial position.' },
-    { icon: Shield, title: 'Confidentiality and Trust', desc: 'Your financial information is handled with utmost care and professionalism.' },
+    {
+      icon: BarChart2,
+      title: 'Precision and Accuracy',
+      desc: 'We ensure every number is correct and every deduction is maximized, protecting you from audits and penalties.',
+    },
+    {
+      icon: BadgeCheck,
+      title: 'Client-Centered Service',
+      desc: 'Your success is our success. We build long-term relationships based on trust and results.',
+    },
+    {
+      icon: Lightbulb,
+      title: 'Proactive Guidance',
+      desc: 'We provide year-round strategic advice to optimize your financial position.',
+    },
+    {
+      icon: Shield,
+      title: 'Confidentiality and Trust',
+      desc: 'Your financial information is handled with utmost care and professionalism.',
+    },
   ];
 
   const expertise = [
@@ -88,7 +120,7 @@ export function AboutPage() {
       <Header />
       <main>
 
-        {/* Page Hero */}
+        {/* Hero Section */}
         <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
@@ -103,7 +135,7 @@ export function AboutPage() {
         {/* Mission Section */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
-
+            
             <div>
               <div className="inline-block px-4 py-2 bg-teal-100 rounded-full mb-6">
                 <span className="text-teal-700">Our Mission</span>
@@ -188,6 +220,29 @@ export function AboutPage() {
               </ul>
             </div>
 
+            {/* Industries & Countries */}
+            <div className="flex flex-col gap-4">
+              <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
+                <h4 className="text-base mb-2 text-slate-900">Industries We Serve</h4>
+                <div className="flex flex-wrap gap-1.5">
+                  {industries.map((industry, idx) => (
+                    <span key={idx} className="px-2.5 py-1 bg-white border border-teal-200 rounded-full text-xs text-gray-700">{industry}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
+                <h4 className="text-base mb-2 text-slate-900">Countries We Serve</h4>
+                <div className="flex flex-wrap gap-1.5">
+                  {countries.map((country) => (
+                    <div key={country.name} className="flex items-center gap-1 px-2.5 py-1 bg-white border border-teal-200 rounded-full">
+                      <img src={country.svg} alt={country.name} className="w-4 h-4 rounded-sm" />
+                      <span className="text-xs text-gray-700">{country.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Column */}
@@ -203,36 +258,6 @@ export function AboutPage() {
             </div>
           </div>
 
-        </section>
-
-        {/* Industries & Countries Full-Width Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-4 mt-6">
-
-            {/* Countries */}
-            <div className="flex-1 bg-teal-50 border border-teal-200 rounded-xl p-5">
-              <h4 className="text-base mb-2 text-slate-900">Countries We Serve</h4>
-              <div className="flex flex-wrap gap-1.5">
-                {countries.map((country) => (
-                  <div key={country.name} className="flex items-center gap-1 px-2.5 py-1 bg-white border border-teal-200 rounded-full">
-                    <img src={country.svg} alt={country.name} className="w-4 h-4 rounded-sm" />
-                    <span className="text-xs text-gray-700">{country.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Industries */}
-            <div className="flex-1 bg-teal-50 border border-teal-200 rounded-xl p-5">
-              <h4 className="text-base mb-2 text-slate-900">Industries We Serve</h4>
-              <div className="flex flex-wrap gap-1.5">
-                {industries.map((industry, idx) => (
-                  <span key={idx} className="px-2.5 py-1 bg-white border border-teal-200 rounded-full text-xs text-gray-700">{industry}</span>
-                ))}
-              </div>
-            </div>
-
-          </div>
         </section>
 
       </main>
