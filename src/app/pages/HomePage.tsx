@@ -15,36 +15,20 @@ import {
   Users,
   Award,
   Clock,
-  Globe2,        // [NEW] icon for International Tax card
+  Globe2,
 } from 'lucide-react';
-
-// ============================================================
-// TAXCLAIM — HomePage.tsx
-// Repositioning: General CPA  →  International Tax Specialist
-// Changes per "Website Repositioning — Full Change Document"
-//
-// Key:
-//   // [CHANGED] — existing content updated
-//   // [NEW]     — net-new content added
-//   // [REMOVED] — content deleted (shown as comment for reference)
-//
-// All em dashes replaced with plain hyphens or commas.
-// ============================================================
 
 export function HomePage() {
 
-  // ── [CHANGED] SEO: title, description, canonical updated ──────────────────
   useSEO({
     title: 'TaxClaim | US Tax for Foreign Founders & Cross-Border Businesses',
     description:
-      'TaxClaim is a dual-qualified US CPA and Indian CA firm specializing in international tax compliance — Form 5472, Form 5471, FBAR, FATCA, and cross-border structures. Serving clients across 11 countries.',
+      'TaxClaim is a dual-qualified US CPA and Indian CA firm specializing in international tax compliance - Form 5472, Form 5471, FBAR, FATCA, and cross-border structures. Serving clients across 11 countries.',
     canonical: 'https://taxclaim.co/',
-    // [NEW] Open Graph + structured data values updated below via useSEO
     ogTitle: 'US Tax & Compliance for Foreign Founders | TaxClaim CPA',
     ogDescription:
       'Dual-qualified US CPA and Indian CA. Form 5471, FBAR, FATCA, cross-border structures. Serving clients in 11 countries. Fully remote.',
     ogUrl: 'https://taxclaim.co/',
-    // [NEW] Schema: updated to reflect international specialization
     schema: {
       '@context': 'https://schema.org',
       '@type': 'AccountingService',
@@ -68,7 +52,6 @@ export function HomePage() {
           credentialCategory: 'Professional License',
           recognizedBy: { '@type': 'Organization', name: 'Washington State Board of Accountancy' },
         },
-        // [NEW] Indian CA credential added
         {
           '@type': 'EducationalOccupationalCredential',
           name: 'Indian Chartered Accountant (CA)',
@@ -95,14 +78,7 @@ export function HomePage() {
     },
   });
 
-  // ── [CHANGED] Services array ───────────────────────────────────────────────
-  // International Tax card added as first item.
-  // Card order: International Tax, Business Tax, Individual Tax,
-  //             Company Formation, IRS Resolution, Bookkeeping,
-  //             Sales & Use Tax, Business Consulting
-  // Pricing updated per repositioning doc.
   const services = [
-    // [NEW] International Tax card — first in grid
     {
       icon: Globe2,
       title: 'International Tax & Compliance',
@@ -110,14 +86,12 @@ export function HomePage() {
         'Foreign-owned US entities (LLC or Corporation), Form 5471, FBAR, FATCA, and cross-border tax planning for founders and businesses worldwide.',
       price: 'Custom Pricing - Book a Call',
       link: '/international-tax',
-      highlight: true, // [NEW] flag to visually distinguish this card
     },
     {
       icon: Building2,
       title: 'Business Tax Filing',
       description:
         'Comprehensive business tax preparation for partnerships, S-Corporations, and C-Corporations.',
-      // [CHANGED] price: was "Starting from $750"
       price: 'Starting from $1,200',
       link: '/services#business-tax',
     },
@@ -126,7 +100,6 @@ export function HomePage() {
       title: 'Individual Tax Filing',
       description:
         'Professional tax preparation and filing services for individuals, ensuring accuracy and maximum deductions.',
-      // [CHANGED] price: was "Starting from $200"
       price: 'Starting from $400',
       link: '/services#tax-filing',
     },
@@ -135,7 +108,6 @@ export function HomePage() {
       title: 'Company Formation',
       description:
         'Complete business formation services to get your company set up correctly from day one.',
-      // [CHANGED] price: was "Starting from $300"
       price: 'Starting from $500',
       link: '/services#formation',
     },
@@ -152,7 +124,6 @@ export function HomePage() {
       title: 'Bookkeeping Services',
       description:
         'Monthly bookkeeping to keep your financial records accurate, organized, and audit-ready.',
-      // [CHANGED] price: was "Starting from $300/month"
       price: 'Starting from $400/month',
       link: '/services#bookkeeping',
     },
@@ -161,7 +132,6 @@ export function HomePage() {
       title: 'Sales & Use Tax',
       description:
         'Monthly sales tax compliance, calculation, and filing services to keep your business compliant.',
-      // [CHANGED] price: was "Starting from $300/month"
       price: 'Starting from $400/month',
       link: '/services#sales-tax',
     },
@@ -170,58 +140,50 @@ export function HomePage() {
       title: 'Business Consulting & Advisory',
       description:
         'Strategic business advisory to help you make informed decisions and position your business for growth.',
-      // [CHANGED] price: was "$100/hour"
       price: 'From $250/hour',
       link: '/services#consulting',
     },
   ];
 
-  // ── [CHANGED] Stats: added 5th stat "11 Countries Served" ─────────────────
-  // "Remote service nationwide" replaced with "Clients in 11 Countries"
   const stats = [
-    { icon: Users,        label: 'Clients Served',      value: '150+' },
-    { icon: Award,        label: 'Years Experience',     value: '7+' },
-    { icon: Clock,        label: 'Average Response',     value: '24hrs' },
-    { icon: CheckCircle2, label: 'On-Time Filing',       value: '100%' },
-    // [NEW] fifth stat
-    { icon: Globe2,       label: 'Countries Served',     value: '11' },
+    { icon: Users,        label: 'Clients Served',  value: '150+' },
+    { icon: Award,        label: 'Years Experience', value: '7+' },
+    { icon: Clock,        label: 'Average Response', value: '24hrs' },
+    { icon: CheckCircle2, label: 'On-Time Filing',   value: '100%' },
+    { icon: Globe2,       label: 'Countries Served', value: '11' },
   ];
 
-  // ── [CHANGED] Hero credibility bullets ────────────────────────────────────
-  // All four bullets replaced per doc.
   const benefits = [
-    'US CPA + Indian CA — Dual Qualified',
+    'US CPA + Indian CA - Dual Qualified',
     'Form 5472 & 5471 Specialists',
     'FBAR & FATCA Reporting',
     'Clients Across 11 Countries',
     'Transparent, Flat-Fee Pricing',
-    'Fully Remote — Work With Us From Anywhere',
+    'Fully Remote - Work With Us From Anywhere',
   ];
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <main>
 
-        {/* ── Hero Section ─────────────────────────────────────────────────── */}
+        {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDE2YzAgMi4yMTEtMS43ODkgNC00IDRzLTQtMS43ODkgNC00IDEuNzg5LTQgNC00IDQgMS43ODkgNCA0em0tNiAyNGMwIDIuMjExLTEuNzg5IDQtNCA0cy00LTEuNzg5LTQtNCAxLjc4OS00IDQtNCA0IDEuNzg5IDQgNHptMTggMGMwIDIuMjExLTEuNzg5IDQtNCA0cy00LTEuNzg5LTQtNCAxLjc4OS00IDQtNCA0IDEuNzg5IDQgNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-50"></div>
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                {/* [CHANGED] badge text: was "Licensed CPA • Washington State" */}
                 <div className="inline-block px-4 py-2 bg-teal-600/20 rounded-full border border-teal-500/30 mb-6">
                   <span className="text-teal-300 text-sm">
                     US CPA + Indian CA • Clients in 11 Countries
                   </span>
                 </div>
 
-                {/* [CHANGED] h1: was "Expert Tax & Business Advisory Services" */}
                 <h1 className="text-4xl md:text-6xl mb-6">
                   US Tax & Compliance for Foreign Founders and Cross-Border Businesses
                 </h1>
 
-                {/* [CHANGED] subheadline: was "Helping individuals, small to mid-sized businesses..." */}
                 <p className="text-xl text-gray-300 mb-8">
                   Form 5471, FBAR, cross-border structures, and US entity compliance handled by a
                   dual-qualified US CPA and Indian CA serving clients across 11 countries.
@@ -261,12 +223,11 @@ export function HomePage() {
                     href="mailto:cpa@taxclaim.co"
                     className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors cursor-pointer"
                   >
-                    Email: cpa@taxclaim.co
+                    Email: cpa&#64;taxclaim.co
                   </a>
                 </div>
               </div>
 
-              {/* Right side credibility card */}
               <div className="hidden md:block">
                 <div className="relative">
                   <div className="absolute inset-0 bg-teal-600/20 rounded-3xl blur-3xl"></div>
@@ -275,7 +236,6 @@ export function HomePage() {
                       {benefits.map((benefit, idx) => (
                         <div key={idx} className="flex items-center gap-3">
                           <CheckCircle2 className="w-5 h-5 text-teal-300 flex-shrink-0" />
-                          {/* [CHANGED] benefit text — all four top bullets replaced */}
                           <span className="text-gray-200">{benefit}</span>
                         </div>
                       ))}
@@ -287,8 +247,7 @@ export function HomePage() {
           </div>
         </section>
 
-        {/* ── Stats Section ────────────────────────────────────────────────── */}
-        {/* [CHANGED] grid changed from grid-cols-4 to grid-cols-5 (5th stat added) */}
+        {/* Stats Section */}
         <section className="py-12 bg-gray-50 border-y border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
@@ -303,7 +262,7 @@ export function HomePage() {
           </div>
         </section>
 
-        {/* ── Services Section ─────────────────────────────────────────────── */}
+        {/* Services Section */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -313,27 +272,12 @@ export function HomePage() {
               </p>
             </div>
 
-            {/* [CHANGED] card order: International Tax first, then Business, Individual, etc. */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, idx) => (
                 <div
                   key={idx}
-                  className={`group bg-white border rounded-xl p-8 hover:shadow-xl transition-all duration-300 ${
-                    // [NEW] International Tax card gets a highlighted teal border
-                    service.highlight
-                      ? 'border-teal-400 ring-2 ring-teal-100 hover:border-teal-500'
-                      : 'border-gray-200 hover:border-teal-200'
-                  }`}
+                  className="group bg-white border border-gray-200 rounded-xl p-8 hover:shadow-xl hover:border-teal-200 transition-all duration-300"
                 >
-                  {/* [NEW] "Recommended" badge on International Tax card */}
-                  {service.highlight && (
-                    <div className="mb-3">
-                      <span className="inline-block px-3 py-1 bg-teal-600 text-white text-xs rounded-full">
-                        International Specialist
-                      </span>
-                    </div>
-                  )}
-
                   <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-teal-600 transition-colors">
                     <service.icon className="w-6 h-6 text-teal-600 group-hover:text-white transition-colors" />
                   </div>
@@ -358,14 +302,14 @@ export function HomePage() {
             <div className="text-center mt-12">
               <Link to="/services" className="cursor-pointer">
                 <Button size="lg" variant="outline" className="text-lg px-8 cursor-pointer">
-                  View All Offerings
+                  View All Services
                 </Button>
               </Link>
             </div>
           </div>
         </section>
 
-        {/* ── Why Choose Us Section ────────────────────────────────────────── */}
+        {/* Why Choose Us Section */}
         <section className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -378,22 +322,22 @@ export function HomePage() {
 
                 <div className="space-y-4">
                   {[
-                  {
-                    title: 'Dual Qualified',
-                    desc: 'Licensed US CPA and Indian Chartered Accountant with cross-border expertise'
-                  },
-                  {
-                    title: 'Form 5472 & 5471 Specialists',
-                    desc: 'Specialist in international compliance forms that most general CPAs avoid'
-                  },
-                  {
-                    title: 'Dedicated Support',
-                    desc: 'Direct access to your advisor via email, phone, or WhatsApp across time zones'
-                  },
-                  {
-                    title: 'Global Reach',
-                    desc: 'Serving clients across 11 countries — no US presence required to work with us'
-                  },
+                    {
+                      title: 'Dual Qualified',
+                      desc: 'Licensed US CPA and Indian Chartered Accountant with cross-border expertise'
+                    },
+                    {
+                      title: 'Form 5472 & 5471 Specialists',
+                      desc: 'Specialist in international compliance forms that most general CPAs avoid'
+                    },
+                    {
+                      title: 'Dedicated Support',
+                      desc: 'Direct access to your advisor via email, phone, or WhatsApp across time zones'
+                    },
+                    {
+                      title: 'Global Reach',
+                      desc: 'Serving clients across 11 countries - no US presence required to work with us'
+                    },
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-4">
                       <CheckCircle2 className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
@@ -406,7 +350,6 @@ export function HomePage() {
                 </div>
               </div>
 
-              {/* Stats grid — unchanged layout, same values */}
               <div className="grid grid-cols-2 gap-6">
                 <div className="bg-white rounded-xl p-6 border border-gray-200">
                   <div className="text-3xl mb-2 text-teal-600">7+</div>
@@ -420,7 +363,6 @@ export function HomePage() {
                   <div className="text-3xl mb-2 text-teal-600">100%</div>
                   <div className="text-sm text-gray-600">On-Time Filing</div>
                 </div>
-                {/* [NEW] 11 Countries stat replaces the plain 24hr card in this grid */}
                 <div className="bg-white rounded-xl p-6 border border-gray-200">
                   <div className="text-3xl mb-2 text-teal-600">11</div>
                   <div className="text-sm text-gray-600">Countries Served</div>
@@ -430,8 +372,7 @@ export function HomePage() {
           </div>
         </section>
 
-        {/* ── CTA Section ──────────────────────────────────────────────────── */}
-        {/* [CHANGED] headline and sub-copy updated to reflect international positioning */}
+        {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-4xl mb-6">Ready to Sort Your US Tax Compliance?</h2>
