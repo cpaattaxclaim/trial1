@@ -35,9 +35,9 @@ export function HomePage() {
 
   // ── [CHANGED] SEO: title, description, canonical updated ──────────────────
   useSEO({
-    title: 'US Tax & Compliance for Foreign Founders | TaxClaim CPA',
+    title: 'TaxClaim | US Tax for Foreign Founders & Cross-Border Businesses',
     description:
-      'TaxClaim specializes in US tax compliance for foreign founders and cross-border businesses. Form 5471, FBAR, FATCA, and foreign-owned US entity filings handled by a dual-qualified US CPA and Indian CA serving clients across 11 countries.',
+      'TaxClaim is a dual-qualified US CPA and Indian CA firm specializing in international tax compliance — Form 5472, Form 5471, FBAR, FATCA, and cross-border structures. Serving clients across 11 countries.',
     canonical: 'https://taxclaim.co/',
     // [NEW] Open Graph + structured data values updated below via useSEO
     ogTitle: 'US Tax & Compliance for Foreign Founders | TaxClaim CPA',
@@ -190,19 +190,13 @@ export function HomePage() {
   // ── [CHANGED] Hero credibility bullets ────────────────────────────────────
   // All four bullets replaced per doc.
   const benefits = [
-    // [CHANGED] was "Licensed CPA in Washington State"
-    'US CPA + Indian CA - Dual Qualified',
-    // [CHANGED] was "Specialized in small to mid-sized businesses"
-    'Form 5471, FBAR & FATCA Specialists',
-    // [CHANGED] was "Transparent, upfront pricing"
+    'US CPA + Indian CA — Dual Qualified',
+    'Form 5472 & 5471 Specialists',
+    'FBAR & FATCA Reporting',
     'Clients Across 11 Countries',
-    // [CHANGED] was "Fast turnaround times" / "Remote service nationwide"
-    'Remote Service - Work With Us From Anywhere',
-    // Keep two existing bullets that still apply
-    'Transparent, upfront pricing',
-    'Fast turnaround times',
+    'Transparent, Flat-Fee Pricing',
+    'Fully Remote — Work With Us From Anywhere',
   ];
-
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -218,7 +212,7 @@ export function HomePage() {
                 {/* [CHANGED] badge text: was "Licensed CPA • Washington State" */}
                 <div className="inline-block px-4 py-2 bg-teal-600/20 rounded-full border border-teal-500/30 mb-6">
                   <span className="text-teal-300 text-sm">
-                    US CPA + Indian CA - Dual Qualified
+                    US CPA + Indian CA • Clients in 11 Countries
                   </span>
                 </div>
 
@@ -384,24 +378,22 @@ export function HomePage() {
 
                 <div className="space-y-4">
                   {[
-                    {
-                      // [CHANGED] was "Licensed & Certified — CPA licensed in Washington State with expertise across all 50 states"
-                      title: 'Dual Qualified',
-                      desc: 'Licensed US CPA and Indian Chartered Accountant with cross-border expertise.',
-                    },
-                    {
-                      title: 'Transparent Pricing',
-                      desc: 'No hidden fees. Clear, upfront pricing for all services.',
-                    },
-                    {
-                      title: 'Dedicated Support',
-                      desc: 'Direct access to your advisor via email, phone, or WhatsApp.',
-                    },
-                    {
-                      // [CHANGED] was "Remote Convenience — Fully remote services, work with us from anywhere in the US"
-                      title: 'Global Reach',
-                      desc: 'Serving clients across 11 countries. No US presence required to work with us.',
-                    },
+                  {
+                    title: 'Dual Qualified',
+                    desc: 'Licensed US CPA and Indian Chartered Accountant with cross-border expertise'
+                  },
+                  {
+                    title: 'Form 5472 & 5471 Specialists',
+                    desc: 'Specialist in international compliance forms that most general CPAs avoid'
+                  },
+                  {
+                    title: 'Dedicated Support',
+                    desc: 'Direct access to your advisor via email, phone, or WhatsApp across time zones'
+                  },
+                  {
+                    title: 'Global Reach',
+                    desc: 'Serving clients across 11 countries — no US presence required to work with us'
+                  },
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-4">
                       <CheckCircle2 className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
