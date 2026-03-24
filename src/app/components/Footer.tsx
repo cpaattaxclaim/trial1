@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1.8fr_1.5fr_1.2fr] gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
 
           {/* Column 1: Brand */}
           <div>
@@ -21,34 +21,34 @@ export function Footer() {
           {/* Column 2: Quick Links */}
           <div>
             <h3 className="font-semibold mb-5">Quick Links</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 text-sm">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-teal-300 text-sm transition-colors cursor-pointer">
+                <Link to="/" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/international-tax" className="text-gray-400 hover:text-teal-300 text-sm transition-colors cursor-pointer">
+                <Link to="/international-tax" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
                   International Tax
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-400 hover:text-teal-300 text-sm transition-colors cursor-pointer">
+                <Link to="/services" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-teal-300 text-sm transition-colors cursor-pointer">
+                <Link to="/about" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="text-gray-400 hover:text-teal-300 text-sm transition-colors cursor-pointer">
+                <Link to="/faq" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-400 hover:text-teal-300 text-sm transition-colors cursor-pointer">
+                <Link to="/blog" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
                   Blog
                 </Link>
               </li>
@@ -58,7 +58,7 @@ export function Footer() {
           {/* Column 3: International Tax */}
           <div>
             <h3 className="font-semibold mb-5">International Tax</h3>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3 text-sm break-words">
               <li>
                 <Link to="/international-tax" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
                   International Tax and Compliance
@@ -95,7 +95,7 @@ export function Footer() {
           {/* Column 4: Domestic Services */}
           <div>
             <h3 className="font-semibold mb-5">Domestic Services</h3>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3 text-sm break-words">
               <li>
                 <Link to="/services#business-tax" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
                   Business Tax Filing
