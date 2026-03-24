@@ -1,27 +1,15 @@
-import React from "react";
-import { hydrateRoot, createRoot } from "react-dom/client"; // Added hydrateRoot
-import { HelmetProvider } from "react-helmet-async";
-import App from "./app/App.tsx";
-import "./styles/index.css";
+import { ViteReactSSG } from 'vite-react-ssg'
+import { HelmetProvider } from 'react-helmet-async'
+import App from './app/App.tsx'
+import './styles/index.css'
 
-const container = document.getElementById("root")!;
-
-// This check handles the transition from static HTML to live React
-if (container.hasChildNodes()) {
-  hydrateRoot(
-    container,
-    <React.StrictMode>
-      <HelmetProvider>
-        <App />
-      </HelmetProvider>
-    </React.StrictMode>
-  );
-} else {
-  createRoot(container).render(
-    <React.StrictMode>
-      <HelmetProvider>
-        <App />
-      </HelmetProvider>
-    </React.StrictMode>
-  );
-}
+// ViteReactSSG handles the hydrateRoot vs createRoot logic for you.
+// It will use 'hydrateRoot' in production (after pre-rendering) 
+// and 'createRoot' during local development.
+export const createRoot = ViteReactSSG(
+  <React.StrictMode>
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  </React.StrictMode>
+);
