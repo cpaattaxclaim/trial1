@@ -20,14 +20,14 @@ export default {
       type: 'string',
       options: {
         list: [
-          'Tax Planning',
-          'Business Formation',
-          'Compliance',
-          'Tax Filing',
-          'IRS',
-          'Business Growth',
-          'Startup',
-          'Bookkeeping',
+          { title: 'Tax Planning', value: 'Tax Planning' },
+          { title: 'Business Formation', value: 'Business Formation' },
+          { title: 'Compliance', value: 'Compliance' },
+          { title: 'Tax Filing', value: 'Tax Filing' },
+          { title: 'IRS', value: 'IRS' },
+          { title: 'Business Growth', value: 'Business Growth' },
+          { title: 'Startup', value: 'Startup' },
+          { title: 'Bookkeeping', value: 'Bookkeeping' },
         ],
       },
     },
@@ -68,20 +68,23 @@ export default {
           name: 'title',
           title: 'SEO Title',
           type: 'string',
-          description: 'Overrides the post title in search results. Recommended: 50–60 characters.',
+          description:
+            'Overrides the post title in search results. Recommended: 50–60 characters.',
         },
         {
           name: 'description',
           title: 'Meta Description',
           type: 'text',
           rows: 3,
-          description: 'Summary shown in search results. Recommended: 150–160 characters.',
+          description:
+            'Summary shown in search results. Recommended: 150–160 characters.',
         },
         {
           name: 'ogImage',
           title: 'Social Share Image',
           type: 'image',
-          description: 'Image shown when shared on social media. Ideal size: 1200x630px.',
+          description:
+            'Image shown when shared on social media. Ideal size: 1200x630px.',
         },
       ],
     },
@@ -90,13 +93,15 @@ export default {
       name: 'ctaText',
       title: 'CTA Heading',
       type: 'string',
-      description: 'Custom heading shown at the bottom of this post. If left blank, a generic fallback is used. E.g. Not sure if S-Corp is right for you? TaxClaim runs the numbers.',
+      description:
+        'Custom heading shown at the bottom of this post. If left blank, a generic fallback is used. E.g. Not sure if S-Corp is right for you? TaxClaim runs the numbers.',
     },
     {
       name: 'ctaButtonLabel',
       title: 'CTA Button Label',
       type: 'string',
-      description: 'Button text shown with the CTA. If left blank, defaults to Get Started. E.g. Book a Free Call',
+      description:
+        'Button text shown with the CTA. If left blank, defaults to Get Started. E.g. Book a Free Call',
     },
   ],
-}
+};
