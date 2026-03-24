@@ -9,8 +9,8 @@ import {
   Users,
   TrendingUp,
   CheckCircle2,
-  Target,
-  Heart,
+  BarChart2,
+  BadgeCheck,
   Lightbulb,
   Globe2,
 } from 'lucide-react';
@@ -48,12 +48,12 @@ export function AboutPage() {
 
   const values = [
     {
-      icon: Target,
+      icon: BarChart2,
       title: 'Precision and Accuracy',
       desc: 'We ensure every number is correct and every deduction is maximized, protecting you from audits and penalties.',
     },
     {
-      icon: Heart,
+      icon: BadgeCheck,
       title: 'Client-Centered Service',
       desc: 'Your success is our success. We build long-term relationships based on trust and results.',
     },
@@ -97,6 +97,20 @@ export function AboutPage() {
     'Consulting',
   ];
 
+  const countries = [
+    { name: 'United States', flag: '🇺🇸' },
+    { name: 'United Kingdom', flag: '🇬🇧' },
+    { name: 'India', flag: '🇮🇳' },
+    { name: 'Singapore', flag: '🇸🇬' },
+    { name: 'UAE', flag: '🇦🇪' },
+    { name: 'Germany', flag: '🇩🇪' },
+    { name: 'Netherlands', flag: '🇳🇱' },
+    { name: 'Canada', flag: '🇨🇦' },
+    { name: 'China', flag: '🇨🇳' },
+    { name: 'New Zealand', flag: '🇳🇿' },
+    { name: 'South Africa', flag: '🇿🇦' },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -122,26 +136,21 @@ export function AboutPage() {
                 <div className="inline-block px-4 py-2 bg-teal-100 rounded-full mb-6">
                   <span className="text-teal-700">Our Mission</span>
                 </div>
-
                 <h2 className="text-4xl mb-6 text-slate-900">
                   US Tax Compliance for Foreign Founders and Cross-Border Businesses
                 </h2>
-
                 <p className="text-lg text-gray-600 mb-6">
                   At TaxClaim, we specialize in US tax compliance for foreign founders, cross-border businesses, and anyone navigating the intersection of US and international tax law. Our advisor is dual-qualified as a US CPA and Indian Chartered Accountant - with clients across 11 countries including the UK, Singapore, UAE, India, Germany, Netherlands, Canada, China, New Zealand, and South Africa.
                 </p>
-
                 <p className="text-lg text-gray-600 mb-8">
                   Whether you have a foreign-owned US LLC, need to file Form 5471 for a foreign corporation, or are setting up your first US entity as a non-resident founder, we handle the full compliance picture so you can focus on building your business.
                 </p>
-
                 <Link to="/contact" className="cursor-pointer">
                   <Button size="lg" className="bg-teal-600 hover:bg-teal-700 cursor-pointer">
                     Work With Us
                   </Button>
                 </Link>
               </div>
-
               <div className="grid grid-cols-2 gap-6">
                 {credentials.map((item, idx) => (
                   <div
@@ -196,7 +205,6 @@ export function AboutPage() {
                 <p className="text-lg text-gray-600 mb-8">
                   With 7+ years of experience serving clients across the US, UK, Netherlands, New Zealand, Germany, Singapore, Canada, UAE, India, China, and South Africa, we have developed deep expertise in international and domestic tax compliance.
                 </p>
-
                 <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-8">
                   <h3 className="text-2xl mb-4">Why Remote Services?</h3>
                   <p className="text-gray-300 mb-6">
@@ -230,67 +238,54 @@ export function AboutPage() {
                   ))}
                 </div>
 
-                <div className="mt-8 bg-teal-50 border border-teal-200 rounded-xl p-6">
-                  <h4 className="text-lg mb-2 text-slate-900">Industries We Serve</h4>
-                  <p className="text-gray-700 text-sm mb-4">
-                    We have experience working with businesses across various industries:
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {industries.map((industry, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-white border border-teal-200 rounded-full text-sm text-gray-700"
-                      >
-                        {industry}
-                      </span>
-                    ))}
+                {/* Industries and Countries side by side */}
+                <div className="mt-8 grid sm:grid-cols-2 gap-6">
+
+                  {/* Industries */}
+                  <div className="bg-teal-50 border border-teal-200 rounded-xl p-6">
+                    <h4 className="text-lg mb-2 text-slate-900">Industries We Serve</h4>
+                    <p className="text-gray-600 text-sm mb-4">
+                      Businesses across various industries:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {industries.map((industry, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-white border border-teal-200 rounded-full text-sm text-gray-700"
+                        >
+                          {industry}
+                        </span>
+                      ))}
+                    </div>
                   </div>
+
+                  {/* Countries */}
+                  <div className="bg-teal-50 border border-teal-200 rounded-xl p-6">
+                    <h4 className="text-lg mb-2 text-slate-900">Countries We Serve</h4>
+                    <p className="text-gray-600 text-sm mb-4">
+                      Clients based across 11 countries:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {countries.map((country) => (
+                        <div
+                          key={country.name}
+                          className="flex items-center gap-1.5 px-3 py-1 bg-white border border-teal-200 rounded-full"
+                        >
+                          <span className="text-base">{country.flag}</span>
+                          <span className="text-sm text-gray-700">{country.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Global Reach Section */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Globe2 className="w-8 h-8 text-teal-600" />
-              </div>
-              <h2 className="text-4xl mb-6 text-slate-900">Global Reach</h2>
-              <p className="text-lg text-gray-600 mb-10">
-                Our clients are based in the US, UK, Netherlands, Singapore, Canada, Germany, New Zealand, UAE, India, China, and South Africa. If you have a US entity or US tax obligation, we can help you regardless of where you are.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                {[
-                  { name: 'United States', flag: '🇺🇸' },
-                  { name: 'United Kingdom', flag: '🇬🇧' },
-                  { name: 'India', flag: '🇮🇳' },
-                  { name: 'Singapore', flag: '🇸🇬' },
-                  { name: 'UAE', flag: '🇦🇪' },
-                  { name: 'Germany', flag: '🇩🇪' },
-                  { name: 'Netherlands', flag: '🇳🇱' },
-                  { name: 'Canada', flag: '🇨🇦' },
-                  { name: 'China', flag: '🇨🇳' },
-                  { name: 'New Zealand', flag: '🇳🇿' },
-                  { name: 'South Africa', flag: '🇿🇦' },
-                ].map((country) => (
-                  <div
-                    key={country.name}
-                    className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full hover:border-teal-300 hover:bg-teal-50 transition-colors"
-                  >
-                    <span className="text-xl">{country.flag}</span>
-                    <span className="text-sm text-gray-700">{country.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Credentials Section */}
-        <section className="py-20">
+        <section className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl mb-4 text-slate-900">Professional Credentials</h2>
