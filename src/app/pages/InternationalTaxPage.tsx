@@ -270,10 +270,10 @@ export function InternationalTaxPage() {
           </div>
         </section>
 
-        {/* Penalty Stakes Banner */}
-        <section className="py-12 bg-teal-50 border-y border-teal-200">
+        {/* Penalty Stakes — teal card, no full-width banner */}
+        <section className="py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-start gap-4 max-w-4xl mx-auto">
+            <div className="flex items-start gap-4 max-w-4xl mx-auto bg-teal-50 border border-teal-200 rounded-2xl p-8">
               <ShieldAlert className="w-8 h-8 text-teal-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-lg text-slate-900 mb-3">The Penalty Stakes</h3>
