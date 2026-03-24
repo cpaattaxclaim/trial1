@@ -230,7 +230,7 @@ export function AboutPage() {
                 </div>
 
                 {/* Industries and Countries stacked full width */}
-                <div className="mt-6 flex flex-col gap-4">
+                <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
 
                   {/* Industries */}
                   <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
