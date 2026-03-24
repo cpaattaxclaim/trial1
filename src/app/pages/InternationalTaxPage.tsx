@@ -10,24 +10,26 @@ import {
   Building2,
   ArrowRight,
   CheckCircle2,
-  AlertTriangle,
+  ShieldAlert,
   Users,
-  MapPin,
 } from 'lucide-react';
 
 const WHO_WE_SERVE = [
   {
     icon: Building2,
+    step: '01',
     title: 'Foreign Founders with US Entities',
     desc: 'Non-US founders who have formed a Delaware LLC or C-Corp and need to stay compliant with IRS filing requirements.',
   },
   {
     icon: Globe2,
+    step: '02',
     title: 'US Persons with Foreign Corporations',
     desc: 'US citizens, green card holders, and residents who own or control a foreign corporation and are required to file Form 5471.',
   },
   {
     icon: Users,
+    step: '03',
     title: 'NRIs and Expats',
     desc: 'Non-resident Indians and expats with cross-border income, foreign bank accounts, or US entities requiring FBAR and FATCA reporting.',
   },
@@ -164,20 +166,6 @@ const SERVICES = [
   },
 ];
 
-const COUNTRIES = [
-  { name: 'United States', flag: '🇺🇸' },
-  { name: 'United Kingdom', flag: '🇬🇧' },
-  { name: 'India', flag: '🇮🇳' },
-  { name: 'Singapore', flag: '🇸🇬' },
-  { name: 'UAE', flag: '🇦🇪' },
-  { name: 'Germany', flag: '🇩🇪' },
-  { name: 'Netherlands', flag: '🇳🇱' },
-  { name: 'Canada', flag: '🇨🇦' },
-  { name: 'China', flag: '🇨🇳' },
-  { name: 'New Zealand', flag: '🇳🇿' },
-  { name: 'South Africa', flag: '🇿🇦' },
-];
-
 const WHY_TAXCLAIM = [
   {
     title: 'Dual Qualified',
@@ -269,11 +257,12 @@ export function InternationalTaxPage() {
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {WHO_WE_SERVE.map((item, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg hover:border-teal-200 transition-all">
-                  <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
-                    <item.icon className="w-6 h-6 text-teal-600" />
+                <div key={idx} className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg hover:border-teal-200 transition-all text-center">
+                  <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                    <item.icon className="w-7 h-7 text-teal-600" />
                   </div>
-                  <h3 className="text-xl mb-2 text-slate-900">{item.title}</h3>
+                  <div className="text-teal-600 text-xs tracking-widest mb-2">TYPE {item.step}</div>
+                  <h3 className="text-lg mb-2 text-slate-900">{item.title}</h3>
                   <p className="text-gray-600 text-sm">{item.desc}</p>
                 </div>
               ))}
@@ -282,27 +271,27 @@ export function InternationalTaxPage() {
         </section>
 
         {/* Penalty Stakes Banner */}
-        <section className="py-12 bg-amber-50 border-y border-amber-200">
+        <section className="py-12 bg-teal-50 border-y border-teal-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-start gap-4 max-w-4xl mx-auto">
-              <AlertTriangle className="w-8 h-8 text-amber-600 flex-shrink-0 mt-1" />
+              <ShieldAlert className="w-8 h-8 text-teal-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-lg text-amber-900 mb-3">The Penalty Stakes</h3>
-                <div className="grid sm:grid-cols-3 gap-6 text-sm text-amber-800">
+                <h3 className="text-lg text-slate-900 mb-3">The Penalty Stakes</h3>
+                <div className="grid sm:grid-cols-3 gap-6 text-sm text-slate-700">
                   <div>
-                    <div className="text-2xl text-amber-700 mb-1">$25,000</div>
+                    <div className="text-2xl text-teal-600 mb-1">$25,000</div>
                     <div>per form per year for missing Form 5472</div>
                   </div>
                   <div>
-                    <div className="text-2xl text-amber-700 mb-1">$10,000+</div>
+                    <div className="text-2xl text-teal-600 mb-1">$10,000+</div>
                     <div>base penalty for missing Form 5471, plus $10,000 per month after IRS notice</div>
                   </div>
                   <div>
-                    <div className="text-2xl text-amber-700 mb-1">No limit</div>
+                    <div className="text-2xl text-teal-600 mb-1">No limit</div>
                     <div>on statute of limitations for a return with a missing Form 5471 - your entire return stays open to audit indefinitely</div>
                   </div>
                 </div>
-                <p className="mt-4 text-amber-800 text-sm">
+                <p className="mt-4 text-slate-600 text-sm">
                   These penalties are avoidable - but only if you act before the deadline. Most foreign founders do not find out about them until after the fact.
                 </p>
               </div>
@@ -327,7 +316,6 @@ export function InternationalTaxPage() {
                   className="scroll-mt-24 bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow"
                 >
                   <div className="grid md:grid-cols-3">
-                    {/* Left */}
                     <div className="md:col-span-1 bg-slate-50 p-8">
                       <div className="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
                         <service.icon className="w-8 h-8 text-teal-600" />
@@ -347,13 +335,11 @@ export function InternationalTaxPage() {
                         </Button>
                       </Link>
                     </div>
-
-                    {/* Right */}
                     <div className="md:col-span-2 p-8">
                       {service.penalty && (
-                        <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
-                          <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                          <p className="text-sm text-amber-800">{service.penalty}</p>
+                        <div className="flex items-start gap-3 bg-teal-50 border border-teal-200 rounded-lg p-4 mb-6">
+                          <ShieldAlert className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                          <p className="text-sm text-teal-900">{service.penalty}</p>
                         </div>
                       )}
                       <h4 className="text-lg mb-4 text-slate-900">What is Included</h4>
@@ -373,37 +359,67 @@ export function InternationalTaxPage() {
           </div>
         </section>
 
-        {/* Why Act Now */}
-        <section className="py-16 bg-slate-900 text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl mb-8 text-center">Why Act Before the Deadline</h2>
-            <div className="grid sm:grid-cols-4 gap-4">
+        {/* Why Act Before Deadline */}
+        <section className="py-20 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl mb-4 text-slate-900">Why Act Before the Deadline</h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Deadlines are fixed. Penalties are not waived for extensions.
+              </p>
+            </div>
+            <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-teal-200 z-0"></div>
               {[
-                { step: '01', text: 'Tax year ends December 31' },
-                { step: '02', text: 'Form 5472 is due with your entity return' },
-                { step: '03', text: 'Missing it triggers a $25,000 penalty per form' },
-                { step: '04', text: 'Extensions do not waive the penalty' },
+                {
+                  step: '01',
+                  icon: ShieldAlert,
+                  title: 'Tax Year Ends',
+                  text: 'Tax year ends December 31 - your filing obligations are locked in',
+                },
+                {
+                  step: '02',
+                  icon: FileText,
+                  title: 'Return Due Date',
+                  text: 'Form 5472 is due with your entity return - typically April 15 or June 15',
+                },
+                {
+                  step: '03',
+                  icon: ShieldCheck,
+                  title: '$25,000 Penalty',
+                  text: 'Missing it triggers a $25,000 penalty per form - no exceptions, no cap',
+                },
+                {
+                  step: '04',
+                  icon: CheckCircle2,
+                  title: 'Extensions Do Not Help',
+                  text: 'Filing an extension does not waive the penalty for a missing Form 5472',
+                },
               ].map((item) => (
-                <div key={item.step} className="bg-white/10 rounded-xl p-6 text-center">
-                  <div className="text-teal-400 text-sm mb-2">STEP {item.step}</div>
-                  <p className="text-gray-200 text-sm">{item.text}</p>
+                <div key={item.step} className="relative z-10 bg-white border border-gray-200 rounded-xl p-6 text-center hover:shadow-lg hover:border-teal-200 transition-all">
+                  <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                    <item.icon className="w-7 h-7 text-teal-600" />
+                  </div>
+                  <div className="text-teal-600 text-xs tracking-widest mb-2">STEP {item.step}</div>
+                  <div className="text-slate-900 mb-2">{item.title}</div>
+                  <p className="text-gray-600 text-sm">{item.text}</p>
                 </div>
               ))}
             </div>
-            <p className="text-center text-gray-400 text-sm mt-8">
+            <p className="text-center text-gray-500 text-sm mt-8">
               The sooner you address a missed or upcoming filing, the better your options. Reach out today.
             </p>
           </div>
         </section>
 
         {/* Why TaxClaim */}
-        <section className="py-20 bg-slate-50">
+        <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-4xl mb-6 text-slate-900">Why TaxClaim</h2>
                 <p className="text-lg text-gray-600 mb-8">
-                  Most general CPAs avoid international forms. We specialize in them. Your dual-qualification, penalty knowledge, and global client base are exactly what a foreign founder needs.
+                  Most general CPAs avoid international forms. We specialize in them. Our dual-qualification, penalty knowledge, and global client base are exactly what a foreign founder needs.
                 </p>
                 <div className="space-y-4">
                   {WHY_TAXCLAIM.map((item, idx) => (
@@ -435,98 +451,6 @@ export function InternationalTaxPage() {
                   <div className="text-sm text-gray-600">On-Time Filing</div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Countries We Serve */}
-        <section className="py-16 bg-white border-y border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl mb-3 text-slate-900">Countries We Serve</h2>
-              <p className="text-gray-600">
-                Our clients are based across 11 countries. If you have a US entity or US tax obligation, we can help you regardless of where you are.
-              </p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4">
-              {COUNTRIES.map((country) => (
-                <div
-                  key={country.name}
-                  className="flex items-center gap-2 px-4 py-2 bg-slate-50 border border-gray-200 rounded-full hover:border-teal-300 hover:bg-teal-50 transition-colors"
-                >
-                  <span className="text-xl">{country.flag}</span>
-                  <span className="text-sm text-gray-700">{country.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Anonymized Case Study */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl mb-10 text-center text-slate-900">How We Have Helped</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                {
-                  scenario: 'Singapore founder, Delaware LLC, 3 missed years',
-                  detail: 'A Singapore-based founder came to us with 3 years of missed Form 5472 filings. We handled the multi-year catch-up, filed penalty abatement requests, and brought the entity fully into compliance.',
-                  outcome: 'Penalties avoided: up to $75,000',
-                },
-                {
-                  scenario: 'US person with UK subsidiary, Form 5471 never filed',
-                  detail: 'A US citizen with a UK subsidiary had never been told about Form 5471. We filed 2 years of catch-up returns, resolved the open audit risk, and set up an ongoing compliance calendar.',
-                  outcome: 'Statute of limitations closed on both years',
-                },
-              ].map((item, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 rounded-xl p-8">
-                  <div className="inline-block px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs mb-4">
-                    Anonymized Case Study
-                  </div>
-                  <h3 className="text-lg text-slate-900 mb-3">{item.scenario}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{item.detail}</p>
-                  <div className="flex items-center gap-2 text-teal-700 text-sm">
-                    <CheckCircle2 className="w-4 h-4" />
-                    {item.outcome}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ Teaser */}
-        <section className="py-16 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl mb-8 text-center text-slate-900">Common Questions</h2>
-            <div className="space-y-4">
-              {[
-                {
-                  q: 'Do I need to file US taxes if I have a foreign-owned Delaware LLC?',
-                  a: 'It depends on whether your entity has effectively connected income or transactions with related parties. Many foreign-owned LLCs are required to file a pro forma 1120 and Form 5472 even if no US tax is owed.',
-                },
-                {
-                  q: 'What is the difference between Form 5472 and Form 5471?',
-                  a: 'Form 5472 applies to foreign-owned US entities with reportable transactions. Form 5471 applies to US persons who own or control a foreign corporation. Both carry significant penalties for non-filing.',
-                },
-                {
-                  q: 'Can you help if I missed filings for prior years?',
-                  a: 'Yes. We handle multi-year catch-up filings, voluntary disclosure situations, and penalty abatement requests. The sooner you address a missed filing, the better your options.',
-                },
-              ].map((item, idx) => (
-                <div key={idx} className="bg-slate-50 border border-gray-200 rounded-xl p-6">
-                  <h3 className="text-slate-900 mb-2">{item.q}</h3>
-                  <p className="text-gray-600 text-sm">{item.a}</p>
-                </div>
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <Link to="/faq" className="cursor-pointer">
-                <Button variant="outline" className="cursor-pointer">
-                  View All FAQs
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
             </div>
           </div>
         </section>
