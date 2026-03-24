@@ -7,6 +7,7 @@ import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { useSEO } from '../../hooks/useSEO';
 import { Textarea } from '../components/ui/textarea';
+import * as Flags from 'country-flag-icons/react/3x2';
 import {
   Select,
   SelectContent,
@@ -14,30 +15,30 @@ import {
   SelectTrigger,
   SelectValue
 } from '../components/ui/select';
-import { Mail, Phone, MessageSquare, CheckCircle2, Loader2 } from 'lucide-react';
+import { Mail, Phone, MessageSquare, CheckCircle2, Loader2, Globe } from 'lucide-react';
 
 const COUNTRY_CODES = [
-  { country: 'United States', code: '+1', flag: '🇺🇸' },
-  { country: 'United Kingdom', code: '+44', flag: '🇬🇧' },
-  { country: 'India', code: '+91', flag: '🇮🇳' },
-  { country: 'Singapore', code: '+65', flag: '🇸🇬' },
-  { country: 'UAE', code: '+971', flag: '🇦🇪' },
-  { country: 'Germany', code: '+49', flag: '🇩🇪' },
-  { country: 'Netherlands', code: '+31', flag: '🇳🇱' },
-  { country: 'Canada', code: '+1 (CA)', flag: '🇨🇦' },
-  { country: 'China', code: '+86', flag: '🇨🇳' },
-  { country: 'New Zealand', code: '+64', flag: '🇳🇿' },
-  { country: 'South Africa', code: '+27', flag: '🇿🇦' },
-  { country: 'Australia', code: '+61', flag: '🇦🇺' },
-  { country: 'France', code: '+33', flag: '🇫🇷' },
-  { country: 'Sweden', code: '+46', flag: '🇸🇪' },
-  { country: 'Israel', code: '+972', flag: '🇮🇱' },
-  { country: 'Japan', code: '+81', flag: '🇯🇵' },
-  { country: 'South Korea', code: '+82', flag: '🇰🇷' },
-  { country: 'Brazil', code: '+55', flag: '🇧🇷' },
-  { country: 'Mexico', code: '+52', flag: '🇲🇽' },
-  { country: 'Nigeria', code: '+234', flag: '🇳🇬' },
-  { country: 'Other', code: '+', flag: '🌐' },
+  { country: 'United States', code: '+1', flag: 'US' },
+  { country: 'United Kingdom', code: '+44', flag: 'GB' },
+  { country: 'India', code: '+91', flag: 'IN' },
+  { country: 'Singapore', code: '+65', flag: 'SG' },
+  { country: 'UAE', code: '+971', flag: 'AE' },
+  { country: 'Germany', code: '+49', flag: 'DE' },
+  { country: 'Netherlands', code: '+31', flag: 'NL' },
+  { country: 'Canada', code: '+1 (CA)', flag: 'CA' },
+  { country: 'China', code: '+86', flag: 'CN' },
+  { country: 'New Zealand', code: '+64', flag: 'NZ' },
+  { country: 'South Africa', code: '+27', flag: 'ZA' },
+  { country: 'Australia', code: '+61', flag: 'AU' },
+  { country: 'France', code: '+33', flag: 'FR' },
+  { country: 'Sweden', code: '+46', flag: 'SE' },
+  { country: 'Israel', code: '+972', flag: 'IL' },
+  { country: 'Japan', code: '+81', flag: 'JP' },
+  { country: 'South Korea', code: '+82', flag: 'KR' },
+  { country: 'Brazil', code: '+55', flag: 'BR' },
+  { country: 'Mexico', code: '+52', flag: 'MX' },
+  { country: 'Nigeria', code: '+234', flag: 'NG' },
+  { country: 'Other', code: '+', flag: 'Other' },
 ];
 
 const COUNTRIES = [
@@ -243,11 +244,17 @@ export function ContactPage() {
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
-                              {COUNTRY_CODES.map(({ country, code, flag }) => (
-                                <SelectItem key={country} value={code} className="cursor-pointer">
-                                  {flag} {code}
-                                </SelectItem>
-                              ))}
+                              {COUNTRY_CODES.map(({ country, code, flag }) => {
+                                const FlagComponent = Flags[flag as keyof typeof Flags];
+                                return (
+                                  <SelectItem key={country} value={code} className="cursor-pointer">
+                                    <div className="flex items-center gap-2">
+                                      {FlagComponent ? <FlagComponent className="w-4 h-auto rounded-[1px]" /> : <Globe className="w-4 h-4 text-slate-400" />}
+                                      <span>{code}</span>
+                                    </div>
+                                  </SelectItem>
+                                );
+                              })}
                             </SelectContent>
                           </Select>
                           <Input
