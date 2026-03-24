@@ -3,6 +3,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useSEO } from '../../hooks/useSEO';
+import * as Flags from 'country-flag-icons/react/3x2';
 import {
   Shield,
   Award,
@@ -97,17 +98,17 @@ export function AboutPage() {
   ];
 
   const countries = [
-    { name: 'United States', flag: '🇺🇸' },
-    { name: 'United Kingdom', flag: '🇬🇧' },
-    { name: 'India', flag: '🇮🇳' },
-    { name: 'Singapore', flag: '🇸🇬' },
-    { name: 'UAE', flag: '🇦🇪' },
-    { name: 'Germany', flag: '🇩🇪' },
-    { name: 'Netherlands', flag: '🇳🇱' },
-    { name: 'Canada', flag: '🇨🇦' },
-    { name: 'China', flag: '🇨🇳' },
-    { name: 'New Zealand', flag: '🇳🇿' },
-    { name: 'South Africa', flag: '🇿🇦' },
+    { name: 'United States', code: 'US' },
+    { name: 'United Kingdom', code: 'GB' },
+    { name: 'India', code: 'IN' },
+    { name: 'Singapore', code: 'SG' },
+    { name: 'UAE', code: 'AE' },
+    { name: 'Germany', code: 'DE' },
+    { name: 'Netherlands', code: 'NL' },
+    { name: 'Canada', code: 'CA' },
+    { name: 'China', code: 'CN' },
+    { name: 'New Zealand', code: 'NZ' },
+    { name: 'South Africa', code: 'ZA' },
   ];
 
   return (
@@ -229,8 +230,8 @@ export function AboutPage() {
                   </ul>
                 </div>
 
-                {/* Industries and Countries side-by-side */}
-                <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Industries and Countries stacked full width */}
+                <div className="mt-6 flex flex-col gap-4">
 
                   {/* Industries */}
                   <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
@@ -251,15 +252,18 @@ export function AboutPage() {
                   <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
                     <h4 className="text-base mb-2 text-slate-900">Countries We Serve</h4>
                     <div className="flex flex-wrap gap-1.5">
-                      {countries.map((country) => (
-                        <div
-                          key={country.name}
-                          className="flex items-center gap-1 px-2.5 py-1 bg-white border border-teal-200 rounded-full"
-                        >
-                          <span className="text-sm">{country.flag}</span>
-                          <span className="text-xs text-gray-700">{country.name}</span>
-                        </div>
-                      ))}
+                      {countries.map((country) => {
+                        const FlagComponent = Flags[country.code];
+                        return (
+                          <div
+                            key={country.code}
+                            className="flex items-center gap-1 px-2.5 py-1 bg-white border border-teal-200 rounded-full"
+                          >
+                            {FlagComponent && <FlagComponent className="w-4 h-auto shadow-sm" title={country.name} />}
+                            <span className="text-xs text-gray-700">{country.name}</span>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
 
