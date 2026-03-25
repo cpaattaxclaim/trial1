@@ -1,20 +1,37 @@
-import { defineConfig } from "vite";
-import { reactRouter } from "@react-router/dev/vite";
-import tailwindcss from "@tailwindcss/vite";
-import path from "path";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import { VitePrerender } from 'vite-plugin-prerender'
 
 export default defineConfig({
   plugins: [
-    reactRouter(), 
+    react(),
     tailwindcss(),
+    VitePrerender({
+      staticDir: 'dist',
+      routes: [
+        '/',
+        '/about',
+        '/services',
+        '/contact',
+        '/faq',
+        '/blog',
+        '/privacy-policy',
+        '/terms-of-service',
+        '/cookie-policy',
+      ],
+    }),
   ],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
+  base: '/',
+  resolve: { alias: { "@": "/src" } },
   build: {
-    // Ensures your site stays fast and compatible with 2026 browser standards
-    target: "esnext", 
-  },
-});
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router'],
+          sanity: ['@sanity/client', '@portabletext/react'],
+        }
+      }
+    }
+  }
+})
