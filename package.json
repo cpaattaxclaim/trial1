@@ -5,8 +5,24 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npx react-snap",
     "preview": "vite preview"
+  },
+  "reactSnap": {
+    "source": "dist",
+    "destination": "dist",
+    "include": [
+      "/",
+      "/about",
+      "/services",
+      "/contact",
+      "/faq",
+      "/blog",
+      "/privacy-policy",
+      "/terms-of-service",
+      "/cookie-policy"
+    ],
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
   },
   "dependencies": {
     "country-flag-icons": "^1.5.11",
@@ -76,6 +92,6 @@
     "@vitejs/plugin-react": "4.7.0",
     "tailwindcss": "4.1.12",
     "vite": "6.3.5",
-    "vite-plugin-prerender": "^1.0.0"
+    "react-snap": "^1.23.0"
   }
 }
