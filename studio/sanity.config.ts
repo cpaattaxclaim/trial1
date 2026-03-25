@@ -2,29 +2,21 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 
-// ✅ IMPORTANT: inline schema to force load
+// ✅ IMPORT ALL SCHEMAS
+import post from './schemas/post'
+import author from './schemas/author'
+import category from './schemas/category'
+
 export default defineConfig({
   name: 'default',
   title: 'TaxClaim Blog',
-
   projectId: '95kssyaz',
   dataset: 'production',
-
   plugins: [
     structureTool(),
     visionTool(),
   ],
-
   schema: {
-    types: [
-      {
-        name: 'testDoc',
-        type: 'document',
-        title: 'Test Doc',
-        fields: [
-          { name: 'title', type: 'string' }
-        ]
-      }
-    ],
+    types: [post, author, category], // ✅ THIS LINE FIXES EVERYTHING
   },
 })
