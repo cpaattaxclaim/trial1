@@ -5,6 +5,9 @@ import post from './schemas/post'
 import author from './schemas/author'
 import category from './schemas/category'
 
+console.log('Author schema:', author)
+console.log('Category schema:', category)
+
 export default defineConfig({
   name: 'default',
   title: 'TaxClaim Blog',
