@@ -1,19 +1,23 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
-import { schemaTypes } from './schemas'
 
-console.log('POST:', post)
-console.log('AUTHOR:', author)
-console.log('CATEGORY:', category)
+// ✅ Import ALL schemas from index (IMPORTANT)
+import { schemaTypes } from './schemas'
 
 export default defineConfig({
   name: 'default',
   title: 'TaxClaim Blog',
+
   projectId: '95kssyaz',
   dataset: 'production',
-  plugins: [structureTool(), visionTool()],
+
+  plugins: [
+    structureTool(),
+    visionTool(),
+  ],
+
   schema: {
-    types: schemaTypes,
+    types: schemaTypes, // ✅ THIS is the key fix
   },
 })
