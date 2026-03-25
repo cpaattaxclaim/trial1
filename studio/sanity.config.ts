@@ -17,7 +17,15 @@ export default defineConfig({
     visionTool(),
   ],
 
-  schema: {
-    types: schemaTypes, // ✅ THIS is the key fix
-  },
-})
+schema: {
+  types: [
+    {
+      name: 'testDoc',
+      type: 'document',
+      title: 'Test Doc',
+      fields: [
+        { name: 'title', type: 'string' }
+      ]
+    }
+  ],
+},
