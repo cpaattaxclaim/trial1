@@ -9,7 +9,7 @@ import category from './schemas/category'
 
 export default defineConfig({
   name: 'default',
-  title: 'TaxClaim Blog',
+  title: 'TaxClaim Blog Test',
   projectId: '95kssyaz',
   dataset: 'production',
   plugins: [
