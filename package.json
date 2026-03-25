@@ -22,7 +22,8 @@
       "/terms-of-service",
       "/cookie-policy"
     ],
-    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "executablePath": "/usr/bin/google-chrome-stable"
   },
   "dependencies": {
     "country-flag-icons": "^1.5.11",
