@@ -8,6 +8,22 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "reactSnap": {
+    "source": "dist",
+    "destination": "dist",
+    "include": [
+      "/",
+      "/about",
+      "/services",
+      "/contact",
+      "/faq",
+      "/blog",
+      "/privacy-policy",
+      "/terms-of-service",
+      "/cookie-policy"
+    ],
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
+  },
   "dependencies": {
     "country-flag-icons": "^1.5.11",
     "@emotion/react": "11.14.0",
