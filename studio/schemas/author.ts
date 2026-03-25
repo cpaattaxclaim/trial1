@@ -1,16 +1,18 @@
-export default {
+import { defineType, defineField } from 'sanity'
+
+export default defineType({
   name: 'author',
-  type: 'document',
   title: 'Author',
+  type: 'document',
   fields: [
-    { name: 'name', title: 'Name', type: 'string' },
-    {
+    defineField({ name: 'name', type: 'string', title: 'Name' }),
+    defineField({
       name: 'slug',
-      title: 'Slug',
       type: 'slug',
+      title: 'Slug',
       options: { source: 'name' },
-    },
-    { name: 'bio', title: 'Bio', type: 'text' },
-    { name: 'image', title: 'Image', type: 'image' },
+    }),
+    defineField({ name: 'bio', type: 'text', title: 'Bio' }),
+    defineField({ name: 'image', type: 'image', title: 'Image' }),
   ],
-}
+})
