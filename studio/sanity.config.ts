@@ -2,9 +2,7 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 
-// ✅ Import ALL schemas from index (IMPORTANT)
-import { schemaTypes } from './schemas'
-
+// ✅ IMPORTANT: inline schema to force load
 export default defineConfig({
   name: 'default',
   title: 'TaxClaim Blog',
@@ -17,15 +15,16 @@ export default defineConfig({
     visionTool(),
   ],
 
-schema: {
-  types: [
-    {
-      name: 'testDoc',
-      type: 'document',
-      title: 'Test Doc',
-      fields: [
-        { name: 'title', type: 'string' }
-      ]
-    }
-  ],
-},
+  schema: {
+    types: [
+      {
+        name: 'testDoc',
+        type: 'document',
+        title: 'Test Doc',
+        fields: [
+          { name: 'title', type: 'string' }
+        ]
+      }
+    ],
+  },
+})
