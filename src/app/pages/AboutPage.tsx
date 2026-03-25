@@ -246,7 +246,7 @@ export function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Countries We Serve (Left) */}
               <div className="bg-teal-50 border border-teal-200 rounded-xl p-8">
-                <h4 className="text-xl mb-4 text-slate-900 font-medium">Countries We Serve</h4>
+                <h4 className="text-xl mb-4 text-slate-900 font-medium">Countries We Have Served</h4>
                 <div className="flex flex-wrap gap-2">
                   {countries.map((country) => {
                     const FlagComponent = Flags[country.code];
