@@ -12,11 +12,6 @@ export function BlogPostPage() {
   const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useSEO({
-    title: post?.title || 'Blog',
-    description: post?.excerpt || '',
-  });
-
   useEffect(() => {
     if (!slug) return;
 
@@ -30,7 +25,13 @@ export function BlogPostPage() {
           readTime,
           mainImage,
           category->{title},
-          author->{name}
+          author->{name},
+          seo{
+            title,
+            description
+          },
+          ctaText,
+          ctaButtonLabel
         }`,
         { slug }
       )
@@ -40,18 +41,17 @@ export function BlogPostPage() {
       });
   }, [slug]);
 
-  const formatDate = (dateString: string) => {
-    if (!dateString) return '';
-    return new Date(dateString).toLocaleDateString('en-US');
-  };
+  useSEO({
+    title: post?.seo?.title || post?.title,
+    description: post?.seo?.description || post?.excerpt,
+  });
 
-  if (loading) {
+  if (loading)
     return (
       <div className="flex justify-center py-20">
         <Loader2 className="animate-spin" />
       </div>
     );
-  }
 
   if (!post) return <div>Post not found</div>;
 
@@ -71,10 +71,6 @@ export function BlogPostPage() {
           {post.category?.title} • {post.author?.name}
         </div>
 
-        <div className="text-xs text-gray-500 mb-6">
-          {formatDate(post.publishedAt)} • {post.readTime}
-        </div>
-
         {post.mainImage && (
           <img
             src={urlFor(post.mainImage).url()}
@@ -84,6 +80,22 @@ export function BlogPostPage() {
         )}
 
         <PortableText value={post.body} />
+
+        {/* CTA */}
+        {(post.ctaText || post.ctaButtonLabel) && (
+          <div className="mt-12 p-6 bg-teal-50 rounded-xl text-center">
+            <h3 className="text-xl font-semibold mb-3">
+              {post.ctaText || 'Need help with taxes?'}
+            </h3>
+
+            <a
+              href="https://taxclaim.co"
+              className="inline-block bg-teal-600 text-white px-6 py-2 rounded-lg mt-2"
+            >
+              {post.ctaButtonLabel || 'Get Started'}
+            </a>
+          </div>
+        )}
       </main>
 
       <Footer />
