@@ -2,39 +2,91 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { Button } from '../components/ui/button';
 import { useSEO } from '../../hooks/useSEO';
-import {
-  Calendar,
-  Clock,
-  ArrowLeft,
-  ArrowRight,
-  FileText,   
-  TrendingUp,
-  Building2,
-  ShieldCheck,
-  Rocket,
-  Calculator,
-  Loader2,
-  Globe2, // newly imported
-} from 'lucide-react';
-import React from 'react';
+import { ArrowLeft, Loader2 } from 'lucide-react';
 import { client, urlFor } from '../../lib/sanityClient';
 import { PortableText } from '@portabletext/react';
 
-const categoryIcons: Record<string, any> = {
-  'International Tax & Compliance': Globe2,
-  'Foreign-Owned US Entities': Building2,
-  'FBAR & FATCA': ShieldCheck,
-  'Cross-Border Structures': Globe2,
-  'Foreign Founder Essentials': Rocket,
-  'US Business Tax': TrendingUp,
-  'US Individual Tax': FileText,
-  'Compliance & Filings': ShieldCheck,
-  'Business Formation': Building2,
-  'Bookkeeping & Finance': Calculator,
-};
+export function BlogPostPage() {
+  const { slug } = useParams();
+  const [post, setPost] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-const portableTextComponents = {
-  // ... rest of your PortableText components unchanged
-};
+  useSEO({
+    title: post?.title || 'Blog',
+    description: post?.excerpt || '',
+  });
+
+  useEffect(() => {
+    if (!slug) return;
+
+    client
+      .fetch(
+        `*[_type == "post" && slug.current == $slug][0]{
+          title,
+          body,
+          excerpt,
+          publishedAt,
+          readTime,
+          mainImage,
+          category->{title},
+          author->{name}
+        }`,
+        { slug }
+      )
+      .then((data) => {
+        setPost(data);
+        setLoading(false);
+      });
+  }, [slug]);
+
+  const formatDate = (dateString: string) => {
+    if (!dateString) return '';
+    return new Date(dateString).toLocaleDateString('en-US');
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center py-20">
+        <Loader2 className="animate-spin" />
+      </div>
+    );
+  }
+
+  if (!post) return <div>Post not found</div>;
+
+  return (
+    <div>
+      <Header />
+
+      <main className="max-w-3xl mx-auto px-4 py-12">
+        <Link to="/blog" className="flex items-center mb-6 text-sm">
+          <ArrowLeft className="mr-2 w-4 h-4" />
+          Back to blog
+        </Link>
+
+        <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+
+        <div className="text-sm text-gray-500 mb-4">
+          {post.category?.title} • {post.author?.name}
+        </div>
+
+        <div className="text-xs text-gray-500 mb-6">
+          {formatDate(post.publishedAt)} • {post.readTime}
+        </div>
+
+        {post.mainImage && (
+          <img
+            src={urlFor(post.mainImage).url()}
+            className="rounded-lg mb-6"
+            alt={post.title}
+          />
+        )}
+
+        <PortableText value={post.body} />
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
