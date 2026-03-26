@@ -4,6 +4,7 @@ export default defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
+
   fields: [
     defineField({
       name: 'title',
@@ -52,7 +53,6 @@ export default defineType({
       name: 'readTime',
       type: 'string',
       title: 'Read Time',
-      description: 'Example: 3 min read',
     }),
 
     defineField({
@@ -67,6 +67,44 @@ export default defineType({
       type: 'array',
       title: 'Body',
       of: [{ type: 'block' }, { type: 'image' }],
+    }),
+
+    // 🔥 SEO FIELD (RESTORED)
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          type: 'string',
+          title: 'SEO Title',
+        }),
+        defineField({
+          name: 'description',
+          type: 'text',
+          title: 'Meta Description',
+          rows: 3,
+        }),
+        defineField({
+          name: 'ogImage',
+          type: 'image',
+          title: 'Social Image',
+        }),
+      ],
+    }),
+
+    // 🔥 CTA FIELDS (RESTORED)
+    defineField({
+      name: 'ctaText',
+      type: 'string',
+      title: 'CTA Heading',
+    }),
+
+    defineField({
+      name: 'ctaButtonLabel',
+      type: 'string',
+      title: 'CTA Button Label',
     }),
   ],
 })
