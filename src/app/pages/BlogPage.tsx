@@ -4,11 +4,13 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useSEO } from '../../hooks/useSEO';
 import {
+  ArrowRight,
   FileText,
   Building2,
   ShieldCheck,
   CheckCircle2,
   Globe2,
+  Loader2,
 } from 'lucide-react';
 import { client } from '../../lib/sanityClient';
 
@@ -67,21 +69,19 @@ export function BlogPage() {
             article.category?.title === activeCategory
         );
 
-  const formatDate = (dateString: string) => {
-    if (!dateString) return '';
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
+  const formatDate = (date: string) =>
+    new Date(date).toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
+      year: 'numeric',
     });
-  };
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
 
       <main>
-        {/* Category Filters */}
+        {/* Categories */}
         <section className="py-8 border-b">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-wrap gap-3">
@@ -102,11 +102,11 @@ export function BlogPage() {
           </div>
         </section>
 
-        {/* Blog Grid */}
+        {/* Blogs */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4">
             {loading ? (
-              <div className="flex justify-center py-20">
+              <div className="flex justify-center">
                 <Loader2 className="animate-spin text-teal-600" />
               </div>
             ) : (
