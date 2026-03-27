@@ -5,7 +5,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Updated SEO -->
+    <!-- SEO -->
     <title>US Tax & Compliance for Foreign Founders | TaxClaim CPA</title>
     <meta
       name="description"
@@ -19,37 +19,21 @@
     <!-- Open Graph -->
     <meta property="og:site_name" content="TaxClaim" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="US Tax & Compliance for Foreign Founders | TaxClaim CPA"
-    />
-    <meta
-      property="og:description"
-      content="Form 5471, 5472, FBAR, and cross-border tax compliance handled by a US CPA + Indian CA. Serving clients across 11 countries."
-    />
+    <meta property="og:title" content="US Tax & Compliance for Foreign Founders | TaxClaim CPA" />
+    <meta property="og:description" content="Form 5471, 5472, FBAR, and cross-border tax compliance handled by a US CPA + Indian CA. Serving clients across 11 countries." />
     <meta property="og:url" content="https://taxclaim.co/" />
     <meta property="og:image" content="https://taxclaim.co/og-image.png" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@cpaattaxclaim" />
-    <meta
-      name="twitter:title"
-      content="US Tax & Compliance for Foreign Founders"
-    />
-    <meta
-      name="twitter:description"
-      content="Form 5471, 5472, FBAR, and cross-border tax compliance handled by a dual-qualified US CPA and Indian CA."
-    />
+    <meta name="twitter:title" content="US Tax & Compliance for Foreign Founders" />
+    <meta name="twitter:description" content="Form 5471, 5472, FBAR, and cross-border tax compliance handled by a dual-qualified US CPA and Indian CA." />
     <meta name="twitter:image" content="https://taxclaim.co/og-image.png" />
 
-    <!-- Preload logo -->
-    <link rel="preload" as="image" href="/src/assets/Header.webp" />
-
-    <!-- Fonts: single preconnect pair (no duplicates) -->
+    <!-- Fonts: preconnect (single, no duplicates) then non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Preload the font CSS so it is non-render-blocking -->
     <link
       rel="preload"
       as="style"
@@ -57,10 +41,7 @@
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-      />
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     </noscript>
 
     <!-- Structured Data -->
@@ -93,14 +74,7 @@
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday"
-            ],
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
             "opens": "09:00",
             "closes": "18:00"
           }
@@ -126,21 +100,15 @@
       }
     </script>
 
-    <!-- Google Analytics -->
-    <script
-      defer
-      src="https://www.googletagmanager.com/gtag/js?id=G-Q7N8E43Q1X"
-    ></script>
+    <!-- Google Analytics (deferred) -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-Q7N8E43Q1X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
       gtag("config", "G-Q7N8E43Q1X");
     </script>
   </head>
-
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
