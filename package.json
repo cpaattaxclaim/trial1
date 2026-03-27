@@ -11,6 +11,7 @@
   "reactSnap": {
     "source": "dist",
     "destination": "dist",
+    "crawl": false,
     "include": [
       "/",
       "/about",
@@ -87,7 +88,8 @@
     "vaul": "1.1.2",
     "@sanity/client": "^6.0.0",
     "@sanity/image-url": "^1.0.0",
-    "@portabletext/react": "^3.0.0"
+    "@portabletext/react": "^3.0.0",
+    "@portabletext/to-html": "^2.0.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
