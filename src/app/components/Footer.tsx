@@ -11,7 +11,13 @@ export function Footer() {
           {/* Column 1: Brand */}
           <div className="min-w-0">
             <div className="mb-4">
-              <img src={logoWhiteImg} alt="TaxClaim - CPA and Business Advisory" className="h-10 w-auto" />
+              <img
+                src={logoWhiteImg}
+                alt="TaxClaim - CPA and Business Advisory"
+                className="h-10 w-auto"
+                width="125"
+                height="40"
+              />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               US tax compliance and advisory for foreign founders and cross-border businesses - serving clients across 11 countries.

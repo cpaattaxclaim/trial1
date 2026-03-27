@@ -78,7 +78,14 @@ export function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" aria-label="TaxClaim Home" className="flex items-center cursor-pointer">
-            <img src={logoImg} alt="TaxClaim – CPA & Business Advisory" className="h-10 w-auto" fetchPriority="high" />
+            <img
+              src={logoImg}
+              alt="TaxClaim – CPA & Business Advisory"
+              className="h-10 w-auto"
+              width="125"
+              height="40"
+              fetchPriority="high"
+            />
           </Link>
 
           {/* Desktop Navigation */}
