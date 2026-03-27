@@ -156,13 +156,21 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <Mail className="w-4 h-4 mt-1 text-teal-300 flex-shrink-0" />
-                <a href={`mailto:${'cpa'}@${'taxclaim'}.co`} className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
+                <a
+                  href={`mailto:${'cpa'}@${'taxclaim'}.co`}
+                  aria-label="Email cpa@taxclaim.co"
+                  className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer"
+                >
                   cpa&#64;taxclaim.co
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-1 text-teal-300 flex-shrink-0" />
-                <a href="tel:+14153047262" className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer">
+                <a
+                  href="tel:+14153047262"
+                  aria-label="Call +1 (415) 304-7262"
+                  className="text-gray-400 hover:text-teal-300 transition-colors cursor-pointer"
+                >
                   +1 (415) 304-7262
                 </a>
               </li>

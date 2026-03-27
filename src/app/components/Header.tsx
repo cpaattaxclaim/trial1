@@ -40,11 +40,19 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center gap-6">
-              <a href={`mailto:${'cpa'}@${'taxclaim'}.co`} className="flex items-center gap-2 hover:text-teal-300 transition-colors cursor-pointer">
+              <a
+                href={`mailto:${'cpa'}@${'taxclaim'}.co`}
+                aria-label="Email cpa@taxclaim.co"
+                className="flex items-center gap-2 hover:text-teal-300 transition-colors cursor-pointer"
+              >
                 <Mail className="w-4 h-4" />
                 <span className="hidden sm:inline">cpa&#64;taxclaim.co</span>
               </a>
-              <a href="tel:+14153047262" className="flex items-center gap-2 hover:text-teal-300 transition-colors cursor-pointer">
+              <a
+                href="tel:+14153047262"
+                aria-label="Call +1 (415) 304-7262"
+                className="flex items-center gap-2 hover:text-teal-300 transition-colors cursor-pointer"
+              >
                 <Phone className="w-4 h-4" />
                 <span className="hidden sm:inline">+1 (415) 304-7262</span>
               </a>
