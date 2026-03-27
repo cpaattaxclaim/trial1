@@ -8,8 +8,8 @@ const client = createClient({
   apiVersion: '2024-01-01'
 })
 
-const slugs = await client.fetch(`*[_type == "post"]{ "slug": slug.current }`)
-
+// Blog post routes are handled by prerender-blog.mjs, not react-snap
+// react-snap only handles static routes below
 const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'))
 
 pkg.reactSnap.include = [
@@ -23,8 +23,7 @@ pkg.reactSnap.include = [
   '/privacy-policy',
   '/terms-of-service',
   '/cookie-policy',
-  ...slugs.map(s => `/blog/${s.slug}`)
 ]
 
 writeFileSync('./package.json', JSON.stringify(pkg, null, 2))
-console.log(`✅ Added ${slugs.length} blog post routes to react-snap`)
+console.log('✅ Static routes set for react-snap (blog posts handled by prerender-blog.mjs)')

@@ -44,8 +44,11 @@ jobs:
             libgtk-3-0 \
             libgbm1
 
-      - name: Prerender
+      - name: Prerender static routes
         run: npx react-snap
+
+      - name: Prerender blog posts
+        run: node prerender-blog.mjs
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
