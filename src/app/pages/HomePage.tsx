@@ -289,6 +289,7 @@ export function HomePage() {
                     <span className="text-teal-600">{service.price}</span>
                     <Link
                       to={service.link}
+                      aria-label={`Learn more about ${service.title}`}
                       className="text-slate-900 hover:text-teal-600 transition-colors inline-flex items-center gap-1 cursor-pointer"
                     >
                       Learn more
