@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node generate-routes.mjs && node generate-sitemap.mjs && vite build",
+    "postbuild": "react-snap",
     "preview": "vite preview"
   },
   "reactSnap": {
@@ -15,6 +16,7 @@
       "/",
       "/about",
       "/services",
+      "/international-tax",
       "/contact",
       "/faq",
       "/blog",
