@@ -23,7 +23,8 @@
       "/terms-of-service",
       "/cookie-policy"
     ],
-    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "waitFor": 5000
   },
   "dependencies": {
     "country-flag-icons": "^1.5.11",

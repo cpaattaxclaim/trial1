@@ -205,6 +205,11 @@ export function BlogPostPage() {
         setPost(data);
         setLoading(false);
 
+        // Signal react-snap that async content is ready for snapshotting
+        if (typeof window !== 'undefined' && (window as any).snapSaveState) {
+          (window as any).snapSaveState();
+        }
+
         if (data?.category?.title) {
           client
             .fetch(RELATED_QUERY, { categoryTitle: data.category.title, slug })
@@ -218,6 +223,11 @@ export function BlogPostPage() {
         if (!cancelled) {
           setFetchError(true);
           setLoading(false);
+
+          // Signal react-snap even on error so it doesn't hang
+          if (typeof window !== 'undefined' && (window as any).snapSaveState) {
+            (window as any).snapSaveState();
+          }
         }
       });
 
@@ -329,7 +339,7 @@ export function BlogPostPage() {
                 loading="lazy"
               />
             )}
-            <div className="text-lg">
+            <div className="blog-post-content text-lg">
               {post.body ? (
                 <PortableText value={post.body} components={portableTextComponents} />
               ) : (
