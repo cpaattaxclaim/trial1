@@ -12,13 +12,6 @@ import {
 import { MessageSquare, ArrowRight, Globe2, FileText, BookOpen } from 'lucide-react';
 
 export function FAQPage() {
-  useSEO({
-    title: 'FAQ | TaxClaim CPA - International Tax and Accounting Questions',
-    description:
-      'Got questions about Form 5471, FBAR, foreign-owned US entities, tax filing, bookkeeping, or company formation? Browse TaxClaim\'s frequently asked questions or contact us for a free consultation.',
-    canonical: 'https://taxclaim.co/faq',
-  });
-
   const faqCategories = [
     {
       category: 'International Tax and Foreign Founders',
@@ -227,6 +220,27 @@ export function FAQPage() {
     },
   ];
 
+  useSEO({
+    title: 'FAQ | TaxClaim CPA - International Tax and Accounting Questions',
+    description:
+      'Got questions about Form 5471, FBAR, foreign-owned US entities, tax filing, bookkeeping, or company formation? Browse TaxClaim\'s frequently asked questions or contact us for a free consultation.',
+    canonical: 'https://taxclaim.co/faq',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqCategories.flatMap((cat) =>
+        cat.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        }))
+      ),
+    },
+  });
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -330,7 +344,7 @@ export function FAQPage() {
                 },
                 {
                   icon: FileText,
-                  label: 'SERVICES',    
+                  label: 'SERVICES',
                   title: 'View All Services',
                   desc: 'Explore our complete range of tax and business services',
                   href: '/services',
