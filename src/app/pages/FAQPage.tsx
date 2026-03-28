@@ -225,6 +225,11 @@ export function FAQPage() {
     description:
       'Got questions about Form 5471, FBAR, foreign-owned US entities, tax filing, bookkeeping, or company formation? Browse TaxClaim\'s frequently asked questions or contact us for a free consultation.',
     canonical: 'https://taxclaim.co/faq',
+    ogImage: 'https://taxclaim.co/og-image.png',
+    ogTitle: 'Frequently Asked Questions | TaxClaim CPA',
+    ogDescription:
+      'Answers to common questions about Form 5471, FBAR, FATCA, foreign-owned US entities, pricing, and process. Free consultation available.',
+    ogUrl: 'https://taxclaim.co/faq',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',

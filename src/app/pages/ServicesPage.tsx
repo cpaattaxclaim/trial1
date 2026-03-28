@@ -21,25 +21,6 @@ import {
 } from 'lucide-react';
 
 export function ServicesPage() {
-  useSEO({
-    title: 'Services & Pricing | TaxClaim - US Tax for Foreign Founders',
-    description:
-      'International tax compliance, business and individual tax filing, bookkeeping, company formation, and IRS resolution. Specialist CPA serving clients across 11 countries.',
-    canonical: 'https://taxclaim.co/services',
-  });
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      setTimeout(() => {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    }
-  }, []);
-
   const services = [
     {
       id: 'international-tax',
@@ -234,6 +215,60 @@ export function ServicesPage() {
     },
   ];
 
+  useSEO({
+    title: 'Services & Pricing | TaxClaim - US Tax for Foreign Founders',
+    description:
+      'International tax compliance, business and individual tax filing, bookkeeping, company formation, and IRS resolution. Specialist CPA serving clients across 11 countries.',
+    canonical: 'https://taxclaim.co/services',
+    ogImage: 'https://taxclaim.co/og-image.png',
+    ogTitle: 'Services & Pricing | TaxClaim CPA',
+    ogDescription:
+      'International tax, business filing, bookkeeping, company formation, and IRS resolution. Flat fees, fully remote, clients in 11 countries.',
+    ogUrl: 'https://taxclaim.co/services',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'TaxClaim CPA Services',
+      description:
+        'Full range of tax, accounting, and business services offered by TaxClaim for foreign founders, cross-border businesses, and US clients.',
+      url: 'https://taxclaim.co/services',
+      itemListElement: services.map((s, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        item: {
+          '@type': 'Service',
+          '@id': `https://taxclaim.co/services#${s.id}`,
+          name: s.title,
+          description: s.description,
+          url: `https://taxclaim.co/services#${s.id}`,
+          offers: {
+            '@type': 'Offer',
+            price: s.price,
+            priceCurrency: 'USD',
+          },
+          provider: {
+            '@type': 'AccountingService',
+            name: 'TaxClaim',
+            url: 'https://taxclaim.co',
+          },
+          areaServed: 'Worldwide',
+        },
+      })),
+    },
+  });
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -323,7 +358,7 @@ export function ServicesPage() {
                         </>
                       )}
 
-                      {/* Pricing Tiers - compact chips at bottom */}
+                      {/* Pricing Tiers */}
                       {service.tiers && (
                         <div className="mt-auto pt-4 border-t border-gray-100">
                           <div className="flex flex-wrap gap-2">
