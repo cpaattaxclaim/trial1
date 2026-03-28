@@ -102,47 +102,52 @@ const buildPostHTML = (post, templateHTML) => {
 <div class="min-h-screen bg-white">
   <!-- Header placeholder - React will hydrate -->
   <main>
-    <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <a href="/blog" class="inline-flex items-center text-teal-400 hover:text-teal-300 mb-6 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="mr-1"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-          Back to Blog
-        </a>
-        ${categoryTitle ? `<div class="mb-4"><span class="inline-block px-3 py-1 bg-teal-600 text-white rounded-full text-xs">${categoryTitle}</span></div>` : ''}
-        <h1 class="text-4xl md:text-5xl mb-6 leading-tight">${post.title}</h1>
-        <div class="flex items-center gap-4 text-sm text-gray-400">
-          <span>${formatDate(post.publishedAt)}</span>
-          <span>${post.readTime || '3 min read'}</span>
-          ${post.author?.name ? `<span>${post.author.name}</span>` : ''}
-        </div>
-      </div>
-    </section>
-
-    <section class="py-16">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        ${mainImageHTML}
-        <div class="blog-post-content text-lg">
-          ${bodyHTML}
-        </div>
-        <div class="mt-16 pt-8 border-t border-gray-200">
-          <a href="/blog" class="inline-flex items-center gap-2 px-4 py-2 border border-teal-600 text-teal-600 rounded-md hover:bg-teal-50">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-            Back to all articles
+    <article itemscope itemtype="https://schema.org/BlogPosting">
+      <meta itemprop="datePublished" content="${post.publishedAt ?? ''}">
+      ${post.author?.name ? `<meta itemprop="author" content="${post.author.name}">` : ''}
+      <meta itemprop="image" content="${seoImage}">
+      <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <a href="/blog" class="inline-flex items-center text-teal-400 hover:text-teal-300 mb-6 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="mr-1"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            Back to Blog
           </a>
+          ${categoryTitle ? `<div class="mb-4"><span class="inline-block px-3 py-1 bg-teal-600 text-white rounded-full text-xs">${categoryTitle}</span></div>` : ''}
+          <h1 itemprop="headline" class="text-4xl md:text-5xl mb-6 leading-tight">${post.title}</h1>
+          <div class="flex items-center gap-4 text-sm text-gray-400">
+            <span>${formatDate(post.publishedAt)}</span>
+            <span>${post.readTime || '3 min read'}</span>
+            ${post.author?.name ? `<span>${post.author.name}</span>` : ''}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="py-12 bg-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl mb-4 text-slate-900">${post.ctaText || 'Let TaxClaim handle this for you.'}</h2>
-        <p class="text-lg text-gray-600 mb-8">Flat fee. Fully remote. 100% on-time.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact#contact-form" class="inline-flex items-center justify-center px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-md">${post.ctaButtonLabel || 'Get Started'}</a>
-          <a href="/services" class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md hover:border-teal-600 hover:text-teal-600">View Our Services</a>
+      <section class="py-16">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          ${mainImageHTML}
+          <div itemprop="articleBody" class="blog-post-content text-lg">
+            ${bodyHTML}
+          </div>
+          <div class="mt-16 pt-8 border-t border-gray-200">
+            <a href="/blog" class="inline-flex items-center gap-2 px-4 py-2 border border-teal-600 text-teal-600 rounded-md hover:bg-teal-50">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+              Back to all articles
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl mb-4 text-slate-900">${post.ctaText || 'Let TaxClaim handle this for you.'}</h2>
+          <p class="text-lg text-gray-600 mb-8">Flat fee. Fully remote. 100% on-time.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contact#contact-form" class="inline-flex items-center justify-center px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-md">${post.ctaButtonLabel || 'Get Started'}</a>
+            <a href="/services" class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md hover:border-teal-600 hover:text-teal-600">View Our Services</a>
+          </div>
+        </div>
+      </section>
+    </article>
   </main>
 </div>`
 
