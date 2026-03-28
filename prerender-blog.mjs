@@ -8,6 +8,7 @@ const client = createClient({
   dataset: 'production',
   useCdn: false,
   apiVersion: '2024-01-01',
+  token: process.env.SANITY_TOKEN,
 })
 
 const POSTS_QUERY = `*[_type == "post"] {
@@ -208,6 +209,9 @@ const buildPostHTML = (post, templateHTML) => {
 
 // --- Main ---
 console.log('🔍 Fetching posts from Sanity...')
+if (!process.env.SANITY_TOKEN) {
+  console.warn('⚠️  SANITY_TOKEN not set — fetching as public (may return 0 posts if dataset is private)')
+}
 const posts = await client.fetch(POSTS_QUERY)
 console.log(`📝 Found ${posts.length} posts`)
 
