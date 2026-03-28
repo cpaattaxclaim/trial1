@@ -199,6 +199,33 @@ export function InternationalTaxPage() {
     ogDescription:
       'Form 5471, FBAR, FATCA, pro forma 1120 - handled by a dual-qualified US CPA and Indian CA serving clients in 11 countries.',
     ogUrl: 'https://taxclaim.co/international-tax',
+    ogImage: 'https://taxclaim.co/og-image.png',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'International Tax Services by TaxClaim',
+      description:
+        'International tax and compliance services for foreign founders and cross-border businesses, including Form 5472, Form 5471, FBAR, FATCA, and cross-border tax planning.',
+      url: 'https://taxclaim.co/international-tax',
+      itemListElement: SERVICES.map((s, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        item: {
+          '@type': 'Service',
+          '@id': `https://taxclaim.co/international-tax#${s.id}`,
+          name: s.title,
+          description: s.description,
+          url: `https://taxclaim.co/international-tax#${s.id}`,
+          provider: {
+            '@type': 'AccountingService',
+            name: 'TaxClaim',
+            url: 'https://taxclaim.co',
+          },
+          areaServed: 'Worldwide',
+          serviceType: 'International Tax Compliance',
+        },
+      })),
+    },
   });
 
   return (
@@ -270,7 +297,7 @@ export function InternationalTaxPage() {
           </div>
         </section>
 
-        {/* Penalty Stakes — teal card, no full-width banner */}
+        {/* Penalty Stakes */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -310,7 +337,6 @@ export function InternationalTaxPage() {
             </p>
           </div>
         </section>
-
 
         {/* Services */}
         <section className="py-20">
