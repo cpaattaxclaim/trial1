@@ -39,6 +39,7 @@ interface Post {
   author?: { name: string };
   excerpt: string;
   publishedAt: string;
+  _updatedAt?: string;
   readTime?: string;
   body?: unknown[];
   mainImage?: unknown;
@@ -67,6 +68,7 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0] {
   author->{name},
   excerpt,
   publishedAt,
+  _updatedAt,
   readTime,
   body,
   mainImage,
@@ -189,6 +191,39 @@ export function BlogPostPage() {
     canonical: `https://taxclaim.co/blog/${slug}`,
     ogImage: post?.seo?.ogImage?.asset?.url,
     ogType: 'article',
+    schema: post ? {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.seo?.title ?? `${post.title} | TaxClaim CPA Blog`,
+      description: post.seo?.description ?? post.excerpt,
+      datePublished: post.publishedAt,
+      dateModified: post._updatedAt ?? post.publishedAt,
+      url: `https://taxclaim.co/blog/${slug}`,
+      author: {
+        '@type': 'Person',
+        name: post.author?.name ?? 'TaxClaim CPA',
+        url: 'https://taxclaim.co/about',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'TaxClaim',
+        url: 'https://taxclaim.co',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://taxclaim.co/og-image.png',
+        },
+      },
+      ...(post.seo?.ogImage?.asset?.url ? {
+        image: {
+          '@type': 'ImageObject',
+          url: post.seo.ogImage.asset.url,
+        },
+      } : {}),
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `https://taxclaim.co/blog/${slug}`,
+      },
+    } : undefined,
   });
 
   useEffect(() => {
@@ -339,7 +374,7 @@ export function BlogPostPage() {
                   sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px"
                   alt={post.title}
                   className="w-full rounded-xl mb-10"
-                  loading="lazy"
+                  loading="eager"
                   itemProp="image"
                 />
               )}
