@@ -47,6 +47,9 @@ jobs:
       - name: Prerender static routes
         run: npx react-snap
 
+      - name: Inject FAQ schema into dist/faq/index.html
+        run: node prerender-faq.mjs
+
       - name: Prerender blog posts
         run: node prerender-blog.mjs
 
